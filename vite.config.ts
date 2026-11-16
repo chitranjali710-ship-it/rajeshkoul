@@ -35,7 +35,7 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
+export default defineConfig(async ({ command }) => {
   // Use Miniflare's local Request.cf placeholder unless fetching is requested.
   process.env.CLOUDFLARE_CF_FETCH_ENABLED ??= "false";
   process.env.WRANGLER_SEND_METRICS ??= "false";
@@ -47,8 +47,20 @@ export default defineConfig(async () => {
   process.env.WRANGLER_REGISTRY_PATH ??= ".wrangler/dev-registry";
   process.env.MINIFLARE_REGISTRY_PATH ??= ".wrangler/registry";
 
-  // Wrangler snapshots its log path while the Cloudflare plugin is imported.
-  const { cloudflare } = await import("@cloudflare/vite-plugin");
+  // The Cloudflare adapter injects `cloudflare:` runtime imports. Those are
+  // valid in Workers, but Node.js cannot resolve them when the Vinext
+  // standalone bundle is started on Hostinger. Keep the adapter for local
+  // development and managed Sites builds, and omit it for self-hosted builds.
+  const cloudflarePlugins =
+    command === "serve" || managedLinux
+      ? [
+          (await import("@cloudflare/vite-plugin")).cloudflare({
+            viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
+            inspectorPort: false,
+            config: localBindingConfig,
+          }),
+        ]
+      : [];
 
   return {
     server: {
@@ -58,11 +70,7 @@ export default defineConfig(async () => {
     plugins: [
       vinext(),
       sites({ mockAuth: !managedLinux }),
-      cloudflare({
-        viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-        inspectorPort: false,
-        config: localBindingConfig,
-      }),
+      ...cloudflarePlugins,
     ],
   };
 });

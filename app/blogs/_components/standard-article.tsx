@@ -15,7 +15,7 @@ export function StandardArticle({article}:{article:Article}){
   const highlights=article.sections.slice(0,4);
   return <><SiteHeader/><main className="article-page source-article-page">
     <div className="article-hero-stage"><section className="article-hero source-article-hero source-article-hero--editorial">
-      <Image src={article.image} alt={article.title} fill priority sizes="100vw" style={{objectFit:"contain",objectPosition:"center",transform:"none"}}/>
+      <Image src={article.image} alt={article.title} fill priority sizes="100vw" style={{objectFit:"cover",objectPosition:"center",transform:"none"}}/>
       <div className="article-image-label"><p>{article.category}</p><strong>{article.title}</strong></div>
       <h1 className="sr-only">{article.title}</h1>
       <a className="article-back source-article-back" href="/blogs"><ArrowLeft/> Back to Blogs</a>

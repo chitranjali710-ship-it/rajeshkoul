@@ -1,0 +1,860 @@
+/*
+ * Final responsive layer.
+ *
+ * globals.css contains the site's historical page-specific rules. Keeping the
+ * responsive system in a last-loaded file makes the mobile experience
+ * predictable without changing or removing any client content.
+ */
+
+.pillar-card-toggle {
+  display: none;
+}
+
+.mobile-disclosure-toggle,
+.mobile-action-dock {
+  display: none;
+}
+
+.site-footer .footer-list > summary {
+  list-style: none;
+}
+
+.site-footer .footer-list > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .site-footer .footer-list > summary {
+    display: block;
+    pointer-events: none;
+  }
+
+  .site-footer .footer-list > summary > svg {
+    display: none;
+  }
+
+  .site-footer .footer-list > div {
+    display: block !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .site-header {
+    height: 72px !important;
+    padding-inline: clamp(18px, 4vw, 32px) !important;
+  }
+
+  .site-header .menu-button {
+    display: grid !important;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: 50%;
+  }
+
+  .site-header nav {
+    display: none !important;
+    top: 72px !important;
+    max-height: calc(100dvh - 72px) !important;
+    overscroll-behavior: contain;
+  }
+
+  .site-header nav.open {
+    display: flex !important;
+  }
+
+  .site-header nav > a,
+  .site-header .nav-dropdown > button,
+  .site-header .nav-dropdown > a {
+    min-height: 48px;
+  }
+
+  .site-header .nav-submenu {
+    display: none !important;
+    position: static !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .site-header .nav-submenu.is-open {
+    display: block !important;
+  }
+
+  .site-header .nav-submenu a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  :where(a, button, input, select, textarea):focus-visible {
+    outline: 3px solid #c99542;
+    outline-offset: 3px;
+  }
+
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  main {
+    overflow: clip;
+  }
+
+  :where(.section, .hero, .editorial-hero) {
+    padding-inline: 18px !important;
+  }
+
+  :where(p, li) {
+    overflow-wrap: break-word;
+  }
+
+  :where(.button, .contact-submit, .lns-purchase-links a) {
+    min-height: 52px !important;
+  }
+
+  /* Home hero: compact editorial hierarchy, while retaining every line. */
+  .home-page .home-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 28px 18px 18px !important;
+    gap: 24px !important;
+  }
+
+  .home-page .home-hero .hero-copy {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .home-page .home-hero h1 {
+    max-width: 100% !important;
+    margin: 0 0 18px !important;
+    font-size: clamp(32px, 8.8vw, 38px) !important;
+    line-height: 1.035 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .home-page .home-hero .lead {
+    margin-bottom: 22px !important;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .home-page .home-hero .actions {
+    gap: 10px !important;
+    margin-top: 0 !important;
+  }
+
+  .home-page .home-hero .italic {
+    margin-top: 18px !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  .home-page .home-hero .trust {
+    margin-top: 16px !important;
+    font-size: 10px !important;
+    line-height: 1.6 !important;
+  }
+
+  .home-page .home-hero .hero-art {
+    position: relative !important;
+    inset: auto !important;
+    order: 2 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    aspect-ratio: 4 / 4.45;
+    border-radius: 28px !important;
+    overflow: hidden;
+  }
+
+  .home-page .home-hero .hero-art img {
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  /* Shared section rhythm. */
+  .home-page :where(.author-section, .expertise-section, .book-section, .digilean, .mission-section, .core-section) {
+    min-height: 0 !important;
+    padding-top: 42px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .home-page :where(.display, .author-grid h2, .mission-heading h2, .core-section h2) {
+    font-size: clamp(31px, 8vw, 40px) !important;
+    line-height: 1.08 !important;
+    text-wrap: balance;
+  }
+
+  .home-page .author-grid {
+    gap: 22px !important;
+  }
+
+  .home-page .author-grid p,
+  .home-page .mission-intro p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .home-page .mission-bar {
+    margin-block: 18px !important;
+    padding: 18px !important;
+    align-items: flex-start !important;
+  }
+
+  .home-page .mini-grid {
+    gap: 12px !important;
+  }
+
+  .home-page .mini-card {
+    min-height: 0 !important;
+    padding: 18px !important;
+  }
+
+  .home-page .expertise-section {
+    gap: 26px !important;
+  }
+
+  .home-page .expertise-portrait,
+  .home-page .expertise-portrait .image-panel {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .home-page .expertise-portrait .image-panel img {
+    object-fit: contain !important;
+    object-position: center bottom !important;
+  }
+
+  .home-page .expertise-list > div {
+    min-height: 60px !important;
+    grid-template-columns: 54px 1fr 36px !important;
+    padding: 6px 12px !important;
+  }
+
+  .home-page .expertise-list b {
+    font-size: 15px !important;
+  }
+
+  .home-page .book-art-panel {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+  }
+
+  .home-page .book-art-panel img {
+    object-fit: contain !important;
+  }
+
+  /* Pillars: content stays complete and is progressively disclosed on phones. */
+  .home-page .mission-section .mission-shell {
+    padding: 0 !important;
+  }
+
+  .home-page .mission-section .mission-heading {
+    gap: 18px !important;
+  }
+
+  .home-page .mission-section .pillar-grid {
+    gap: 16px !important;
+    margin-top: 24px !important;
+  }
+
+  .home-page .mission-section .pillar-card {
+    min-height: 0 !important;
+    padding: 24px 20px 20px !important;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .home-page .mission-section .pillar-card-top {
+    min-height: 50px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .home-page .mission-section .pillar-card-top span {
+    width: 48px !important;
+    height: 48px !important;
+    display: grid !important;
+    place-items: center;
+  }
+
+  .home-page .mission-section .pillar-card-top b {
+    display: none !important;
+  }
+
+  .home-page .mission-section .pillar-card small {
+    display: block;
+    margin-top: 16px !important;
+    text-align: center;
+  }
+
+  .home-page .mission-section .pillar-card h3 {
+    min-height: 0 !important;
+    margin: 12px 0 16px !important;
+    font-size: clamp(25px, 7vw, 31px) !important;
+    line-height: 1.08 !important;
+    text-align: center;
+  }
+
+  .home-page .mission-section .pillar-card-copy {
+    display: -webkit-box;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .home-page .mission-section .pillar-card.is-expanded .pillar-card-copy {
+    display: block;
+    overflow: visible;
+  }
+
+  .home-page .mission-section .pillar-card-toggle {
+    display: inline-flex !important;
+    width: max-content;
+    min-height: 44px;
+    margin: 10px auto 0;
+    align-items: center;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .home-page .mission-section .pillar-card footer {
+    margin-top: 16px !important;
+  }
+
+  .home-page .mission-conclusion {
+    padding: 26px 0 0 !important;
+    font-size: clamp(24px, 7vw, 32px) !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Book spread: horizontal browsing avoids two 400px-tall covers in sequence. */
+  .home-page .blueprint-section {
+    min-height: 0 !important;
+    padding: 42px 18px !important;
+  }
+
+  .home-page .blueprint-header {
+    width: 100% !important;
+  }
+
+  .home-page .blueprint-header h2 {
+    font-size: clamp(30px, 8vw, 38px) !important;
+    line-height: 1.12 !important;
+  }
+
+  .home-page .blueprint-books,
+  .home-page .blueprint-artworks {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    width: calc(100% + 18px) !important;
+    margin: 28px -18px 0 0 !important;
+    padding: 0 18px 10px 0 !important;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78vw, 300px);
+    grid-template-columns: none !important;
+    gap: 14px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .home-page .blueprint-books::-webkit-scrollbar,
+  .home-page .blueprint-artworks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-page :where(.blueprint-book, .blueprint-placeholder) {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 5 / 7.35 !important;
+    scroll-snap-align: start;
+  }
+
+  .home-page :where(.blueprint-book-media img, .blueprint-placeholder img, .blueprint-cover) {
+    object-fit: contain !important;
+  }
+
+  .home-page .blueprint-quote-line {
+    margin-top: 26px !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Footer: compact intent and accessible tap-to-open navigation groups. */
+  .site-footer .intent-row {
+    min-height: 0 !important;
+    gap: 20px !important;
+    padding: 30px 18px 24px !important;
+  }
+
+  .site-footer .signature {
+    padding-bottom: 0 !important;
+  }
+
+  .site-footer .intent,
+  .site-footer .connect {
+    padding-top: 20px !important;
+  }
+
+  .site-footer .intent h2 {
+    margin: 12px 0 !important;
+    font-size: 27px !important;
+    line-height: 1.14 !important;
+  }
+
+  .site-footer .intent-break {
+    display: none;
+  }
+
+  .site-footer .connect p br {
+    display: none;
+  }
+
+  .site-footer .connect a {
+    display: flex !important;
+    width: 100%;
+    min-height: 58px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .site-footer .connect a > svg:last-child {
+    margin-left: auto;
+  }
+
+  .site-footer .footer-dark {
+    min-height: 0 !important;
+    padding: 8px 18px 18px !important;
+  }
+
+  .site-footer .footer-columns {
+    display: block !important;
+  }
+
+  .site-footer .footer-list {
+    height: auto !important;
+    padding: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.16) !important;
+  }
+
+  .site-footer .footer-list > summary {
+    display: flex;
+    min-height: 54px;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .22em;
+  }
+
+  .site-footer .footer-list > summary > svg {
+    display: block !important;
+    width: 18px;
+    height: 18px;
+    transition: transform .2s ease;
+  }
+
+  .site-footer .footer-list[open] > summary > svg {
+    transform: rotate(180deg);
+  }
+
+  .site-footer .footer-list > div {
+    display: none !important;
+    padding-bottom: 12px;
+  }
+
+  .site-footer .footer-list[open] > div {
+    display: block !important;
+  }
+
+  .site-footer .footer-list a {
+    min-height: 46px !important;
+    font-size: 14px !important;
+  }
+
+  .site-footer .about-footer {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 24px 0 !important;
+  }
+
+  .site-footer .about-footer img {
+    display: none !important;
+  }
+
+  .site-footer .values {
+    height: auto !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    padding: 8px 0 !important;
+  }
+
+  .site-footer .value {
+    min-height: 0 !important;
+    padding: 14px 10px !important;
+    align-items: flex-start !important;
+  }
+
+  .site-footer .value > svg {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    padding: 10px !important;
+  }
+
+  .site-footer .value span {
+    font-size: 12px !important;
+  }
+
+  .site-footer .copyright {
+    min-height: 0 !important;
+    padding: 18px 0 4px !important;
+  }
+
+  /* General editorial pages and blog reading experience. */
+  .editorial-hero {
+    min-height: 0 !important;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .editorial-copy h1 {
+    font-size: clamp(38px, 10vw, 48px) !important;
+    line-height: 1.02 !important;
+  }
+
+  .editorial-art {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .editorial-features {
+    grid-template-columns: 1fr !important;
+  }
+
+  .article-hero-stage,
+  .source-article-hero {
+    min-height: 0 !important;
+  }
+
+  .article-hero {
+    min-height: 0 !important;
+  }
+
+  .article-hero-inner {
+    padding: 24px 18px 26px !important;
+  }
+
+  .article-hero h1,
+  .source-article-hero h1 {
+    font-size: clamp(31px, 8.5vw, 44px) !important;
+    line-height: 1.06 !important;
+    text-wrap: balance;
+  }
+
+  .article-hero img,
+  .source-article-hero img {
+    object-position: center !important;
+  }
+
+  .book-grid article {
+    grid-template-columns: 96px 1fr !important;
+    gap: 16px !important;
+    padding: 16px !important;
+  }
+
+  .book-grid img {
+    width: 96px !important;
+    height: auto !important;
+    max-height: 150px;
+    object-fit: contain !important;
+  }
+
+  /* Contact: single-column flow and comfortably sized controls. */
+  .contact-page .contact-stage {
+    min-height: 0 !important;
+    padding: 36px 18px 42px !important;
+  }
+
+  .contact-page .contact-copy h1 {
+    font-size: clamp(40px, 10vw, 52px) !important;
+    line-height: 1.02 !important;
+  }
+
+  .contact-page .contact-layout,
+  .contact-page .contact-field-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-page :where(input, select, textarea) {
+    font-size: 16px !important;
+  }
+
+  /* LNS remains cinematic, but its dense sections fit a phone intentionally. */
+  .lns-page {
+    overflow: clip;
+  }
+
+  .lns-page :where(.lns-purchase-inner, .lns-story-heading, .lns-story-top, .lns-outcome-grid, .lns-story-bridge, .lns-story-panels, .lns-story-footer, .lns-architecture-heading, .lns-curriculum-heading, .lns-curriculum-grid, .lns-author-inner, .lns-footer-inner) {
+    width: min(100% - 36px, 1180px) !important;
+  }
+
+  .lns-page :where(.lns-story-heading h2, .lns-architecture-heading h2, .lns-curriculum-heading h2, .lns-author-copy h2, .lns-purchase h2) {
+    font-size: clamp(32px, 8.5vw, 46px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .lns-page .lns-action-card,
+  .lns-page .lns-curriculum-grid article,
+  .lns-page .lns-author-pillars article,
+  .lns-page .lns-footer-card {
+    min-height: 0 !important;
+  }
+
+  .lns-page .lns-domain-art-crop {
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .lns-page .lns-domain-art-crop video {
+    object-fit: cover !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .home-page .home-hero h1 {
+    font-size: clamp(31px, 8.45vw, 35px) !important;
+  }
+
+  .site-footer .values {
+    grid-template-columns: 1fr !important;
+  }
+
+  .book-grid article {
+    grid-template-columns: 82px 1fr !important;
+  }
+
+  .book-grid img {
+    width: 82px !important;
+  }
+}
+
+/*
+ * Phone refinement layer.
+ * Everything below is intentionally limited to phone widths so the approved
+ * tablet and desktop compositions remain completely unchanged.
+ */
+@media (max-width: 600px) {
+  :root {
+    --phone-gutter: 18px;
+    --phone-section-space: 44px;
+    --phone-card-radius: 20px;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  .home-page :where(h1, h2, h3),
+  .editorial-page :where(h1, h2, h3),
+  .contact-page :where(h1, h2, h3),
+  .lns-page :where(h1, h2, h3) {
+    text-wrap: balance;
+  }
+
+  .home-page :where(.section, .blueprint-section, .leadership-section),
+  .author-section,
+  .research-section,
+  .pillars-section {
+    padding-top: var(--phone-section-space) !important;
+    padding-bottom: var(--phone-section-space) !important;
+  }
+
+  .home-page :where(.section-title, .author-grid h2, .research-section h2, .pillars-section h2) {
+    letter-spacing: -.025em;
+  }
+
+  /* Keep full biographies available without making the first phone view dense. */
+  .mobile-disclosure-copy {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    mask-image: linear-gradient(to bottom, #000 74%, transparent 100%);
+  }
+
+  .mobile-disclosure.is-expanded .mobile-disclosure-copy {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    mask-image: none;
+  }
+
+  .mobile-disclosure-toggle {
+    display: flex;
+    width: 100%;
+    min-height: 46px;
+    margin-top: 8px;
+    padding: 11px 0 4px;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+    border-top: 1px solid color-mix(in srgb, #17343a 18%, transparent);
+    background: transparent;
+    color: #17343a;
+    font: 700 12px/1.2 var(--font-sans, inherit);
+    letter-spacing: .11em;
+    text-transform: uppercase;
+  }
+
+  .mobile-disclosure-toggle svg {
+    width: 18px;
+    height: 18px;
+    transition: transform .24s ease;
+  }
+
+  .mobile-disclosure.is-expanded .mobile-disclosure-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  /* Author content becomes editorial and compact instead of a long stack. */
+  .home-page .author-grid {
+    gap: 20px !important;
+  }
+
+  .home-page .experience-card {
+    min-height: 0 !important;
+    height: 230px !important;
+    padding: 28px 24px !important;
+    border-radius: var(--phone-card-radius) !important;
+  }
+
+  .home-page .experience-card strong {
+    font-size: clamp(64px, 19vw, 76px) !important;
+    line-height: .86 !important;
+  }
+
+  .home-page .mission-bar {
+    min-height: 0 !important;
+    padding: 20px !important;
+    border-radius: var(--phone-card-radius) !important;
+  }
+
+  .home-page .author-mini-card,
+  .home-page .research-card {
+    min-height: 0 !important;
+    padding: 18px !important;
+    border-radius: var(--phone-card-radius) !important;
+  }
+
+  /* Decorative systems recede on phones so content hierarchy stays clear. */
+  .home-page :where(.expertise-orbit, .leadership-accent),
+  .contact-page :where(.contact-orbit, .contact-dots) {
+    display: none !important;
+  }
+
+  .home-page :where(.pillar-card, .research-card, .book-card, .author-mini-card),
+  .editorial-page :where(.editorial-feature, .editorial-card) {
+    border-radius: var(--phone-card-radius) !important;
+  }
+
+  /* High-value actions remain close at hand without obscuring the footer. */
+  .mobile-action-dock {
+    position: fixed;
+    z-index: 95;
+    right: 12px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    left: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+    gap: 6px;
+    padding: 6px;
+    border: 1px solid rgba(225, 185, 106, .42);
+    border-radius: 18px;
+    background: rgba(13, 48, 55, .96);
+    box-shadow: 0 18px 48px rgba(8, 29, 33, .28);
+    backdrop-filter: blur(18px) saturate(130%);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .mobile-action-dock.is-hidden {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(calc(100% + 24px));
+  }
+
+  .mobile-action-dock a {
+    display: flex;
+    min-width: 0;
+    min-height: 46px;
+    padding: 0 13px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 13px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.1;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .mobile-action-dock a:first-child {
+    background: #f7f2e8;
+    color: #12343a;
+  }
+
+  .mobile-action-dock svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 600px) and (hover: none) and (pointer: coarse) {
+  :where(.button, .mini-card, .pillar-card-toggle, .mobile-disclosure-toggle, .mobile-action-dock a, .site-header .menu-button):active {
+    filter: brightness(.96);
+    transform: scale(.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

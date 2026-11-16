@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./mobile-polish.css";
 
 export const metadata: Metadata = {
   title: "Rajesh Koul | Transformation Leader, Author & Advisor",
