@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -80,9 +80,22 @@ const expertise = [
 export function CoreExpertiseTabs() {
   const [active, setActive] = useState(0);
   const tabs = useRef<Array<HTMLButtonElement | null>>([]);
+  const tabList = useRef<HTMLDivElement>(null);
+  const hasInteracted = useRef(false);
   const selected = expertise[active];
 
+  // On narrow screens the tabs are a scrolling chip row: keep the active chip in view.
+  useEffect(() => {
+    if (!hasInteracted.current) return;
+    const list = tabList.current;
+    const tab = tabs.current[active];
+    if (!list || !tab || list.scrollWidth <= list.clientWidth) return;
+    const target = tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2;
+    list.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
+  }, [active]);
+
   function selectTab(index: number) {
+    hasInteracted.current = true;
     setActive(index);
     tabs.current[index]?.focus();
   }
@@ -99,7 +112,7 @@ export function CoreExpertiseTabs() {
 
   return (
     <div className="core-panel">
-      <div className="core-tabs" role="tablist" aria-label="Core expertise categories">
+      <div className="core-tabs" ref={tabList} role="tablist" aria-label="Core expertise categories">
         {expertise.map((item, index) => (
           <button
             ref={(element) => { tabs.current[index] = element; }}
@@ -109,7 +122,7 @@ export function CoreExpertiseTabs() {
             aria-selected={active === index}
             role="tab"
             tabIndex={active === index ? 0 : -1}
-            onClick={() => setActive(index)}
+            onClick={() => { hasInteracted.current = true; setActive(index); }}
             onKeyDown={(event) => handleKeyDown(event, index)}
             key={item.title}
           >

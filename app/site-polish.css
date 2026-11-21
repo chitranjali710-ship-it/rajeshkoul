@@ -386,15 +386,116 @@ html body:not(#_) .footer-about-fold > summary > svg {
     min-height: 0 !important;
   }
 
-  html body:not(#_) .lns-footer .lns-footer-card > :first-child {
+  /* Card pictures: shown whole, never cropped, each on a backdrop that suits it */
+  html body:not(#_) .lns-footer .lns-footer-card > figure {
+    position: relative;
+    display: grid !important;
+    place-items: center !important;
     width: 100% !important;
-    height: 150px !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+    margin: 0 !important;
+    padding: 14px !important;
+    overflow: hidden;
+    background: radial-gradient(70% 70% at 50% 45%, rgba(226, 189, 120, 0.22), transparent 70%), #0d1a1d !important;
   }
 
-  html body:not(#_) .lns-footer .lns-footer-card > :first-child img {
+  html body:not(#_) .lns-footer .lns-footer-card > figure img {
+    position: static !important;
     width: 100% !important;
     height: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    transform: none !important;
+    filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.45));
+  }
+
+  /* Diagnose (phone mock-up) and Explore (playbook sheet) have light backgrounds */
+  html body:not(#_) .lns-footer .lns-footer-card:nth-child(2) > figure {
+    padding: 0 !important;
+    background: #dadcd8 !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card:nth-child(2) > figure img {
     object-fit: cover !important;
+    filter: none;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card:nth-child(4) > figure {
+    padding: 8px !important;
+    background: #eceff1 !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card:nth-child(4) > figure img {
+    filter: none;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card > div {
+    padding: 18px 18px 20px !important;
+    gap: 8px !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card > div p {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Swipe hint under the card row */
+  html body:not(#_) .lns-footer .lns-footer-resources::after {
+    content: "";
+    flex: 0 0 2px;
+  }
+
+  /* Closing call to action */
+  html body:not(#_) .lns-footer .lns-footer-cta {
+    margin-top: 28px !important;
+    padding: 22px 20px !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-cta small {
+    letter-spacing: 0.14em !important;
+  }
+
+  /* Bottom: smaller logo, tidy link list, clean copyright line */
+  html body:not(#_) .lns-footer .lns-footer-bottom {
+    gap: 18px !important;
+    margin-top: 28px !important;
+    padding-top: 24px !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-brand {
+    justify-content: center !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-brand img {
+    width: auto !important;
+    height: 56px !important;
+    max-width: 200px;
+    object-fit: contain;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-bottom > nav {
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 20px !important;
+    row-gap: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-bottom > nav a {
+    min-height: 46px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13.5px !important;
+    letter-spacing: 0.01em !important;
+    color: #e7ecea !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-bottom > p {
+    width: 100% !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    line-height: 1.8 !important;
+    color: #9aa9a6 !important;
   }
 }
 
@@ -521,5 +622,362 @@ html body:not(#_) .footer-about-fold > summary > svg {
   /* Section headings: one size scale across pages */
   html body:not(#_) main :is(.section > h2, .display, .blogs-section-heading h2, .lns-architecture-heading > h2, .lns-curriculum-heading > h2, .research-showcase-header > h2) {
     letter-spacing: -0.01em !important;
+  }
+}
+
+/* Footer contact icons (email, phone) — same size as the social icons */
+html body:not(#_) .social-link-email {
+  background: #c9984f;
+}
+
+html body:not(#_) .social-link-phone {
+  background: #1f8a5b;
+}
+
+/* Keep all seven footer icons on one row on small phones */
+@media (max-width: 420px) {
+  html body:not(#_) .site-footer .social-connect .social-links {
+    gap: 6px !important;
+    justify-content: flex-start !important;
+    max-width: 100% !important;
+    flex-wrap: nowrap !important;
+  }
+
+  html body:not(#_) .social-links .social-link {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    flex: 0 0 40px !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Homepage · "A Practical Blueprint" — phone redesign (≤760px)
+   Both covers sit together on a lit ink stage, fanned like a
+   book laid on a desk, instead of a half-hidden swipe row.
+   --------------------------------------------------------------- */
+@media (max-width: 760px) {
+  html body:not(#_) .home-page .blueprint-section {
+    padding: 48px 18px 40px !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-header > h2 {
+    margin: 18px 0 14px !important;
+  }
+
+  /* The stage */
+  html body:not(#_) .home-page .blueprint-books {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 460px !important;
+    margin: 30px auto 0 !important;
+    padding: 34px 26px 44px 22px !important;
+    overflow: hidden !important;
+    scroll-snap-type: none !important;
+    border-radius: 22px !important;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 46%, rgba(226, 189, 120, 0.34), rgba(226, 189, 120, 0) 70%),
+      radial-gradient(ellipse 90% 30% at 50% 100%, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 70%),
+      linear-gradient(160deg, #1d3a44 0%, #152c35 55%, #0f2128 100%) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(226, 189, 120, 0.22),
+      0 22px 44px -24px rgba(21, 44, 53, 0.55) !important;
+    isolation: isolate;
+  }
+
+  /* Hairline gold "desk edge" the books rest on */
+  html body:not(#_) .home-page .blueprint-books::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 14%;
+    right: 14%;
+    bottom: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(226, 189, 120, 0), rgba(226, 189, 120, 0.6), rgba(226, 189, 120, 0));
+  }
+
+  html body:not(#_) .home-page .blueprint-book {
+    position: relative !important;
+    flex: none !important;
+    width: 100% !important;
+    aspect-ratio: 2 / 3 !important;
+    scroll-snap-align: none !important;
+  }
+
+  /* Front cover forward, back cover tucked behind */
+  html body:not(#_) .home-page .blueprint-book:nth-child(1) {
+    z-index: 2;
+    margin-right: -22% !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:nth-child(2) {
+    z-index: 1;
+    margin-left: 0 !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book-media {
+    border-radius: 3px 6px 6px 3px;
+    filter: none !important;
+    transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.22, 1) !important;
+    box-shadow:
+      0 0 0 1px rgba(226, 189, 120, 0.28),
+      0 18px 30px -10px rgba(0, 0, 0, 0.65),
+      0 4px 10px rgba(0, 0, 0, 0.35);
+  }
+
+  html body:not(#_) .home-page .blueprint-book:nth-child(1) .blueprint-book-media {
+    transform: rotate(-4deg) translateY(-2px) !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:nth-child(2) .blueprint-book-media {
+    transform: rotate(7deg) translateY(10px) !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book-media img {
+    border-radius: inherit;
+    object-fit: cover !important;
+  }
+
+  /* Spine highlight on the front cover */
+  html body:not(#_) .home-page .blueprint-book:nth-child(1) .blueprint-book-media::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0 auto 0 0;
+    width: 9%;
+    border-radius: 3px 0 0 3px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+  }
+
+  /* Small enlarge badge so the covers read as tappable */
+  html body:not(#_) .home-page .blueprint-book-media::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    right: 8px;
+    bottom: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23152c35' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E")
+      center / 13px no-repeat,
+      rgba(246, 243, 236, 0.92);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:active .blueprint-book-media {
+    transition-duration: 0.15s !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:nth-child(1):active .blueprint-book-media {
+    transform: rotate(-3deg) translateY(-8px) !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:nth-child(2):active .blueprint-book-media {
+    transform: rotate(5deg) translateY(4px) !important;
+  }
+
+  /* Pull quote */
+  html body:not(#_) .home-page .blueprint-quote-line {
+    position: relative;
+    max-width: 330px;
+    margin: 34px auto 0 !important;
+    padding: 26px 0 0 !important;
+    border: 0 !important;
+    color: #152c35 !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 19px !important;
+    font-style: italic !important;
+    line-height: 1.45 !important;
+    text-align: center !important;
+    text-wrap: balance;
+  }
+
+  html body:not(#_) .home-page .blueprint-quote-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 44px;
+    height: 2px;
+    transform: translateX(-50%);
+    background: #e2bd78;
+  }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  html body:not(#_) .home-page .blueprint-book-media {
+    transition: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Homepage · Core Expertise — phone redesign (≤760px)
+   Inset chip row with an edge fade, a compact numbered heading,
+   and the four capabilities as one grouped list.
+   --------------------------------------------------------------- */
+@media (max-width: 760px) {
+  html body:not(#_) .home-page .core-panel {
+    overflow: hidden !important;
+    padding: 0 !important;
+    border-radius: 22px !important;
+  }
+
+  /* Chip row */
+  html body:not(#_) .home-page .core-panel .core-tabs {
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 14px 14px 14px !important;
+    scroll-padding-inline: 14px;
+    border-bottom: 1px solid rgba(21, 44, 53, 0.09) !important;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 36px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 36px), transparent 100%);
+  }
+
+  html body:not(#_) .home-page .core-panel .core-tabs > button {
+    min-height: 40px !important;
+    padding: 0 15px !important;
+    border: 1px solid rgba(21, 44, 53, 0.14) !important;
+    background: #fff !important;
+    color: #152c35 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-tabs > button > b {
+    color: #8a6a3a !important;
+    font-weight: 700 !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-tabs > button.active {
+    border-color: #152c35 !important;
+    background: #152c35 !important;
+    color: #fff !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-tabs > button.active > b {
+    color: #e2bd78 !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-tabs > button:last-child {
+    margin-right: 24px !important;
+  }
+
+  /* Panel body */
+  html body:not(#_) .home-page .core-panel .core-content {
+    padding: 22px 18px 20px !important;
+    animation: core-panel-in 0.32s ease both;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-content > h3 {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 0 !important;
+    color: #152c35 !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-content > h3 > b {
+    display: inline-grid !important;
+    place-items: center;
+    flex: 0 0 auto;
+    min-width: 36px;
+    height: 26px;
+    margin: 0 !important;
+    padding: 0 8px !important;
+    border-radius: 999px;
+    background: rgba(226, 189, 120, 0.22) !important;
+    color: #8a6a3a !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    line-height: 1 !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-content > p {
+    margin: 8px 0 18px !important;
+    color: #4f6266 !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Capabilities as one grouped list */
+  html body:not(#_) .home-page .core-panel .core-cards {
+    display: block !important;
+    margin: 0 !important;
+    padding: 2px 16px !important;
+    border: 1px solid rgba(21, 44, 53, 0.1) !important;
+    border-radius: 16px !important;
+    background: #fff !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-cards .mini-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    margin: 0 !important;
+    padding: 15px 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-cards .mini-card + .mini-card {
+    border-top: 1px solid rgba(21, 44, 53, 0.08) !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-cards .mini-card > span {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    margin: 0 !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-cards .mini-card > div {
+    min-width: 0;
+    padding-top: 1px;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-cards .mini-card b {
+    display: block !important;
+    color: #152c35 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+  }
+
+  html body:not(#_) .home-page .core-panel .core-cards .mini-card p {
+    margin: 3px 0 0 !important;
+    color: #5a6b6e !important;
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@keyframes core-panel-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  html body:not(#_) .home-page .core-panel .core-content {
+    animation: none !important;
   }
 }

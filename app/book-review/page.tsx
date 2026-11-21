@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, Grid2X2, List, Search, X } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { books } from "./books";
+import { LibraryHero } from "@/components/library-hero";
 
 type ViewMode="grid"|"list";
 type SortMode="recommended"|"title-asc"|"title-desc"|"author-asc"|"author-desc";
@@ -65,11 +66,7 @@ export default function BookReviewPage(){
 
   return <>
     <SiteHeader/>
-    <main className="book-review-page"><div className="book-review-hero-stage"><section className="book-review-hero-section" aria-labelledby="book-review-title">
-      <div className="book-review-art" aria-hidden="true"/><div className="book-review-dots book-review-dots-left" aria-hidden="true"/>
-      <div className="book-review-hero"><p className="book-review-kicker">BOOKS WORTH SHARING</p><h1 id="book-review-title">Ideas That Deserve<span>to Be Passed On</span></h1><p className="book-review-lead">A curated collection of books that have influenced my thinking on<br className="book-review-desktop-break"/> Lean, Strategy, Transformation, Leadership, Innovation, and Business.</p><div className="book-review-count" aria-label={`${books.length} books reviewed`}><BookOpen aria-hidden="true"/><strong>{books.length}</strong><span>Books<br/>Reviewed</span></div></div>
-      <Link className="book-review-cta" href="#book-review-list">Explore My Library <ArrowRight aria-hidden="true"/></Link>
-    </section></div>
+    <main className="book-review-page"><LibraryHero books={books}/>
 
     <section className="book-review-list" id="book-review-list" aria-label="Book review library"><div className="book-review-dots book-review-dots-review-left" aria-hidden="true"/><div className="book-review-dots book-review-dots-bottom" aria-hidden="true"/>
       <div className="book-library-toolbar">

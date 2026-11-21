@@ -1,0 +1,404 @@
+/* Book Review hero — "the reading wall" */
+
+.lh {
+  --lh-ink: #0d2228;
+  --lh-cream: #f6f1e6;
+  --lh-muted: #b8c6c2;
+  --lh-gold: #e2bd78;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(55% 75% at 78% 45%, rgba(226, 189, 120, 0.2), transparent 70%),
+    radial-gradient(40% 60% at 10% 100%, rgba(226, 189, 120, 0.08), transparent 70%),
+    linear-gradient(120deg, #0b1f24 0%, #10292f 50%, #0a1c21 100%);
+  color: var(--lh-cream);
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+/* Fine grain of light lines, like shelf rules */
+.lh::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 64px);
+  pointer-events: none;
+}
+
+.lh-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  max-width: 1240px;
+  min-height: 620px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+/* ---------------- Copy ---------------- */
+
+.lh-copy {
+  position: relative;
+  z-index: 2;
+  padding: 72px 0;
+}
+
+.lh-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--lh-gold);
+}
+
+.lh-kicker::after {
+  content: "";
+  width: 56px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.lh-copy h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 4.8vw, 68px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--lh-cream);
+  text-wrap: balance;
+}
+
+.lh-copy h1 span {
+  display: block;
+  font-style: italic;
+  color: var(--lh-gold);
+}
+
+.lh-lead {
+  max-width: 46ch;
+  margin: 24px 0 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--lh-muted);
+}
+
+.lh-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.lh-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 24px;
+  border-radius: 12px;
+  background: var(--lh-gold);
+  color: #0d2228 !important;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  box-shadow: 0 16px 30px -16px rgba(226, 189, 120, 0.7);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.lh-cta:hover {
+  background: #ecca8e;
+  transform: translateY(-1px);
+}
+
+.lh-cta svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.lh-cta:hover svg {
+  transform: translateX(3px);
+}
+
+.lh-cta:focus-visible {
+  outline: 2px solid var(--lh-cream);
+  outline-offset: 3px;
+}
+
+.lh-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 54px;
+  padding: 0 18px 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lh-count svg {
+  width: 20px;
+  height: 20px;
+  color: var(--lh-gold);
+}
+
+.lh-count strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--lh-cream);
+}
+
+.lh-count span {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--lh-muted);
+}
+
+/* ---------------- Reading wall (desktop & tablet) ---------------- */
+
+.lh-wall {
+  position: relative;
+  align-self: stretch;
+  height: 620px;
+  margin-right: calc(-1 * clamp(20px, 4vw, 48px));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(90deg, transparent 0, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(90deg, transparent 0, #000 14%);
+  mask-composite: intersect;
+}
+
+.lh-wall-tilt {
+  position: absolute;
+  inset: -16% -4% -16% 2%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  transform: perspective(1600px) rotateY(-14deg) rotateZ(5deg);
+  transform-origin: 30% 50%;
+}
+
+.lh-col {
+  overflow: hidden;
+}
+
+.lh-col .lh-track {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: lh-up 70s linear infinite;
+}
+
+.lh-col-1 .lh-track {
+  animation-name: lh-down;
+  animation-duration: 84s;
+}
+
+.lh-col-2 .lh-track {
+  animation-duration: 62s;
+}
+
+.lh-col-3 .lh-track {
+  animation-name: lh-down;
+  animation-duration: 76s;
+}
+
+/* Stagger the columns so the covers don't line up in rows */
+.lh-col-1 {
+  margin-top: -60px;
+}
+
+.lh-col-2 {
+  margin-top: 40px;
+}
+
+.lh-col-3 {
+  margin-top: -20px;
+}
+
+.lh-wall:hover .lh-track {
+  animation-play-state: paused;
+}
+
+.lh-cover {
+  position: relative;
+  display: block;
+  flex: none;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 3px 6px 6px 3px;
+  background: #1a3036;
+  box-shadow:
+    0 18px 30px -14px rgba(0, 0, 0, 0.7),
+    0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.lh-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Spine shading and a soft sheen, so each cover reads as a book */
+.lh-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.38) 0, rgba(255, 255, 255, 0.16) 3%, rgba(0, 0, 0, 0.08) 6%, transparent 12%),
+    linear-gradient(115deg, transparent 55%, rgba(255, 255, 255, 0.08) 70%, transparent 85%);
+  pointer-events: none;
+}
+
+@keyframes lh-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-50% - 8px)); }
+}
+
+@keyframes lh-down {
+  from { transform: translateY(calc(-50% - 8px)); }
+  to { transform: translateY(0); }
+}
+
+@keyframes lh-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 6px)); }
+}
+
+@keyframes lh-right {
+  from { transform: translateX(calc(-50% - 6px)); }
+  to { transform: translateX(0); }
+}
+
+/* Phone rows are hidden on larger screens */
+.lh-rows {
+  display: none;
+}
+
+/* ---------------- Tablet ---------------- */
+
+@media (max-width: 1100px) {
+  .lh-inner {
+    gap: 24px;
+    min-height: 560px;
+  }
+
+  .lh-wall {
+    height: 560px;
+  }
+
+  .lh-wall-tilt {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .lh-col-3 {
+    display: none;
+  }
+
+  .lh-col .lh-track {
+    gap: 14px;
+  }
+}
+
+/* ---------------- Phones & small tablets: two gliding rows ---------------- */
+
+@media (max-width: 820px) {
+  .lh-inner {
+    display: block;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .lh-copy {
+    padding: 44px 20px 28px;
+  }
+
+  .lh-copy h1 {
+    font-size: clamp(38px, 10.5vw, 52px);
+  }
+
+  .lh-lead {
+    margin-top: 18px;
+    font-size: 15.5px;
+  }
+
+  .lh-actions {
+    margin-top: 26px;
+    gap: 12px;
+  }
+
+  .lh-cta {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .lh-count {
+    flex: 1 1 100%;
+    justify-content: center;
+    height: auto;
+    padding: 4px 0 0;
+    border: 0;
+    background: none;
+  }
+
+  .lh-wall {
+    display: none;
+  }
+
+  .lh-rows {
+    display: grid;
+    gap: 12px;
+    padding: 6px 0 40px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .lh-row {
+    overflow: hidden;
+  }
+
+  .lh-row .lh-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: lh-left 60s linear infinite;
+  }
+
+  .lh-row-1 .lh-track {
+    animation-name: lh-right;
+    animation-duration: 70s;
+  }
+
+  .lh-row .lh-cover {
+    width: 96px;
+  }
+}
+
+/* ---------------- Reduced motion: a still, arranged wall ---------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .lh-track {
+    animation: none !important;
+  }
+
+  .lh-cta,
+  .lh-cta svg {
+    transition: none !important;
+  }
+}
