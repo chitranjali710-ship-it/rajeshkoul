@@ -19,7 +19,7 @@ const sections = [
 export default function ExecutionToIntelligenceArticle() {
   return <><SiteHeader/><main className="article-page">
     <div className="article-hero-stage"><section className="article-hero">
-      <Image src="/art/blog-editorial/execution-intelligence.png" alt="A path connecting industrial execution with a digitally intelligent enterprise" fill priority sizes="100vw" style={{objectFit:"contain",objectPosition:"center"}}/>
+      <Image src="/art/blog-editorial/execution-intelligence.webp" alt="A path connecting industrial execution with a digitally intelligent enterprise" fill priority sizes="100vw" style={{objectFit:"contain",objectPosition:"center"}}/>
       <div className="article-hero-shade"/>
       <div className="article-hero-inner">
         <a className="article-back" href="/blogs"><ArrowLeft/> Back to Blogs</a>
@@ -77,7 +77,7 @@ export default function ExecutionToIntelligenceArticle() {
         </ArticleSection>
 
         <figure className="article-infographic">
-          <Image src="/art/execution-enterprise-infographic.png" alt="From Execution Engines to Enterprise Intelligence infographic showing the ARC maturity lens and five leadership shifts" width={1024} height={1536} sizes="(max-width: 900px) 100vw, 820px"/>
+          <Image src="/art/execution-enterprise-infographic.webp" alt="From Execution Engines to Enterprise Intelligence infographic showing the ARC maturity lens and five leadership shifts" width={1024} height={1536} sizes="(max-width: 900px) 100vw, 820px"/>
           <figcaption>The ARC maturity journey from operational stability to enterprise intelligence.</figcaption>
         </figure>
 

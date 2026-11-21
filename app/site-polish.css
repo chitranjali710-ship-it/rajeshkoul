@@ -1,0 +1,525 @@
+/*
+ * Site-wide polish (loaded last). Layout and styling only — no content is
+ * added or removed. Sections are commented with what they fix and where.
+ */
+
+/* ------------------------------------------------------------------ */
+/* Bug: homepage "About the author" text ran off-screen on laptops      */
+/* (the tagline never wrapped, forcing the column ~920px wide)         */
+/* ------------------------------------------------------------------ */
+html body:not(#_) .author-section .author-grid {
+  grid-template-columns: 375px minmax(0, 1fr);
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+  html body:not(#_) .author-section .author-grid {
+    grid-template-columns: 330px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1600px) {
+  html body:not(#_) .author-section .tagline {
+    white-space: normal !important;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 768px) {
+  html body:not(#_) .author-section .author-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Bug: About page "30+ Years of experience" label ran off the card    */
+/* ------------------------------------------------------------------ */
+@media (max-width: 650px) {
+  html body:not(#_) .about-bio-stat {
+    flex-wrap: wrap !important;
+    align-items: flex-end !important;
+    column-gap: 14px !important;
+    row-gap: 4px !important;
+  }
+
+  html body:not(#_) .about-bio-stat > strong {
+    font-size: clamp(72px, 24vw, 96px) !important;
+    line-height: 0.9 !important;
+  }
+
+  html body:not(#_) .about-bio-stat > span {
+    min-width: 0;
+    padding-bottom: 8px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Footer "About Rajesh Koul": a fold-away on phones (same text)        */
+/* ------------------------------------------------------------------ */
+html body:not(#_) .footer-about-fold > summary {
+  list-style: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+html body:not(#_) .footer-about-fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+html body:not(#_) .footer-about-fold > summary > svg {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Compact footer on phones                                            */
+/* ------------------------------------------------------------------ */
+@media (max-width: 768px) {
+  html body:not(#_) .site-footer .intent-row {
+    gap: 0 !important;
+    padding: 26px 18px 18px !important;
+  }
+
+  html body:not(#_) .site-footer .signature img {
+    width: auto !important;
+    max-width: 240px !important;
+    height: 64px !important;
+    margin: 0 !important;
+    padding: 10px 14px !important;
+    object-fit: contain;
+  }
+
+  html body:not(#_) .site-footer .intent {
+    padding-top: 18px !important;
+  }
+
+  html body:not(#_) .site-footer .intent h2 {
+    margin: 8px 0 10px !important;
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+
+  html body:not(#_) .site-footer .intent p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  html body:not(#_) .site-footer .connect {
+    padding-top: 16px !important;
+  }
+
+  html body:not(#_) .site-footer .connect p {
+    margin-top: 6px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  html body:not(#_) .site-footer .connect p br {
+    display: none;
+  }
+
+  html body:not(#_) .site-footer .social-links {
+    gap: 10px !important;
+    margin-top: 12px !important;
+  }
+
+  html body:not(#_) .site-footer .social-link {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  html body:not(#_) .site-footer .footer-dark {
+    padding: 0 18px 10px !important;
+  }
+
+  html body:not(#_) .footer-about-fold {
+    padding: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  html body:not(#_) .footer-about-fold > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 54px;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  html body:not(#_) .footer-about-fold > summary h3 {
+    margin: 0 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.22em !important;
+    color: #ffffff !important;
+  }
+
+  html body:not(#_) .footer-about-fold > summary > svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    color: #ffffff;
+    transition: transform 0.2s;
+  }
+
+  html body:not(#_) .footer-about-fold[open] > summary > svg {
+    transform: rotate(180deg);
+  }
+
+  html body:not(#_) .footer-about-fold > p {
+    margin: 0 0 14px !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  html body:not(#_) .site-footer .copyright {
+    gap: 6px !important;
+    padding: 16px 0 6px !important;
+    font-size: 12.5px;
+  }
+
+  html body:not(#_) .site-footer .copyright em {
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Multi-paragraph "Read more" folds (phones): fade instead of clamp   */
+/* ------------------------------------------------------------------ */
+@media (max-width: 650px) {
+  html body:not(#_) [data-read-more="collapsed"][data-read-mode="fade"] {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: none !important;
+    max-height: var(--fold-height, 320px);
+    overflow: hidden !important;
+    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent);
+    mask-image: linear-gradient(180deg, #000 70%, transparent);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* The Lean Nervous System page — phones                               */
+/* ------------------------------------------------------------------ */
+@media (max-width: 650px) {
+  /* One gutter, not two (section padding + a 36px inset) */
+  html body:not(#_) .lns-page :is(.lns-author-inner, .lns-curriculum-heading, .lns-curriculum-grid, .lns-architecture-heading, .lns-footer-inner) {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  html body:not(#_) .lns-curriculum {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  /* Opening section */
+  html body:not(#_) .lns-hero .lns-book-product {
+    width: auto !important;
+    max-width: 210px !important;
+    height: auto !important;
+    margin: 4px auto 8px !important;
+  }
+
+  html body:not(#_) .lns-hero .lns-book-product img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px;
+    object-fit: contain;
+  }
+
+  html body:not(#_) .lns-hero .lns-action-grid {
+    gap: 10px !important;
+  }
+
+  html body:not(#_) .lns-hero .lns-action-card {
+    padding: 16px !important;
+    row-gap: 6px !important;
+  }
+
+  html body:not(#_) .lns-hero .lns-action-card h2 {
+    font-size: 17px !important;
+    line-height: 1.25 !important;
+  }
+
+  html body:not(#_) .lns-hero .lns-measures-inner {
+    grid-template-columns: 1fr 1fr !important;
+    align-items: center !important;
+    column-gap: 12px !important;
+    row-gap: 10px !important;
+  }
+
+  html body:not(#_) .lns-hero .lns-measures-inner > article {
+    padding: 10px 0 !important;
+    text-align: center !important;
+  }
+
+  html body:not(#_) .lns-hero .lns-measures-inner > .lns-mantra {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+  /* Author */
+  html body:not(#_) .lns-author {
+    padding-top: 44px !important;
+    padding-bottom: 40px !important;
+  }
+
+  html body:not(#_) .lns-author .lns-author-main {
+    gap: 22px !important;
+  }
+
+  html body:not(#_) .lns-author .lns-author-photo-wrap {
+    width: min(100%, 280px) !important;
+    height: auto !important;
+    max-height: 320px;
+    margin: 0 auto !important;
+    overflow: hidden;
+  }
+
+  html body:not(#_) .lns-author .lns-author-photo-wrap img {
+    max-height: 320px;
+    object-fit: cover;
+    object-position: 50% 15%;
+  }
+
+  html body:not(#_) .lns-author .lns-author-copy {
+    --fold-height: 380px;
+  }
+
+  html body:not(#_) .lns-author .lns-author-copy + .read-more-toggle {
+    margin-top: 4px;
+  }
+
+  html body:not(#_) .lns-author .lns-author-quote {
+    margin-top: 22px !important;
+  }
+
+  html body:not(#_) .lns-author .lns-author-pillars {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  html body:not(#_) .lns-author .lns-author-pillars > article {
+    grid-template-columns: 1fr !important;
+    align-content: start !important;
+    gap: 10px !important;
+    padding: 14px !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  html body:not(#_) .lns-author .lns-author-pillars > article img,
+  html body:not(#_) .lns-author .lns-author-pillars > article > span:first-child {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  html body:not(#_) .lns-author .lns-author-pillars p {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* "10 Things": two-column tiles */
+  html body:not(#_) .lns-curriculum .lns-curriculum-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  html body:not(#_) .lns-curriculum .lns-curriculum-grid > article {
+    position: relative;
+    grid-template-columns: 1fr !important;
+    align-content: start !important;
+    gap: 10px !important;
+    padding: 14px 12px 16px !important;
+    min-height: 0 !important;
+  }
+
+  html body:not(#_) .lns-curriculum .lns-curriculum-card-top > span {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  html body:not(#_) .lns-curriculum .lns-curriculum-grid > article > p {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+  }
+
+  html body:not(#_) .lns-curriculum .lns-curriculum-card-top > b {
+    position: absolute !important;
+    top: 14px !important;
+    right: 12px !important;
+    grid-column: auto !important;
+  }
+
+  html body:not(#_) .lns-curriculum .lns-curriculum-grid > article > p {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Closing resource cards: a swipeable row */
+  html body:not(#_) .lns-footer .lns-footer-resources {
+    display: flex !important;
+    gap: 12px !important;
+    margin: 0 -18px !important;
+    padding: 0 18px 6px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 18px;
+    scrollbar-width: none;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-resources::-webkit-scrollbar {
+    display: none;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card {
+    flex: 0 0 78% !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto 1fr !important;
+    scroll-snap-align: start;
+    min-height: 0 !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card > :first-child {
+    width: 100% !important;
+    height: 150px !important;
+  }
+
+  html body:not(#_) .lns-footer .lns-footer-card > :first-child img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Homepage — phones                                                   */
+/* ------------------------------------------------------------------ */
+@media (max-width: 650px) {
+  /* "30+ Years of experience": a compact band instead of a tall tile */
+  html body:not(#_) .home-page .author-section .experience-card {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 22px 20px !important;
+    gap: 6px !important;
+  }
+
+  html body:not(#_) .home-page .author-section .experience-card strong {
+    font-size: 64px !important;
+    line-height: 0.95 !important;
+  }
+
+  html body:not(#_) .home-page .author-section .experience-card b {
+    margin-top: 6px !important;
+    font-size: 14px !important;
+  }
+
+  /* Core expertise cards: 2 × 2 tiles */
+  html body:not(#_) .home-page .core-cards {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  html body:not(#_) .home-page .core-cards .mini-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 14px !important;
+  }
+
+  html body:not(#_) .home-page .core-cards .mini-card > span {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+  }
+
+  html body:not(#_) .home-page .core-cards .mini-card b,
+  html body:not(#_) .home-page .core-cards .mini-card h3,
+  html body:not(#_) .home-page .core-cards .mini-card h4 {
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+  }
+
+  html body:not(#_) .home-page .core-cards .mini-card p {
+    margin-top: 4px !important;
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Leadership benefits: one grouped card with dividers */
+  html body:not(#_) .home-page .leadership-benefits {
+    gap: 0 !important;
+    padding: 4px 16px !important;
+  }
+
+  html body:not(#_) .home-page .leadership-benefits > div {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 14px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(21, 44, 53, 0.1) !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(#_) .home-page .leadership-benefits > div:last-child {
+    border-bottom: 0 !important;
+  }
+
+  /* Calmer vertical rhythm between homepage sections */
+  html body:not(#_) .home-page > .section,
+  html body:not(#_) .home-page > section {
+    padding-top: 44px !important;
+    padding-bottom: 44px !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Consistency pass — phones                                           */
+/* ------------------------------------------------------------------ */
+@media (max-width: 650px) {
+  /* Small capital labels above headings: same size and calmer spacing everywhere */
+  html body:not(#_) main :is(.eyebrow, [class*="eyebrow"], [class*="kicker"], .blogs-section-heading > div > p, .lns-architecture-heading > p, .lns-curriculum-heading > p, .pillar-journey-intro > p, .lns-footer-heading p, .lns-story-heading + p) {
+    font-size: 11.5px !important;
+    letter-spacing: 0.14em !important;
+    line-height: 1.5 !important;
+  }
+
+  html body:not(#_) .home-page .author-section .eyebrow,
+  html body:not(#_) .home-page .eyebrow {
+    margin-bottom: 10px !important;
+  }
+
+  /* Author tagline: one role per line, no stray separators at line starts */
+  html body:not(#_) .author-section .tagline {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.6 !important;
+  }
+
+  html body:not(#_) .author-section .tagline > i {
+    display: block !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: none !important;
+  }
+
+  /* Section headings: one size scale across pages */
+  html body:not(#_) main :is(.section > h2, .display, .blogs-section-heading h2, .lns-architecture-heading > h2, .lns-curriculum-heading > h2, .research-showcase-header > h2) {
+    letter-spacing: -0.01em !important;
+  }
+}

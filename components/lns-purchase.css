@@ -1,0 +1,573 @@
+/* "Get your copy" — compact purchase section for The Lean Nervous System */
+
+.lnsbuy {
+  --buy-bg: #f6f3ec;
+  --buy-ink: #152c35;
+  --buy-muted: #5b6b6e;
+  --buy-gold: #8a6a3a;
+  --buy-gold-bright: #c9984f;
+  --buy-panel: #ffffff;
+  --buy-line: rgba(21, 44, 53, 0.1);
+  --buy-line-strong: rgba(21, 44, 53, 0.24);
+  --buy-row: #fbfaf7;
+  --buy-primary-bg: #152c35;
+  --buy-primary-ink: #ffffff;
+  --buy-primary-sub: rgba(255, 255, 255, 0.72);
+  --buy-ring: #152c35;
+  --buy-frame-line: rgba(21, 44, 53, 0.08);
+  --buy-shadow: 0 24px 50px -34px rgba(21, 44, 53, 0.5);
+
+  position: relative;
+  scroll-margin-top: 72px;
+  padding: clamp(40px, 5vw, 64px) clamp(18px, 4vw, 40px);
+  background: var(--buy-bg);
+  color: var(--buy-ink);
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+.lnsbuy--dark {
+  --buy-bg: #0f2c33;
+  --buy-ink: #ffffff;
+  --buy-muted: #c3d0cc;
+  --buy-gold: #e2bd78;
+  --buy-gold-bright: #e9c873;
+  --buy-panel: rgba(255, 255, 255, 0.05);
+  --buy-line: rgba(255, 255, 255, 0.13);
+  --buy-line-strong: rgba(255, 255, 255, 0.32);
+  --buy-row: rgba(255, 255, 255, 0.04);
+  --buy-primary-bg: #e2bd78;
+  --buy-primary-ink: #13282e;
+  --buy-primary-sub: rgba(19, 40, 46, 0.72);
+  --buy-ring: #e2bd78;
+  --buy-frame-line: rgba(226, 189, 120, 0.35);
+  --buy-shadow: 0 24px 60px -34px rgba(0, 0, 0, 0.75);
+
+  background: linear-gradient(115deg, #0b252b, #143840 55%, #0a2228);
+}
+
+.lnsbuy-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ---------------- Book photos ---------------- */
+
+.lnsbuy-photos {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.lnsbuy-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #ece8dc;
+  box-shadow: 0 0 0 1px var(--buy-frame-line), var(--buy-shadow);
+  isolation: isolate;
+}
+
+.lnsbuy-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.2s ease, transform 6s ease-out;
+  user-select: none;
+}
+
+.lnsbuy-frame img.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.lnsbuy-dots {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.lnsbuy-dots button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.lnsbuy-dots button::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--buy-line-strong);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.lnsbuy-dots button.is-active::before {
+  width: 18px;
+  background: var(--buy-gold);
+}
+
+.lnsbuy-dots button:focus-visible {
+  outline: 2px solid var(--buy-gold-bright);
+  outline-offset: 1px;
+  border-radius: 6px;
+}
+
+/* ---------------- Copy ---------------- */
+
+.lnsbuy-copy {
+  min-width: 0;
+}
+
+.lnsbuy-copy h2 {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  font-weight: 400;
+}
+
+.lnsbuy-lead {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--buy-gold);
+}
+
+.lnsbuy-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 3.3vw, 40px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--buy-ink);
+}
+
+/* ---------------- Panel ---------------- */
+
+.lnsbuy-panel {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid var(--buy-line);
+  border-radius: 18px;
+  background: var(--buy-panel);
+  box-shadow: var(--buy-shadow);
+}
+
+.lnsbuy--dark .lnsbuy-panel {
+  backdrop-filter: blur(6px);
+}
+
+.lnsbuy-where {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.lnsbuy-where > p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--buy-muted);
+  white-space: nowrap;
+}
+
+.lnsbuy-where > p strong {
+  font-weight: 600;
+  color: var(--buy-ink);
+}
+
+.lnsbuy-flags {
+  display: flex;
+  gap: 4px;
+}
+
+.lnsbuy-flag {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.lnsbuy-flag .country-flag {
+  width: 24px;
+  height: 16px;
+}
+
+.lnsbuy-flag:hover {
+  border-color: var(--buy-line);
+}
+
+.lnsbuy-flag.is-active {
+  border-color: var(--buy-ring);
+  box-shadow: inset 0 0 0 1px var(--buy-ring);
+}
+
+.lnsbuy-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  margin-left: auto;
+  padding: 0 2px;
+  border: 0;
+  background: none;
+  color: var(--buy-gold);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.lnsbuy-more:hover {
+  text-decoration-color: currentColor;
+}
+
+.lnsbuy-more svg {
+  width: 15px;
+  height: 15px;
+}
+
+.lnsbuy-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lnsbuy-options--1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.lnsbuy-option {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 60px;
+  height: 100%;
+  padding: 10px 12px 10px 10px;
+  border: 1px solid var(--buy-line);
+  border-radius: 12px;
+  background: var(--buy-row);
+  color: var(--buy-ink) !important;
+  text-decoration: none !important;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.lnsbuy-option:hover {
+  border-color: var(--buy-line-strong);
+  transform: translateY(-1px);
+}
+
+.lnsbuy-option.is-primary {
+  border-color: transparent;
+  background: var(--buy-primary-bg);
+  color: var(--buy-primary-ink) !important;
+  box-shadow: 0 14px 26px -18px rgba(10, 28, 33, 0.8);
+}
+
+.lnsbuy-option-text {
+  display: grid;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.lnsbuy-option-text strong {
+  font-size: 14.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lnsbuy-option-text small {
+  font-size: 12px;
+  color: var(--buy-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lnsbuy-option.is-primary .lnsbuy-option-text small {
+  color: var(--buy-primary-sub);
+}
+
+.lnsbuy-option-arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.75;
+  transition: transform 0.15s ease;
+}
+
+.lnsbuy-option:hover .lnsbuy-option-arrow {
+  transform: translate(2px, -2px);
+}
+
+.lnsbuy-flag:focus-visible,
+.lnsbuy-more:focus-visible,
+.lnsbuy-option:focus-visible {
+  outline: 2px solid var(--buy-gold-bright);
+  outline-offset: 2px;
+}
+
+/* Retailer marks */
+.lnsbuy-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.lnsbuy-mark--amazon {
+  background: #131a22;
+  color: #fff;
+}
+
+.lnsbuy-mark--amazon b {
+  margin-top: -5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lnsbuy-mark--amazon svg {
+  position: absolute;
+  left: 7px;
+  bottom: 6px;
+  width: 22px;
+  height: 8px;
+  fill: none;
+  stroke: #ff9900;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lnsbuy-option.is-primary .lnsbuy-mark--amazon {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.lnsbuy-mark--flipkart {
+  background: #2874f0;
+}
+
+.lnsbuy-mark--flipkart b {
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 23px;
+  border-radius: 3px 3px 5px 5px;
+  background: #ffe11b;
+  color: #2874f0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.lnsbuy-mark--kindle {
+  background: #232f3e;
+  color: #fff;
+}
+
+.lnsbuy-mark--kindle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.lnsbuy-note {
+  margin: 10px 2px 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--buy-muted);
+}
+
+/* ---------------- Tablet ---------------- */
+
+@media (max-width: 1024px) {
+  .lnsbuy-inner {
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .lnsbuy-where {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .lnsbuy-flags {
+    order: 3;
+    width: 100%;
+    margin-left: -6px;
+  }
+
+  .lnsbuy-option {
+    grid-template-columns: 32px minmax(0, 1fr);
+    padding: 10px;
+  }
+
+  .lnsbuy-options--1 .lnsbuy-option {
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+  }
+
+  .lnsbuy-mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .lnsbuy-mark--amazon svg {
+    left: 5px;
+  }
+
+  .lnsbuy-options:not(.lnsbuy-options--1) .lnsbuy-option-arrow {
+    display: none;
+  }
+}
+
+/* ---------------- Small tablet & mobile ---------------- */
+
+@media (max-width: 760px) {
+  .lnsbuy-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    max-width: 560px;
+  }
+
+  .lnsbuy-photos {
+    order: 2;
+  }
+
+  .lnsbuy-copy {
+    display: contents;
+  }
+
+  .lnsbuy-copy h2 {
+    order: 1;
+    text-align: center;
+  }
+
+  .lnsbuy-panel {
+    order: 3;
+    margin-top: 0;
+  }
+
+  .lnsbuy-frame {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 560px) {
+  .lnsbuy {
+    padding-top: 36px;
+    padding-bottom: 40px;
+  }
+
+  .lnsbuy-inner {
+    gap: 16px;
+  }
+
+  .lnsbuy-photos {
+    gap: 6px;
+  }
+
+  .lnsbuy-frame {
+    border-radius: 14px;
+  }
+
+  .lnsbuy-title {
+    font-size: clamp(26px, 7.6vw, 30px);
+  }
+
+  .lnsbuy-panel {
+    padding: 14px 12px 12px;
+    border-radius: 16px;
+  }
+
+  .lnsbuy-flag {
+    width: 40px;
+    height: 36px;
+  }
+
+  .lnsbuy-flag .country-flag {
+    width: 26px;
+    height: 17px;
+  }
+
+  /* Three stores as compact vertical tiles */
+  .lnsbuy-options:not(.lnsbuy-options--1) .lnsbuy-option {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 6px;
+    min-height: 0;
+    padding: 12px 6px 10px;
+    text-align: center;
+  }
+
+  .lnsbuy-options:not(.lnsbuy-options--1) .lnsbuy-option-text strong {
+    font-size: 13.5px;
+  }
+
+  .lnsbuy-options--1 .lnsbuy-option-text small {
+    white-space: normal;
+  }
+
+  .lnsbuy-note {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .lnsbuy-where > p {
+    font-size: 13px;
+  }
+
+  .lnsbuy-more-word {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lnsbuy-frame img {
+    transition: opacity 0.01s linear !important;
+    transform: none !important;
+  }
+
+  .lnsbuy-option,
+  .lnsbuy-option-arrow {
+    transition: none !important;
+  }
+}

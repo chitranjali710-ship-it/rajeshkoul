@@ -51,7 +51,6 @@ export function ExpertiseAccordion() {
             key={title}
             onMouseEnter={() => setOpenIndex(index)}
             onMouseLeave={() => setOpenIndex(null)}
-            onFocus={() => setOpenIndex(index)}
             onBlur={(event) => {
               if (!event.currentTarget.contains(event.relatedTarget)) setOpenIndex(null);
             }}

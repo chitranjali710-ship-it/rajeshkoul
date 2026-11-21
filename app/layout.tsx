@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./mobile-polish.css";
+import "./mobile-refine.css";
+import "./site-polish.css";
+import { MobileReadMore } from "@/components/mobile-read-more";
 
 export const metadata: Metadata = {
   title: "Rajesh Koul | Transformation Leader, Author & Advisor",
@@ -18,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <MobileReadMore />
+      </body>
     </html>
   );
 }

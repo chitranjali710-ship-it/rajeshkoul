@@ -5,13 +5,16 @@ import Image from "next/image";
 import { useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { LinkedInFeed } from "@/components/linkedin-feed";
+import { BookBuyCard } from "@/components/book-buy-card";
+import newsletterIssues from "./_data/newsletters.json";
 
 export const latest = [
   {
     category: "GCC Leadership",
     title: "GCCs Reimagined Part II: A Leadership Narrative on Enabling GCC Maturity",
     excerpt: "How leaders enable the journey from earned credibility and local reinvention to enterprise-wide intelligence and strategic influence.",
-    image: "/art/blog-editorial/gcc-maturity.png",
+    image: "/art/blog-editorial/gcc-maturity.webp",
     href: "/blogs/gccs-reimagined-part-ii-enabling-gcc-maturity/",
     topics: ["leadership", "digital", "growth"],
     featured: true,
@@ -22,7 +25,7 @@ export const latest = [
     category: "GCC Strategy",
     title: "GCCs Reimagined: From Extended Enterprise to Intelligence Conduits",
     excerpt: "How Global Capability Centres can evolve from execution engines into intelligence conduits that sense, synthesize, and steer the global enterprise.",
-    image: "/art/blog-editorial/gcc-intelligence-conduits.png",
+    image: "/art/blog-editorial/gcc-intelligence-conduits.webp",
     href: "/blogs/gccs-reimagined-from-extended-enterprise-to-intelligence-conduits/",
     topics: ["leadership", "digital", "growth"],
     featured: true,
@@ -33,7 +36,7 @@ export const latest = [
     category: "Innovation Management",
     title: "Project Management and Innovation: A Synthesis for Success",
     excerpt: "From visionary ideas to purposeful execution: how project and programme management can transform innovation into sustainable value.",
-    image: "/art/blog-editorial/project-innovation.png",
+    image: "/art/blog-editorial/project-innovation.webp",
     href: "/blogs/project-management-and-innovation-a-synthesis-for-success",
     featured: true,
     popularity: 97,
@@ -43,7 +46,7 @@ export const latest = [
     category: "Lean Leadership",
     title: "How to Establish a Lean Thinking Mindset in Organizations",
     excerpt: "Building a culture where purpose guides decisions, people solve problems, and continuous improvement becomes part of everyday work.",
-    image: "/art/blog-editorial/lean-mindset.png",
+    image: "/art/blog-editorial/lean-mindset.webp",
     href: "/blogs/how-to-establish-a-lean-thinking-mindset-in-organizations",
     featured: true,
     popularity: 95,
@@ -54,7 +57,7 @@ export const latest = [
     category: "Lean Thinking",
     title: "Lean Thinking: Customer Value, People First, A Better Tomorrow",
     excerpt: "Building a purpose-driven organisation through continuous improvement, mutual respect, and a relentless focus on customer value.",
-    image: "/art/blog-editorial/customer-value.png",
+    image: "/art/blog-editorial/customer-value.webp",
     href: "/blogs/lean-thinking-customer-value-people-first-a-better-tomorrow",
     featured: true,
     popularity: 94,
@@ -65,7 +68,7 @@ export const latest = [
     category: "Quality 4.0",
     title: "Evolution of Quality 4.0: From Inspection to Intelligent Quality Management",
     excerpt: "How quality has evolved from detecting defects to designing intelligent, connected, and continuously improving systems.",
-    image: "/art/blog-editorial/quality-4.png",
+    image: "/art/blog-editorial/quality-4.webp",
     href: "/blogs/evolution-of-quality-4-0",
     featured: true,
     popularity: 93,
@@ -76,7 +79,7 @@ export const latest = [
     category: "Enterprise Lean",
     title: "Enterprise-Level Lean Design: Moving Beyond Silos to End-to-End Value Creation",
     excerpt: "Why sustainable transformation requires organisations to optimise the whole enterprise, rather than individual processes in isolation.",
-    image: "/art/blog-editorial/enterprise-lean.png",
+    image: "/art/blog-editorial/enterprise-lean.webp",
     href: "/blogs/enterprise-level-lean-design",
     featured: true,
     popularity: 92,
@@ -87,7 +90,7 @@ export const latest = [
     category: "Lean + Digital",
     title: "Technology and Lean Integration: Setting the Foundation",
     excerpt: "A practical roadmap for SMEs and MSMEs to build stable processes first, then scale with digital technologies and Industry 4.0.",
-    image: "/art/blog-editorial/lean-digital.png",
+    image: "/art/blog-editorial/lean-digital.webp",
     href: "/blogs/technology-and-lean-integration-setting-the-foundation",
     featured: true,
     popularity: 91,
@@ -98,7 +101,7 @@ export const latest = [
     category: "Sustainable Growth",
     title: "Reimagining Sustainable Growth and Transformation Mindset",
     excerpt: "Four strategic shifts for building a more sustainable, agile, and globally integrated organisation.",
-    image: "/art/blog-editorial/sustainable-growth.png",
+    image: "/art/blog-editorial/sustainable-growth.webp",
     href: "/blogs/reimagining-sustainable-growth-and-transformation-mindset",
     featured: true,
     popularity: 90,
@@ -109,7 +112,7 @@ export const latest = [
     category: "GCC Maturity",
     title: "From Execution Engines to Enterprise Intelligence",
     excerpt: "A leadership narrative on how Global Capability Centres evolve from efficient delivery engines into systems that sense, learn and influence enterprise outcomes.",
-    image: "/art/blog-editorial/execution-intelligence.png",
+    image: "/art/blog-editorial/execution-intelligence.webp",
     href: "/blogs/from-execution-engines-to-enterprise-intelligence",
     featured: true,
     popularity: 98,
@@ -119,7 +122,7 @@ export const latest = [
     category: "Lean Systems",
     title: "Building an Organisation That Learns by Design",
     excerpt: "Resilient organisations do not rely on heroic problem-solving. They create clear feedback loops that help teams sense, respond, and improve.",
-    image: "/art/blog-editorial/learning-organisation.png",
+    image: "/art/blog-editorial/learning-organisation.webp",
     featured: false,
     popularity: 87,
     topics: ["lean", "leadership"],
@@ -128,91 +131,53 @@ export const latest = [
     category: "Digital Leadership",
     title: "The Real Work of AI-Led Transformation",
     excerpt: "Technology creates value only when leaders redesign decisions, capabilities, and ways of working around it.",
-    image: "/art/blog-editorial/execution-intelligence.png",
+    image: "/art/blog-editorial/execution-intelligence.webp",
     featured: true,
     popularity: 93,
     topics: ["digital", "leadership"],
   },
 ];
 
-const publications = [
+const featuredBlogs = latest.slice(3, 6);
+
+const newsletters = newsletterIssues.map((newsletter) => ({
+  category: newsletter.issue,
+  title: newsletter.cardTitle,
+  excerpt: newsletter.excerpt,
+  image: newsletter.image,
+  href: `/blogs/${newsletter.slug}`,
+}));
+
+// Manually maintained LinkedIn highlights. Add the newest public post here
+// whenever this section is refreshed; no paid widget or external script is used.
+const linkedinPosts = [
   {
-    category: "Featured Framework",
-    title: "The Lean Nervous System: Connecting Strategy, People and Performance",
-    excerpt: "A practical model for creating an organisation that can sense change, align decisions, learn continuously, and act with speed.",
-    image: "/art/blog-editorial/learning-organisation.png",
-    featured: true,
-    popularity: 96,
-    topics: ["lean", "growth"],
+    topic: "Book Launch",
+    title: "The Lean Nervous System launches on 28 November 2026",
+    excerpt: "What began as a question about why some organisations keep improving while others struggle has become a practical framework for organisational maturity. Pre-ordered copies ship from launch day.",
+    href: "https://www.linkedin.com/posts/rajeshkoul74_theleannervoussystem-booklaunch-organisationalexcellence-share-7529218503556419586-65Ub",
   },
   {
-    category: "Operating Excellence",
-    title: "From Isolated Improvements to Enterprise-Wide Excellence",
-    excerpt: "Why sustainable results demand more than projects—and how leaders can connect improvement work across the enterprise.",
-    image: "/art/blog-editorial/lean-digital.png",
-    featured: false,
-    popularity: 82,
-    topics: ["lean", "growth"],
+    topic: "Transformation",
+    title: "Changing the relationship between effort and outcome",
+    excerpt: "When work begins to flow, the same effort creates more rhythm, learning and organisational strength—instead of more firefighting.",
+    href: "https://www.linkedin.com/posts/rajeshkoul74_comingsoon-leadership-businesstransformation-activity-7504456693804843009-0NHz",
   },
   {
-    category: "Growth Systems",
-    title: "Why Mid-Sized Organisations Need an Operating System for Growth",
-    excerpt: "Growth becomes repeatable when purpose, process, capability, and technology reinforce one another.",
-    image: "/art/blog-editorial/sustainable-growth.png",
-    featured: true,
-    popularity: 91,
-    topics: ["growth", "leadership"],
+    topic: "The Lean Nervous System",
+    title: "Making Indian manufacturing world-class again",
+    excerpt: "A book-cover reveal shaped by three decades of transformation experience—and a belief that institutions can continuously improve, adapt and perform.",
+    href: "https://www.linkedin.com/posts/rajeshkoul74_theleannervoussystem-independenceday-indianmanufacturing-activity-7494304560916660224-FJL6",
   },
 ];
 
-const newsletters = [
-  {
-    category: "Transformation Notes",
-    title: "The Discipline Behind Sustainable Change",
-    excerpt: "A concise monthly reflection on the leadership choices and management systems that make transformation stick.",
-    image: "/art/blog-editorial/customer-value.png",
-    featured: false,
-    popularity: 79,
-    topics: ["leadership", "growth"],
-  },
-  {
-    category: "Lean + Digital Perspective",
-    title: "Where Lean Thinking Meets Digital Possibility",
-    excerpt: "Ideas for combining proven operational discipline with new digital capabilities—without losing sight of people.",
-    image: "/art/blog-editorial/quality-4.png",
-    featured: true,
-    popularity: 89,
-    topics: ["lean", "digital"],
-  },
-  {
-    category: "Leadership Briefing",
-    title: "Leading Through Complexity with Clarity",
-    excerpt: "Field-tested questions for leaders shaping adaptive, accountable, and future-ready organisations.",
-    image: "/art/blog-editorial/execution-intelligence.png",
-    featured: false,
-    popularity: 84,
-    topics: ["leadership"],
-  },
-];
-
-const news = [
-  ["Organisational Maturity", "Why maturity—not tools—determines transformation outcomes"],
-  ["Leadership", "The questions leaders should ask before launching another change programme"],
-  ["Industry 4.0", "Turning connected technology into connected performance"],
-  ["Culture", "Continuous improvement begins with the system, not the slogan"],
-];
+/* "In the news" panel is paused for now and the book card shows in its place. Set to true to bring it back. */
+const SHOW_IN_THE_NEWS = false;
 
 const inTheNews = [
   ["Perspective", "The next era of operational excellence is adaptive"],
   ["Conversation", "Building transformation capability from the ground up"],
   ["Recognition", "Three decades of leading change across industries"],
-];
-
-const themes = [
-  ["LT", "Lean Transformation", "Systems that translate strategy into disciplined execution."],
-  ["DX", "Digital Excellence", "Technology enabled by capability, clarity, and purpose."],
-  ["OP", "Operating Performance", "Connected processes built for measurable impact."],
-  ["LD", "Leadership", "People and cultures equipped to learn, adapt, and grow."],
 ];
 
 export default function BlogsPage() {
@@ -233,18 +198,20 @@ export default function BlogsPage() {
         </article>
         <div className="blogs-grid-with-news">
           <div className="blogs-card-grid">{latest.slice(1,3).map((item)=><ArticleCard key={item.title} {...item}/>)}</div>
-          <aside className="blogs-news-card"><p className="blogs-category">IN THE NEWS</p><h3>Ideas making an impact</h3><div className="blogs-news-list">{inTheNews.map(([category,title])=><a href="/blogs" key={title}><small>{category}</small><span>{title}</span><ArrowRight/></a>)}</div></aside>
+          {SHOW_IN_THE_NEWS
+            ? <aside className="blogs-news-card"><p className="blogs-category">IN THE NEWS</p><h3>Ideas making an impact</h3><div className="blogs-news-list">{inTheNews.map(([category,title])=><a href="/blogs" key={title}><small>{category}</small><span>{title}</span><ArrowRight/></a>)}</div></aside>
+            : <BookBuyCard/>}
         </div>
       </section>
 
       <section className="blogs-section blogs-tinted">
-        <SectionHeading eyebrow="RESEARCH & FRAMEWORKS" title="Featured Publications"/>
-        <div className="blogs-card-grid three">{publications.map((item)=><ArticleCard key={item.title} {...item}/>)}</div>
+        <SectionHeading eyebrow="CURATED INSIGHTS" title="Featured Blogs" actionHref="/blogs/all/" actionLabel="View all blogs"/>
+        <div className="blogs-card-grid three">{featuredBlogs.map((item)=><ArticleCard key={item.title} {...item}/>)}</div>
       </section>
 
-      <section className="blogs-section blogs-news-section">
-        <SectionHeading eyebrow="FROM THE FIELD" title="Ideas in Practice"/>
-        <div className="blogs-rows">{news.map(([category,title],index)=><a href="/blogs" key={title}><span className="blogs-row-number">0{index+1}</span><span><small>{category}</small><strong>{title}</strong></span><ArrowRight/></a>)}</div>
+      <section className="blogs-section blogs-news-section blogs-linkedin-section">
+        <div className="blogs-section-heading"><div><p>FROM LINKEDIN</p><h2>Latest Perspectives</h2></div></div>
+        <LinkedInFeed posts={linkedinPosts}/>
       </section>
 
       <section className="blogs-section blogs-tinted">
@@ -253,14 +220,12 @@ export default function BlogsPage() {
       </section>
     </div>
 
-    <section className="blogs-themes">
-      <div className="blogs-themes-inner"><p className="blogs-kicker">EXPLORE THE IDEAS</p><h2>Transformation, viewed as a <span>connected system.</span></h2><p className="blogs-themes-intro">Browse the themes shaping resilient organisations and sustainable performance.</p><div className="blogs-theme-grid">{themes.map(([initials,title,text])=><a href="/blogs" key={title}><i>{initials}</i><strong>{title}</strong><span>{text}</span><ArrowRight/></a>)}</div></div>
-    </section>
   </main><SiteFooter/></>;
 }
 
 function SectionHeading({eyebrow,title,actionHref="/blogs",actionLabel="View all"}:{eyebrow:string,title:string,actionHref?:string,actionLabel?:string}) {
-  return <div className="blogs-section-heading"><div><p>{eyebrow}</p><h2>{title}</h2></div><a href={actionHref}>{actionLabel} <ArrowRight/></a></div>;
+  const external=actionHref.startsWith("http");
+  return <div className="blogs-section-heading"><div><p>{eyebrow}</p><h2>{title}</h2></div><a href={actionHref} target={external?"_blank":undefined} rel={external?"noreferrer":undefined}>{actionLabel} <ArrowRight/></a></div>;
 }
 
 export function ArticleCard({category,title,excerpt,image,href="/blogs"}:{category:string,title:string,excerpt:string,image:string,href?:string,preserveFullImage?:boolean}) {
@@ -272,6 +237,7 @@ function EditorialImageLabel({category,title}:{category:string,title:string}){
 }
 
 function ReadLink({href="/blogs"}:{href?:string}){return <a className="blogs-read" href={href}>Read the article <ArrowRight/></a>}
+
 
 // Keep discovery controls in the landing hero while the catalogue owns filtering.
 function BlogHeroSearch(){

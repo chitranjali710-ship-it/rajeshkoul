@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const nav = [["Home", "/"], ["About", "/about"], ["The Lean Nervous System", "/lean-nervous-system"], ["Blog", "/blogs"], ["Contact Me", "/contact"]];
+const nav = [["Home", "/home"], ["About", "/about"], ["The Lean Nervous System", "/lean-nervous-system"], ["Blog", "/blogs"], ["Contact Me", "/contact"]];
 const literary = [["Book Review", "/book-review"], ["Personal Leadership & Coaching", "/personal-leadership-coaching"], ["Courses & Frameworks", "/courses"], ["Industry & Campus Talks", "/industry-campus-talks"]];
 
 export function LnsHeader() {
@@ -18,7 +18,7 @@ export function LnsHeader() {
     return () => window.removeEventListener("keydown", close);
   }, [open]);
   return <header className="lns-header">
-    <a className="lns-logo" href="/" aria-label="Rajesh Koul home"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420} priority /></a>
+    <a className="lns-logo" href="/home" aria-label="Rajesh Koul home"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420} priority /></a>
     <button className="lns-menu-button" type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     <nav className={open ? "open" : ""} aria-label="Primary navigation">
       {nav.slice(0, 4).map(([label, href]) => <a className={href === "/lean-nervous-system" ? "active" : ""} href={href} key={href} onClick={() => setOpen(false)}>{label}</a>)}

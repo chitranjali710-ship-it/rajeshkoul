@@ -14,7 +14,7 @@ const books = [
     height: 1600,
   },
   {
-    src: "/art/lean-nervous-system-back-cover.jpg",
+    src: "/art/lean-nervous-system-back-cover.webp",
     alt: "Back cover of The Lean Nervous System by Rajesh Koul",
     width: 1000,
     height: 1600,

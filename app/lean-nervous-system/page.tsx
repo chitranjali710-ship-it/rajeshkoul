@@ -5,6 +5,11 @@ import { LnsHeader } from "@/components/lns-header";
 import { LnsHeroDeck } from "@/components/lns-hero-deck";
 import { LnsFrameworkViewer } from "@/components/lns-framework-viewer";
 import { LnsArchitectureNavigator } from "@/components/lns-architecture-navigator";
+import { LnsStoryDisclosure } from "@/components/lns-story-disclosure";
+import { YouTubeFeed } from "@/components/youtube-feed";
+import { LnsPurchase } from "@/components/lns-purchase";
+import "@/components/lns-book-story-mobile.css";
+import { getYouTubeVideos } from "@/lib/youtube-feed";
 
 const actions = [
   { icon: BookOpen, title: "Don’t Just Manage. Build an Organisation That Thinks.", body: "A definitive guide to Organisational Maturity & Enterprise Health.", label: "PURCHASE THE BOOK", href: "/contact" },
@@ -59,27 +64,16 @@ const authorPillars = [
 const discoveries = ["Why most transformation programs fail—even with the right intent", "How disconnected excellence silently destroys performance", "What it takes to move from reactive chaos to system-driven execution", "How small, local improvements can trigger enterprise-wide, self-sustaining change", "A practical maturity model with 10 groups and 65 elements across the value chain"];
 
 const footerResources = [
-  { eyebrow: "READ", title: "The Lean Nervous System", text: "The definitive guide to connected, adaptive and resilient enterprises.", image: "/art/lns-footer-book.png", href: "#purchase-options", tone: "dark" },
-  { eyebrow: "DIAGNOSE", title: "Enterprise Health Scan", text: "See organisational maturity clearly and identify what must evolve next.", image: "/art/lns-footer-health-scan.png", href: "/contact", tone: "light" },
-  { eyebrow: "APPLY", title: "Frameworks & Models", text: "Turn the Lean Nervous System into disciplined, repeatable execution.", image: "/art/lns-footer-playbook.png", href: "/contact", tone: "dark" },
-  { eyebrow: "EXPLORE", title: "Insights & Resources", text: "Practical tools for diagnosis, alignment, innovation and maturity.", image: "/art/lns-footer-resources.png", href: "/blogs", tone: "light" },
+  { eyebrow: "READ", title: "The Lean Nervous System", text: "The definitive guide to connected, adaptive and resilient enterprises.", action: "READ THE BOOK", image: "/art/lns-footer-book.webp", href: "#purchase-options", tone: "dark" },
+  { eyebrow: "DIAGNOSE", title: "Enterprise Health Scan", text: "See organisational maturity clearly and identify what must evolve next.", action: "ASSESS YOUR ORGANISATION", image: "/art/lns-footer-health-scan.webp", href: "/contact", tone: "light" },
+  { eyebrow: "APPLY", title: "Frameworks & Models", text: "Turn the Lean Nervous System into disciplined, repeatable execution.", action: "APPLY THE FRAMEWORK", image: "/art/lns-footer-playbook.webp", href: "/contact", tone: "dark" },
+  { eyebrow: "EXPLORE", title: "Insights & Resources", text: "Practical tools for diagnosis, alignment, innovation and maturity.", action: "ACCESS THE RESOURCES", image: "/art/lns-footer-resources.webp", href: "/blogs", tone: "light" },
 ];
 
-function RetailerButtons() {
-  return <div className="lns-purchase-links">
-    <a className="purchase-amazon" href="https://amzn.in/d/0iodZYXL" target="_blank" rel="noreferrer" aria-label="Buy The Lean Nervous System on Amazon">
-      <span className="retailer-logo retailer-logo-amazon"><b>amazon</b><svg viewBox="0 0 82 14" aria-hidden="true"><path d="M3 3c18 9 46 10 72 1" /><path d="m67 1 9 3-6 7" /></svg></span>
-    </a>
-    <Link className="purchase-flipkart" href="/contact" aria-label="Buy The Lean Nervous System on Flipkart">
-      <span className="retailer-logo retailer-logo-flipkart"><i aria-hidden="true"><b>F</b></i><strong>Flipkart</strong></span>
-    </Link>
-    <Link className="purchase-kindle" href="/contact" aria-label="Get The Lean Nervous System for Kindle">
-      <span className="retailer-logo retailer-logo-kindle"><small>amazon</small><strong>kindle</strong></span>
-    </Link>
-  </div>;
-}
+export const dynamic = "force-dynamic";
 
-export default function LeanNervousSystem() {
+export default async function LeanNervousSystem() {
+  const youtubeVideos = await getYouTubeVideos();
   return <div className="lns-page">
     <LnsHeader />
     <div className="lns-hero-stage"><main className="lns-hero">
@@ -92,7 +86,7 @@ export default function LeanNervousSystem() {
         <LnsHeroDeck />
       </section>
       <div className="lns-book-product" aria-label="The Lean Nervous System book">
-        <img src="/art/lns-book-cutout.png" alt="The Lean Nervous System by Rajesh Koul" />
+        <img src="/art/lns-book-cutout.webp" alt="The Lean Nervous System by Rajesh Koul" />
       </div>
       <section className="lns-action-grid" aria-label="Lean Nervous System pathways">
         {actions.map(({ icon: Icon, title, body, label, href }) => <article className="lns-action-card" key={title}><Icon aria-hidden="true" /><h2>{title}</h2><p>{body}</p><Link href={href}>{label} <ArrowRight aria-hidden="true" /></Link></article>)}
@@ -105,14 +99,7 @@ export default function LeanNervousSystem() {
         </div>
       </section>
     </main></div>
-    <section className="lns-purchase" id="purchase-options" aria-labelledby="lns-purchase-title">
-      <div className="lns-purchase-inner">
-        <h2 id="lns-purchase-title">Get Your Copy of <span>The Lean Nervous System</span></h2>
-        <div className="lns-purchase-rule" aria-hidden="true"><i /><b>◇</b><i /></div>
-        <RetailerButtons />
-        <p><em>Outside India?</em> <Link href="/contact">Click here for international editions.</Link></p>
-      </div>
-    </section>
+    <LnsPurchase tone="light" id="purchase-options" />
     <section className="lns-book-story" aria-labelledby="lns-book-story-title">
       <header className="lns-story-heading">
         <h2 id="lns-book-story-title">Let Me Tell You More About <span>This Book…</span></h2>
@@ -144,12 +131,18 @@ export default function LeanNervousSystem() {
 
       <div className="lns-outcome-grid">{outcomes.map(({ icon, title, text }) => <article key={title}><span><img src={icon} alt="" aria-hidden="true" /></span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
 
-      <p className="lns-story-bridge"><img src="/art/lns-icons/bridge.png" alt="" aria-hidden="true" />It moves beyond fragmented improvements and presents a coherent model of enterprise maturity, built across interconnected domains — <strong>from design and supply chain to operations, people, governance, and sustainability.</strong></p>
+      <p className="lns-story-bridge"><img src="/art/lns-icons/bridge.png" alt="" aria-hidden="true" /><span>It moves beyond fragmented improvements and presents a coherent model of enterprise maturity, built across interconnected domains — <strong>from design and supply chain to operations, people, governance, and sustainability.</strong></span></p>
 
       <div className="lns-story-panels">
-        <article><div className="lns-story-panel-title"><img src="/art/lns-icons/theory.png" alt="" aria-hidden="true" /><h3>But this is not just a theory.</h3></div><p>Through the transformation journey of Vijay—an entrepreneur whose growth begins to break his own organisation—you will see what actually happens inside companies:</p><ul>{theoryPoints.map(item => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul></article>
-        <article><div className="lns-story-panel-title"><img src="/art/lns-icons/discover.png" alt="" aria-hidden="true" /><h3>You will discover:</h3></div><ul>{discoveries.map(item => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul></article>
-        <article className="lns-domain-list"><div className="lns-story-panel-title"><img src="/art/lns-icons/domains.png" alt="" aria-hidden="true" /><h3>The 10 Domains:</h3></div><div>{domains.map(({ icon, name }) => <p key={name}><img src={icon} alt="" aria-hidden="true" />{name}</p>)}</div></article>
+        <LnsStoryDisclosure icon="/art/lns-icons/theory.png" title="But this is not just a theory." meta="5 real-world signals">
+          <p>Through the transformation journey of Vijay—an entrepreneur whose growth begins to break his own organisation—you will see what actually happens inside companies:</p><ul>{theoryPoints.map(item => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul>
+        </LnsStoryDisclosure>
+        <LnsStoryDisclosure icon="/art/lns-icons/discover.png" title="You will discover:" meta="5 practical discoveries">
+          <ul>{discoveries.map(item => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul>
+        </LnsStoryDisclosure>
+        <LnsStoryDisclosure className="lns-domain-list" icon="/art/lns-icons/domains.png" title="The 10 Domains:" meta="10 connected domains">
+          <div>{domains.map(({ icon, name }) => <p key={name}><img src={icon} alt="" aria-hidden="true" />{name}</p>)}</div>
+        </LnsStoryDisclosure>
       </div>
 
       <footer className="lns-story-footer" id="lns-infographic-footer">
@@ -176,7 +169,6 @@ export default function LeanNervousSystem() {
         {curriculumLessons.map(({ icon, lead, highlight, tail }, index) => <article key={highlight}>
           <div className="lns-curriculum-card-top"><span><img src={icon} alt="" aria-hidden="true" /></span><b>{String(index + 1).padStart(2, "0")}</b></div>
           <p>{lead} <strong>{highlight}</strong>{tail ? ` ${tail}` : ""}</p>
-          <i aria-hidden="true" />
         </article>)}
       </div>
       <footer className="lns-curriculum-closing">
@@ -184,14 +176,7 @@ export default function LeanNervousSystem() {
         <strong>thinks, senses &amp; responds as one.</strong>
       </footer>
     </section>
-    <section className="lns-purchase lns-purchase-dark" aria-labelledby="lns-purchase-dark-title">
-      <div className="lns-purchase-inner">
-        <h2 id="lns-purchase-dark-title">Get Your Copy of <span>The Lean Nervous System</span></h2>
-        <div className="lns-purchase-rule" aria-hidden="true"><i /><b>◇</b><i /></div>
-        <RetailerButtons />
-        <p><em>Outside India?</em> <Link href="/contact">Click here for international editions.</Link></p>
-      </div>
-    </section>
+    <LnsPurchase tone="dark" />
     <section className="lns-author" aria-labelledby="lns-author-title">
       <div className="lns-author-inner">
         <a
@@ -209,15 +194,13 @@ export default function LeanNervousSystem() {
 
         <div className="lns-author-main">
           <div className="lns-author-photo-wrap">
-            <div className="lns-author-photo"><img src="/art/lns-author-portrait.png" alt="Rajesh Koul" /></div>
-            <div className="lns-author-experience"><b>30+</b><strong>YEARS OF<br />EXPERIENCE</strong><i /><span>TRANSFORM<br /><em>•</em> LEAD <em>•</em> SUSTAIN</span></div>
+            <div className="lns-author-photo"><img src="/art/lns-author-portrait.webp" alt="Rajesh Koul" /></div>
           </div>
 
           <div className="lns-author-copy">
             <p className="lns-author-kicker">ABOUT THE AUTHOR</p>
             <h2 id="lns-author-title">RAJESH <span>KOUL</span></h2>
             <p className="lns-author-role">GLOBAL TRANSFORMATION LEADER <i /> ENTERPRISE SYSTEMS THINKER <i /> BUILDER OF SCALABLE EXCELLENCE</p>
-            <div className="lns-author-rule" />
             <p><strong>Rajesh Koul</strong> is a global transformation leader with over three decades of experience in leading large-scale enterprise transformations, leadership development, and operational excellence across industries. His work focuses on helping organizations move beyond fragmented initiatives to build integrated, high-performing systems that sustain excellence over time.</p>
             <p>Over the years, Rajesh has worked closely with leadership teams to navigate complexity, scale operations, and unlock performance by aligning strategy, processes, people, and culture into a single, coherent system. His approach combines the principles of Lean with modern digital thinking to create organizations that are not just efficient—but adaptive, intelligent, and future-ready.</p>
             <p>In The Lean Nervous System, he brings together decades of practical experience to introduce the Lean Maturity Model (LMM)—a structured and original framework that enables leaders to diagnose organizational health, eliminate systemic disconnects, and design enterprises that continuously learn, improve, and respond as one.</p>
@@ -233,6 +216,7 @@ export default function LeanNervousSystem() {
         <div className="lns-author-cta-row"><i /><Link href="#lns-title">EXPLORE THE LEAN NERVOUS SYSTEM <ArrowRight aria-hidden="true" /></Link><i /></div>
       </div>
     </section>
+    <YouTubeFeed videos={youtubeVideos} />
     <footer className="lns-footer" aria-labelledby="lns-footer-title">
       <div className="lns-footer-inner">
         <header className="lns-footer-heading">
@@ -243,7 +227,7 @@ export default function LeanNervousSystem() {
         <div className="lns-footer-resources">
           {footerResources.map((resource) => <Link className="lns-footer-card" href={resource.href} key={resource.title}>
             <figure className={`lns-footer-image lns-footer-image--${resource.tone}`}><img src={resource.image} alt={resource.title} /></figure>
-            <div><small>{resource.eyebrow}</small><h3>{resource.title}</h3><p>{resource.text}</p><span>EXPLORE <ArrowRight aria-hidden="true" /></span></div>
+            <div><small>{resource.eyebrow}</small><h3>{resource.title}</h3><p>{resource.text}</p><span>{resource.action} <ArrowRight aria-hidden="true" /></span></div>
           </Link>)}
         </div>
 
@@ -254,8 +238,8 @@ export default function LeanNervousSystem() {
 
         <div className="lns-footer-bottom">
           <div className="lns-footer-brand"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420} /></div>
-          <nav aria-label="Lean Nervous System footer navigation"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/lean-nervous-system">The Lean Nervous System</Link><Link href="/blogs">Insights</Link><Link href="/contact">Contact</Link></nav>
-          <p>© 2026 Rajesh Koul <i /> <span>Privacy Policy</span> <i /> <span>Terms of Use</span></p>
+          <nav aria-label="Lean Nervous System footer navigation"><Link href="/home">Home</Link><Link href="/about">About</Link><Link href="/lean-nervous-system">The Lean Nervous System</Link><Link href="/blogs">Insights</Link><Link href="/contact">Contact</Link><a href="https://www.youtube.com/@author.rajeshkoul" target="_blank" rel="noopener noreferrer">YouTube</a></nav>
+          <p>© {new Date().getFullYear()} Rajesh Koul <i /> <span>Privacy Policy</span> <i /> <span>Terms of Use</span></p>
         </div>
       </div>
     </footer>
