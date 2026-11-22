@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const messages = [
   {
@@ -29,9 +29,44 @@ export function LnsHeroDeck() {
   const [active, setActive] = useState(0);
   const [exiting, setExiting] = useState(false);
   const [paused, setPaused] = useState(false);
+  const track = useRef<HTMLDivElement>(null);
+
+  // Phones show every message as a swipeable card instead of rotating them.
+  // Whether the swipe track is in use is decided by CSS, so the layout can change without code edits.
+  const isSwipeLayout = () => !!track.current && getComputedStyle(track.current).display !== "none";
 
   useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const list = track.current;
+    if (!list) return;
+    const onScroll = () => {
+      const start = list.getBoundingClientRect().left + parseFloat(getComputedStyle(list).paddingLeft || "0");
+      let nearest = 0;
+      let best = Infinity;
+      Array.from(list.children).forEach((card, index) => {
+        const distance = Math.abs(card.getBoundingClientRect().left - start);
+        if (distance < best) { best = distance; nearest = index; }
+      });
+      setActive(nearest);
+    };
+    list.addEventListener("scroll", onScroll, { passive: true });
+    return () => list.removeEventListener("scroll", onScroll);
+  }, []);
+
+  function choose(index: number) {
+    setActive(index);
+    setExiting(false);
+    const list = track.current;
+    if (list && isSwipeLayout()) {
+      const card = list.children[index] as HTMLElement | undefined;
+      if (card) {
+        const start = list.getBoundingClientRect().left + parseFloat(getComputedStyle(list).paddingLeft || "0");
+        list.scrollTo({ left: list.scrollLeft + card.getBoundingClientRect().left - start, behavior: "smooth" });
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (paused || isSwipeLayout() || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const rotate = window.setTimeout(() => {
       setExiting(true);
@@ -59,6 +94,14 @@ export function LnsHeroDeck() {
         <h2>{message.title}</h2>
         <p>{message.text}</p>
       </div>
+      <div className="lns-deck-track" ref={track} role="group" aria-label="Featured book messages, swipe to read more">
+        {messages.map((item) => (
+          <article className="lns-deck-card" key={item.title}>
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
       <div className="lns-deck-dots" role="group" aria-label="Choose a featured message">
         {messages.map((item, index) => (
           <button
@@ -66,7 +109,7 @@ export function LnsHeroDeck() {
             className={active === index ? "active" : ""}
             aria-label={`Show message ${index + 1}: ${item.title}`}
             aria-pressed={active === index}
-            onClick={() => { setActive(index); setExiting(false); }}
+            onClick={() => choose(index)}
             key={item.title}
           />
         ))}

@@ -11,7 +11,7 @@ function LinkedInMark({ className }: { className?: string }) {
 }
 
 function Avatar({ size }: { size: "lg" | "sm" }) {
-  return <span className={`li-avatar li-avatar--${size}`}><img src="/art/about-hero.jpg" alt="" loading="lazy" decoding="async" /></span>;
+  return <span className={`li-avatar li-avatar--${size}`}><img src="/art/rajesh-avatar.webp" alt="" loading="lazy" decoding="async" /></span>;
 }
 
 const hashtag = (topic: string) => `#${topic.replace(/[^A-Za-z0-9 ]/g, "").split(" ").filter(Boolean).map(w => w[0].toUpperCase() + w.slice(1)).join("")}`;

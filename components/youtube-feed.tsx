@@ -39,7 +39,7 @@ export function YouTubeFeed({ videos }: { videos: YouTubeVideo[] }) {
 
       <div className="ytc-channel">
         <a className="ytc-identity" href={CHANNEL_URL} target="_blank" rel="noopener noreferrer">
-          <span className="ytc-avatar"><img src="/art/about-hero.jpg" alt="" loading="lazy" decoding="async" /></span>
+          <span className="ytc-avatar"><img src="/art/rajesh-avatar.webp" alt="" loading="lazy" decoding="async" /></span>
           <span className="ytc-name">
             <strong>Rajesh Koul</strong>
             <small>{CHANNEL_HANDLE}</small>
