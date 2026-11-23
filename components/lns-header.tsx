@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- Vinext production RSC navigation is incompatible with next/link in this deployment. */
 
-import Image from "next/image";
+import { Wordmark } from "@/components/site-shell";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -18,7 +18,7 @@ export function LnsHeader() {
     return () => window.removeEventListener("keydown", close);
   }, [open]);
   return <header className="lns-header">
-    <a className="lns-logo" href="/home" aria-label="Rajesh Koul home"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420} priority /></a>
+    <a className="lns-logo" href="/home" aria-label="Rajesh Koul home"><Wordmark /></a>
     <button className="lns-menu-button" type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     <nav className={open ? "open" : ""} aria-label="Primary navigation">
       {nav.slice(0, 4).map(([label, href]) => <a className={href === "/lean-nervous-system" ? "active" : ""} href={href} key={href} onClick={() => setOpen(false)}>{label}</a>)}

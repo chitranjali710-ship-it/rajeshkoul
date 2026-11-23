@@ -571,3 +571,126 @@
     transition: none !important;
   }
 }
+
+/* ---------------------------------------------------------------
+   Tablet & desktop: a compact "buy" card.
+   The heading sits centred above one card that holds the book
+   photo on the left and the store chooser on the right, so both
+   halves are always exactly the same height. The photo dots sit
+   on the photo itself, and the card is shorter than before.
+   --------------------------------------------------------------- */
+@media (min-width: 761px) {
+  .lnsbuy {
+    padding-top: clamp(36px, 4vw, 52px);
+    padding-bottom: clamp(36px, 4vw, 52px);
+  }
+
+  .lnsbuy-inner {
+    position: relative;
+    isolation: isolate;
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    grid-template-areas:
+      "title  title"
+      "photos panel";
+    align-items: stretch;
+    column-gap: 0;
+    row-gap: 22px;
+    max-width: 1000px;
+  }
+
+  /* the card surface behind both halves */
+  .lnsbuy-inner::after {
+    content: "";
+    grid-row: 2;
+    grid-column: 1 / -1;
+    z-index: -1;
+    border: 1px solid var(--buy-line);
+    border-radius: 20px;
+    background: var(--buy-panel);
+    box-shadow: var(--buy-shadow);
+  }
+
+  .lnsbuy--dark .lnsbuy-inner::after {
+    backdrop-filter: blur(6px);
+  }
+
+  .lnsbuy-copy {
+    display: contents;
+  }
+
+  .lnsbuy-copy > h2 {
+    grid-area: title;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* photo: fills the left half, rounded only on the outside corners */
+  .lnsbuy-photos {
+    position: relative;
+    grid-area: photos;
+    display: block;
+    min-height: 220px;
+    padding: 8px 0 8px 8px;
+  }
+
+  .lnsbuy-frame {
+    aspect-ratio: auto;
+    height: 100%;
+    border-radius: 14px;
+    box-shadow: none;
+  }
+
+  .lnsbuy-dots {
+    position: absolute;
+    z-index: 3;
+    left: 8px;
+    right: 0;
+    bottom: 12px;
+    justify-content: center;
+  }
+
+  .lnsbuy-dots button::before {
+    background: rgba(21, 44, 53, 0.28);
+  }
+
+  .lnsbuy-dots button.is-active::before {
+    background: var(--buy-gold);
+  }
+
+  /* store chooser: part of the card, no box of its own */
+  .lnsbuy-panel {
+    grid-area: panel;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    margin: 0;
+    padding: 22px 26px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .lnsbuy-panel > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .lnsbuy-where {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--buy-line);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  /* narrower photo so the three store buttons keep their full names */
+  .lnsbuy-inner {
+    grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  }
+
+  .lnsbuy-panel {
+    padding: 20px 20px;
+  }
+}

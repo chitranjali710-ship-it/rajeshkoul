@@ -35,7 +35,9 @@ export default function BookReviewPage(){
     if(sort==="title-desc")return [...matches].sort((a,b)=>b.title.localeCompare(a.title));
     if(sort==="author-asc")return [...matches].sort((a,b)=>a.author.localeCompare(b.author)||a.title.localeCompare(b.title));
     if(sort==="author-desc")return [...matches].sort((a,b)=>b.author.localeCompare(a.author)||a.title.localeCompare(b.title));
-    return matches;
+    // Default ("Recommended"): newest first. books.ts lists books in the order they were added,
+    // so the most recently added book (last in the list) is shown at the top.
+    return [...matches].reverse();
   },[query,category,author,sort]);
 
   const pageCount=Math.max(1,Math.ceil(filteredBooks.length/pageSize));

@@ -23,7 +23,7 @@ export function SiteHeader(){
   const isActive=(href:string)=>currentPath===href||currentPath.startsWith(`${href}/`);
   const literaryActive=isActive("/literary-lounge")||literaryNav.some(([,subHref])=>isActive(subHref));
   return <header className="site-header">
-    <a className="logo" href="/home" aria-label="Rajesh Koul — Home"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420} priority/></a>
+    <a className="logo" href="/home" aria-label="Rajesh Koul — Home"><Wordmark/></a>
     <button className="menu-button" type="button" aria-label={open?"Close navigation":"Open navigation"} aria-expanded={open} onClick={()=>{setOpen(!open);if(open)setLiteraryOpen(false)}}>{open?<X/>:<Menu/>}</button>
     <nav className={open?"open":""} aria-label="Primary navigation">{nav.map(([label,href])=>label==="Literary Lounge"?<div className={`nav-dropdown${literaryOpen?" is-open":""}`} key={label}><button type="button" className={literaryActive?"active":""} aria-haspopup="true" aria-expanded={literaryOpen} onClick={()=>setLiteraryOpen(value=>!value)}>{label}<ChevronDown aria-hidden="true"/></button><div className="nav-submenu" aria-label="Literary Lounge submenu">{literaryNav.map(([subLabel,subHref])=><a key={subLabel} href={subHref} className={isActive(subHref)?"active":""} aria-current={isActive(subHref)?"page":undefined} onClick={()=>{setOpen(false);setLiteraryOpen(false)}}>{subLabel}</a>)}</div></div>:<a key={label} href={href} className={`${isActive(href)?"active ":""}${href==="/contact"?"nav-contact":""}`.trim()} aria-current={isActive(href)?"page":undefined} onClick={()=>{setOpen(false);setLiteraryOpen(false)}}>{label}</a>)}</nav>
   </header>
@@ -42,7 +42,7 @@ export function SiteFooter(){
   ];
   return <><MobileActionDock/><footer id="site-footer" className="site-footer"><div className="intent-row"><div className="signature"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420}/></div><div className="intent"><b>MY INTENT</b><h2>Move Beyond Tools. Diagnose Maturity. <br className="intent-break"/><span>Design Organisations That Run, Learn, <br className="intent-break"/>And Improve — By Themselves.</span></h2><p>Helping organisations evolve from fragmented improvements to connected, adaptive, and future-ready systems.</p></div><div className="connect social-connect" id="connect"><b>LET’S CONNECT</b><p>Insights on transformation, leadership,<br/>{" "}and the Lean way of thinking.</p><nav className="social-links" aria-label="Social media">{socialLinks.map(([brand,label,href])=><a className={`social-link social-link-${brand}`} href={href} {...(href.startsWith("http")?{target:"_blank",rel:"noopener noreferrer"}:{})} aria-label={brand==="email"?"Email author.rajeshkoul@gmail.com":brand==="phone"?"Call +91 98732 98421":`Visit ${label}`} title={brand==="email"?"author.rajeshkoul@gmail.com":brand==="phone"?"+91 98732 98421":label} key={brand} onPointerUp={event=>event.currentTarget.blur()}><SocialIcon brand={brand}/></a>)}</nav></div></div>
     <div className="footer-dark"><div className="footer-columns"><FooterList title="EXPLORE" links={explore}/><FooterList title="FOCUS AREAS" links={[["Enterprise Transformation","/"],["Industry 4.0","/"],["Lean Systems","/lean-nervous-system"],["Leadership Advisory","/personal-leadership-coaching"],["Organisational Maturity","/"]]}/><FooterList title="KNOWLEDGE & INSIGHTS" links={[["Books I Recommend","/book-review"],["Podcast","/literary-lounge/podcast"],["Ideas & Perspectives","/blogs"],["Tools & Frameworks","/courses"],["Case Examples","/"]]}/><FooterAbout/></div>
-      <div className="copyright"><span>© {currentYear} Rajesh Koul. All rights reserved.</span><span>Privacy Policy　 |　 Terms of Use</span><em>Keep Learning. Keep Improving.</em></div>
+      <div className="copyright"><span>© {currentYear} Rajesh Koul. All rights reserved.</span><span><a href="/privacy-policy">Privacy Policy</a>　 |　 <a href="/terms-of-use">Terms of Use</a></span><em>Keep Learning. Keep Improving.</em></div>
     </div></footer></>
 }
 
@@ -122,3 +122,7 @@ function SocialIcon({brand}:{brand:SocialBrand}){
   };
   return <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={paths[brand]}/></svg>
 }
+
+/* The Rajesh Koul wordmark as live text (same fonts and colours as /art/rajesh-koul-wordmark.svg),
+   so the tagline stays legible at header size. */
+export function Wordmark(){return <span className="wordmark" aria-hidden="true"><span className="wordmark-name"><span className="wordmark-first">Rajesh</span> <span className="wordmark-last">Koul</span></span><span className="wordmark-tag">Building Human-Centered Systems</span></span>}

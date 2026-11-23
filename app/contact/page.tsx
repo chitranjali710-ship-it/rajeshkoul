@@ -41,7 +41,7 @@ export default function ContactPage(){
           </div>
           <label className="contact-select"><List/><span className="sr-only">I’d like to connect about</span><select name="topic" required defaultValue=""><option value="" disabled>I’d like to connect about *</option><option>My book — The Lean Nervous System</option><option>The Enterprise Health Lab</option><option>Business Transformation Blogs</option><option>Leadership talk series</option><option>Campus Talk Series</option><option>Upcoming books</option><option>Something else</option></select></label>
           <label className="contact-message"><MessageCircle/><span>How can I help you?</span><textarea name="message" required placeholder="Share a few details about your interest, idea or enquiry..."/></label>
-          <label className="contact-consent"><input type="checkbox" required/><span>By submitting this form, you agree that I may use your information to respond to your enquiry. I respect your privacy and will only use it for the purpose of communication.</span></label>
+          <label className="contact-consent"><input type="checkbox" required/><span>By submitting this form, you agree that I may use your information to respond to your enquiry. I respect your privacy and will only use it for the purpose of communication. Read the <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
           <button className="contact-submit" type="submit">{sent?<><Check/> Message Ready</>:<>Send Message <ArrowRight/></>}</button>
           {sent&&<p className="contact-success" role="status">Thank you. Your enquiry has been prepared successfully.</p>}
         </form>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowRight, BarChart3, BookOpen, ChartNoAxesCombined, CheckCircle2, Lightbulb, Network, UsersRound } from "lucide-react";
 import { LnsHeader } from "@/components/lns-header";
 import { LnsHeroDeck } from "@/components/lns-hero-deck";
-import { LnsFrameworkViewer } from "@/components/lns-framework-viewer";
+// The PDF reader (components/lns-framework-viewer.tsx) is kept for later; the request now goes to the contact form.
 import { LnsArchitectureNavigator } from "@/components/lns-architecture-navigator";
 import { LnsStoryDisclosure } from "@/components/lns-story-disclosure";
 import { YouTubeFeed } from "@/components/youtube-feed";
@@ -66,7 +66,7 @@ const discoveries = ["Why most transformation programs fail—even with the righ
 const footerResources = [
   { eyebrow: "READ", title: "The Lean Nervous System", text: "The definitive guide to connected, adaptive and resilient enterprises.", action: "READ THE BOOK", image: "/art/lns-footer-book.webp", href: "#purchase-options", tone: "dark" },
   { eyebrow: "DIAGNOSE", title: "Enterprise Health Scan", text: "See organisational maturity clearly and identify what must evolve next.", action: "ASSESS YOUR ORGANISATION", image: "/art/lns-footer-health-scan.webp", href: "/contact", tone: "light" },
-  { eyebrow: "APPLY", title: "Frameworks & Models", text: "Turn the Lean Nervous System into disciplined, repeatable execution.", action: "APPLY THE FRAMEWORK", image: "/art/lns-footer-playbook.webp", href: "/contact", tone: "dark" },
+  { eyebrow: "APPLY", title: "Frameworks & Models", text: "Turn the Lean Nervous System into disciplined, repeatable execution.", action: "APPLY THE FRAMEWORK", image: "/art/lns-footer-playbook.webp", href: "/contact", tone: "dark", comingSoon: true },
   { eyebrow: "EXPLORE", title: "Insights & Resources", text: "Practical tools for diagnosis, alignment, innovation and maturity.", action: "ACCESS THE RESOURCES", image: "/art/lns-footer-resources.webp", href: "/blogs", tone: "light" },
 ];
 
@@ -79,7 +79,7 @@ export default async function LeanNervousSystem() {
     <div className="lns-hero-stage"><main className="lns-hero">
       <div className="lns-hero-shade" aria-hidden="true" />
       <p className="lns-hero-statement">Move Beyond Tools. <span>Diagnose Maturity.</span> Design Self-Propagating Excellence.</p>
-      <div className="lns-request-wrap"><LnsFrameworkViewer /></div>
+      <div className="lns-request-wrap"><Link className="lns-request" href="/contact#contact-form">Request for The LNS Framework</Link></div>
       <section className="lns-intro" aria-labelledby="lns-title">
         <p className="lns-kicker">THE DEFINITIVE GUIDE <span /></p>
         <h1 id="lns-title">The Lean<br /><em>Nervous System</em></h1>
@@ -89,12 +89,12 @@ export default async function LeanNervousSystem() {
         <img src="/art/lns-book-cutout.webp" alt="The Lean Nervous System by Rajesh Koul" />
       </div>
       <section className="lns-action-grid" aria-label="Lean Nervous System pathways">
-        {actions.map(({ icon: Icon, title, body, label, href }) => <article className="lns-action-card" key={title}><Icon aria-hidden="true" /><h2>{title}</h2><p>{body}</p><Link href={href}>{label} <ArrowRight aria-hidden="true" /></Link></article>)}
+        {actions.map(({ icon: Icon, title, body, label, href }) => <article className="lns-action-card" key={title}><h2>{title}</h2><p>{body}</p><Link href={href}>{label} <Icon aria-hidden="true" className="lns-action-icon" /><ArrowRight aria-hidden="true" className="lns-action-arrow" /></Link></article>)}
       </section>
       <section className="lns-measures" aria-label="Lean Nervous System highlights">
         <div className="lns-measures-inner">
           <article><strong>{measures[0].value}</strong><h2>{measures[0].label}</h2></article>
-          <p className="lns-mantra">“Build Organisations That Think, Sense, and Respond — As One System”</p>
+          <p className="lns-mantra"><span className="lns-mantra-light">“Build Organisations That</span> Think, Sense, and Respond <span className="lns-mantra-light">— As One System”</span></p>
           <article><strong>{measures[1].value}</strong><h2>{measures[1].label}</h2></article>
         </div>
       </section>
@@ -131,7 +131,7 @@ export default async function LeanNervousSystem() {
 
       <div className="lns-outcome-grid">{outcomes.map(({ icon, title, text }) => <article key={title}><span><img src={icon} alt="" aria-hidden="true" /></span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
 
-      <p className="lns-story-bridge"><img src="/art/lns-icons/bridge.png" alt="" aria-hidden="true" /><span>It moves beyond fragmented improvements and presents a coherent model of enterprise maturity, built across interconnected domains — <strong>from design and supply chain to operations, people, governance, and sustainability.</strong></span></p>
+      <p className="lns-story-bridge"><img src="/art/lns-icons/bridge.png" alt="" aria-hidden="true" /><span>It moves beyond fragmented improvements and presents a <strong>coherent model of enterprise maturity</strong>, built across interconnected domains — <strong>from design and supply chain to operations, people, governance, and sustainability.</strong></span></p>
 
       <div className="lns-story-panels">
         <LnsStoryDisclosure icon="/art/lns-icons/theory.png" title="But this is not just a theory." meta="5 real-world signals">
@@ -179,19 +179,6 @@ export default async function LeanNervousSystem() {
     <LnsPurchase tone="dark" />
     <section className="lns-author" aria-labelledby="lns-author-title">
       <div className="lns-author-inner">
-        <a
-          className="lns-author-feature"
-          href="https://amzn.in/d/0iodZYXL"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Pre-order The Lean Nervous System on Amazon"
-        >
-          <BookOpen aria-hidden="true" />
-          <strong>FEATURED</strong>
-          <span>Pre-order “The Lean Nervous System”</span>
-          <ArrowRight aria-hidden="true" />
-        </a>
-
         <div className="lns-author-main">
           <div className="lns-author-photo-wrap">
             <div className="lns-author-photo"><img src="/art/lns-author-portrait.webp" alt="Rajesh Koul" /></div>
@@ -226,7 +213,7 @@ export default async function LeanNervousSystem() {
 
         <div className="lns-footer-resources">
           {footerResources.map((resource) => <Link className="lns-footer-card" href={resource.href} key={resource.title}>
-            <figure className={`lns-footer-image lns-footer-image--${resource.tone}`}><img src={resource.image} alt={resource.title} /></figure>
+            <figure className={`lns-footer-image lns-footer-image--${resource.tone}`}><img src={resource.image} alt={resource.title} />{resource.comingSoon && <span className="lns-coming-ribbon">Coming soon</span>}</figure>
             <div><small>{resource.eyebrow}</small><h3>{resource.title}</h3><p>{resource.text}</p><span>{resource.action} <ArrowRight aria-hidden="true" /></span></div>
           </Link>)}
         </div>
@@ -239,7 +226,7 @@ export default async function LeanNervousSystem() {
         <div className="lns-footer-bottom">
           <div className="lns-footer-brand"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420} /></div>
           <nav aria-label="Lean Nervous System footer navigation"><Link href="/home">Home</Link><Link href="/about">About</Link><Link href="/lean-nervous-system">The Lean Nervous System</Link><Link href="/blogs">Insights</Link><Link href="/contact">Contact</Link><a href="https://www.youtube.com/@author.rajeshkoul" target="_blank" rel="noopener noreferrer">YouTube</a></nav>
-          <p>© {new Date().getFullYear()} Rajesh Koul <i /> <span>Privacy Policy</span> <i /> <span>Terms of Use</span></p>
+          <p>© {new Date().getFullYear()} Rajesh Koul <i /> <a href="/privacy-policy">Privacy Policy</a> <i /> <a href="/terms-of-use">Terms of Use</a></p>
         </div>
       </div>
     </footer>

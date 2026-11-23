@@ -402,3 +402,104 @@
     transition: none !important;
   }
 }
+
+/* Desktop & laptop: line the copy up exactly with the About page hero
+   (same left inset — 6.9% of the page, 5.5% up to 1250px — and the same
+   top offset for the eyebrow), instead of centring a 1240px column. */
+@media (min-width: 821px) {
+  .lh-inner {
+    max-width: none;
+    grid-template-columns: fit-content(560px) minmax(0, 1fr);
+    align-items: stretch;
+    /* gap between text and books = the page's left inset */
+    gap: 6.9vw;
+    padding: 0 0 0 6.9%;
+  }
+
+  .lh-copy {
+    align-self: start;
+    padding: clamp(82px, 6.65vw, 111px) 0 72px;
+  }
+
+  .lh-kicker {
+    /* About's eyebrow is taller (14–18px type); add the difference so the
+       headline starts at exactly the same height */
+    margin-bottom: calc(clamp(32px, 2.5vw, 42px) + clamp(14px, 1.08vw, 18px) - 14px);
+    line-height: 1;
+  }
+
+  /* the reading wall's soft left edge is shorter, so books start closer */
+  .lh-wall {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(90deg, transparent 0, #000 6%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(90deg, transparent 0, #000 6%);
+  }
+
+  /* the reading wall still runs to the right edge of the page */
+  .lh-wall {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 821px) and (max-width: 1250px) {
+  .lh-inner {
+    gap: 5.5vw;
+    padding-left: 5.5%;
+  }
+}
+
+/* "Books worth sharing": no trailing rule, slightly larger */
+.lh-kicker {
+  font-size: 14px;
+}
+
+.lh-kicker::after {
+  content: none;
+  display: none;
+}
+
+/* ---------------------------------------------------------------
+   Desktop & laptop: calmer reading wall.
+   Covers are smaller (at most 150px wide), shown whole at their
+   own proportions (no cropping), standing straight in four
+   columns that sit fully inside the hero instead of running off
+   its right edge. The columns still drift slowly; the top and
+   bottom fade softly as covers enter and leave.
+   --------------------------------------------------------------- */
+@media (min-width: 821px) {
+  .lh-inner {
+    padding-right: 5%;
+  }
+
+  .lh-wall {
+    margin-right: 0;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+  }
+
+  .lh-wall-tilt {
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    transform: none;
+  }
+
+  .lh-col {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 150px;
+  }
+
+  /* (track gap stays 16px so the looping animation stays seamless) */
+
+  .lh-cover {
+    aspect-ratio: auto;
+    background: none;
+  }
+
+  .lh-cover img {
+    display: block;
+    height: auto;
+    object-fit: contain;
+  }
+}

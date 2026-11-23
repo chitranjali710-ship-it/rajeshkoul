@@ -1476,3 +1476,512 @@ html body:not(#_) .blog-card-media img {
     padding: 14px 6px !important;
   }
 }
+
+/* The Lean Nervous System: Curriculum and About the author share the
+   sage background of "Let Me Tell You More About This Book…" */
+html body:not(#_) .lns-page .lns-curriculum,
+html body:not(#_) .lns-page .lns-author {
+  background: #e4ebe2 !important;
+}
+
+/* The light pillar cards were the same sage; lift them so they still read as cards */
+html body:not(#_) .lns-page .lns-author .lns-author-pillars > article:nth-child(odd) {
+  background: #fbfaf6 !important;
+}
+
+/* ---------------------------------------------------------------
+   The Lean Nervous System · hero action cards & measures (all sizes)
+   The icon now sits in the link, after the label and before the
+   arrow, so the cards no longer need an icon column; the two
+   cards are separate, each with its own frame.
+   --------------------------------------------------------------- */
+html body:not(#_) .lns-page .lns-action-card > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+html body:not(#_) .lns-page .lns-action-card > a .lns-action-icon {
+  width: 17px !important;
+  height: 17px !important;
+  flex: 0 0 auto;
+  margin: 0 !important;
+  color: currentColor !important;
+}
+
+html body:not(#_) .lns-page .lns-action-card > a .lns-action-arrow {
+  width: 16px !important;
+  height: 16px !important;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 761px) {
+  html body:not(#_) .lns-page .lns-hero .lns-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 360px)) !important;
+    gap: 16px !important;
+    width: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    min-height: 0 !important;
+    padding: 16px 20px 14px !important;
+    border: 1px solid rgba(212, 175, 55, 0.48) !important;
+    border-radius: 10px !important;
+    background:
+      linear-gradient(120deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0) 60%),
+      rgba(1, 5, 7, 0.72) !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card + .lns-action-card {
+    border-left: 1px solid rgba(212, 175, 55, 0.48) !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card h2,
+  html body:not(#_) .lns-page .lns-hero .lns-action-card p {
+    margin: 0 !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card > a {
+    position: static !important;
+    margin-top: 6px !important;
+  }
+
+  /* "Organisational health diagnostics" on one line */
+  html body:not(#_) .lns-page .lns-measures article h2 {
+    max-width: none !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 760px) {
+  /* no icon column any more: text starts at the card's edge */
+  html body:not(#_) .lns-page .lns-hero .lns-action-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    min-height: 0 !important;
+    padding: 18px 20px 16px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card h2,
+  html body:not(#_) .lns-page .lns-hero .lns-action-card p {
+    grid-column: auto !important;
+    margin: 0 !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card > a {
+    position: static !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* Mantra: white and gold, like the line at the top of the hero */
+html body:not(#_) .lns-page .lns-mantra {
+  color: #e9c873 !important;
+}
+
+html body:not(#_) .lns-page .lns-mantra .lns-mantra-light {
+  display: inline !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: #fffaf0 !important;
+  font: inherit !important;
+}
+
+/* "Request for The LNS Framework" is now a link to the contact form */
+html body:not(#_) a.lns-request {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+/* Links to /contact#contact-form land with the form clear of the sticky header */
+html body:not(#_) #contact-form {
+  scroll-margin-top: 110px;
+}
+
+/* ---------------------------------------------------------------
+   The Lean Nervous System · About the author — shorter on
+   tablet & desktop: less padding, a slightly smaller portrait
+   that matches the copy's height, tighter quote and rows.
+   --------------------------------------------------------------- */
+@media (min-width: 761px) {
+  html body:not(#_) .lns-page .lns-author {
+    padding-top: 56px !important;
+    padding-bottom: 52px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-author .lns-author-main {
+    align-items: center !important;
+    gap: 56px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-author .lns-author-photo-wrap {
+    width: 340px !important;
+    min-width: 340px !important;
+    height: 410px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-author .lns-author-photo,
+  html body:not(#_) .lns-page .lns-author .lns-author-photo img {
+    height: 100% !important;
+  }
+
+  html body:not(#_) .lns-page .lns-author .lns-author-photo img {
+    object-fit: cover !important;
+    object-position: 50% 18% !important;
+  }
+
+  html body:not(#_) .lns-page .lns-author .lns-author-quote {
+    margin: 32px 0 16px !important;
+    padding: 18px 36px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-author .lns-author-pillars > article {
+    padding: 16px 18px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-author .lns-author-cta-row {
+    margin-top: 20px !important;
+  }
+}
+
+/* "Coming soon" corner ribbon on the Frameworks & Models card:
+   a red sash across the picture's top-right corner, clipped by the card. */
+html body:not(#_) .lns-footer .lns-footer-card > figure .lns-coming-ribbon {
+  position: absolute;
+  z-index: 4;
+  top: 26px;
+  right: -52px;
+  width: 200px;
+  padding: 8px 0 7px;
+  transform: rotate(45deg);
+  border-top: 1px dashed rgba(255, 236, 222, 0.55);
+  border-bottom: 1px dashed rgba(255, 236, 222, 0.55);
+  background: linear-gradient(180deg, #e04a39 0%, #c3311f 100%);
+  box-shadow: 0 0 0 3px #c3311f, 0 8px 16px -4px rgba(0, 0, 0, 0.6);
+  color: #fff7f0;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* On wider cards, nudge the playbook a little left so the stamp sits clear of its title */
+@media (min-width: 761px) {
+  html body:not(#_) .lns-footer .lns-footer-card:nth-child(3) .lns-footer-image--dark img:not(.lns-coming-soon) {
+    transform: translate(-60%, -50%) !important;
+  }
+}
+
+/* Footer legal links and the contact-form consent link */
+html body:not(#_) .copyright a,
+html body:not(#_) .lns-footer a[href="/privacy-policy"],
+html body:not(#_) .lns-footer a[href="/terms-of-use"] {
+  color: inherit;
+  text-decoration: none;
+}
+
+html body:not(#_) .copyright a:hover,
+html body:not(#_) .lns-footer a[href="/privacy-policy"]:hover,
+html body:not(#_) .lns-footer a[href="/terms-of-use"]:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+html body:not(#_) .contact-consent a {
+  color: #8a6a3a;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------
+   Homepage · "A Practical Blueprint" — desktop & tablet redesign.
+   Two columns: the words on the left (eyebrow, headline, intro and
+   the quote as a pull-quote), the two covers fanned on a lit ink
+   stage on the right. Shorter and more editorial than the old
+   centred stack. Phones keep their own layout.
+   --------------------------------------------------------------- */
+@media (min-width: 761px) {
+  html body:not(#_) .home-page .blueprint-section {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 640px);
+    grid-template-areas:
+      "copy  stage"
+      "quote stage";
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(36px, 4vw, 72px);
+    max-width: none !important;
+    margin: 0 !important;
+    padding: clamp(56px, 6vw, 88px) max(clamp(28px, 5vw, 64px), calc((100% - 1320px) / 2)) !important;
+    box-sizing: border-box;
+  }
+
+  html body:not(#_) .home-page .blueprint-header {
+    grid-area: copy;
+    position: static !important;
+    width: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    text-align: left !important;
+    align-self: end;
+  }
+
+  html body:not(#_) .home-page .blueprint-eyebrow {
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    font-size: 13px !important;
+    letter-spacing: 0.22em !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-eyebrow i:first-child {
+    display: none !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-eyebrow i:last-child {
+    width: 48px !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-header h2 {
+    margin: 22px 0 20px !important;
+    font-size: clamp(32px, 2.7vw, 46px) !important;
+    line-height: 1.08 !important;
+    white-space: normal !important;
+    text-wrap: balance;
+  }
+
+  html body:not(#_) .home-page .blueprint-header h2 span {
+    display: block;
+  }
+
+  html body:not(#_) .home-page .blueprint-header > p:last-child {
+    max-width: 600px;
+    margin: 0 !important;
+    font-size: 17px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Pull-quote under the intro */
+  html body:not(#_) .home-page .blueprint-quote-line {
+    grid-area: quote;
+    align-self: start;
+    position: relative;
+    max-width: 560px;
+    min-width: 0;
+    box-sizing: border-box;
+    width: 100% !important;
+    margin: 36px 0 0 !important;
+    padding: 0 0 0 22px !important;
+    border-left: 2px solid #e2bd78 !important;
+    color: #152c35 !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(19px, 1.5vw, 22px) !important;
+    font-style: italic !important;
+    line-height: 1.5 !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  /* the intro's manual line breaks were set for the old centred layout */
+  html body:not(#_) .home-page .blueprint-header > p:last-child br {
+    display: none;
+  }
+
+  /* Covers fanned on a lit ink stage */
+  html body:not(#_) .home-page .blueprint-books {
+    grid-area: stage;
+    align-self: center;
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    gap: 28px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 44px 40px 52px !important;
+    overflow: hidden !important;
+    border-radius: 26px !important;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 46%, rgba(226, 189, 120, 0.32), rgba(226, 189, 120, 0) 70%),
+      radial-gradient(ellipse 90% 30% at 50% 100%, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 70%),
+      linear-gradient(160deg, #1d3a44 0%, #152c35 55%, #0f2128 100%) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(226, 189, 120, 0.22),
+      0 30px 60px -36px rgba(21, 44, 53, 0.6) !important;
+    isolation: isolate;
+  }
+
+  html body:not(#_) .home-page .blueprint-books::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 12%;
+    right: 12%;
+    bottom: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(226, 189, 120, 0), rgba(226, 189, 120, 0.6), rgba(226, 189, 120, 0));
+  }
+
+  html body:not(#_) .home-page .blueprint-book {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2 / 3 !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:nth-child(1) {
+    z-index: 1;
+    margin: 0 !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:nth-child(2) {
+    z-index: 1;
+  }
+
+  html body:not(#_) .home-page .blueprint-book-media {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 3px 6px 6px 3px;
+    filter: none !important;
+    transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.22, 1) !important;
+    box-shadow:
+      0 0 0 1px rgba(226, 189, 120, 0.28),
+      0 24px 40px -12px rgba(0, 0, 0, 0.65),
+      0 4px 10px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book-media img {
+    border-radius: inherit;
+    object-fit: cover !important;
+  }
+
+  /* front and back side by side, upright and the same size, so the back cover can be read */
+  html body:not(#_) .home-page .blueprint-book .blueprint-book-media {
+    transform: none !important;
+  }
+
+  html body:not(#_) .home-page .blueprint-book:hover .blueprint-book-media,
+  html body:not(#_) .home-page .blueprint-book:focus-visible .blueprint-book-media {
+    transform: translateY(-6px) !important;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1440px) {
+  html body:not(#_) .home-page .blueprint-section {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1000px) {
+  html body:not(#_) .home-page .blueprint-section {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  }
+
+  html body:not(#_) .home-page .blueprint-books {
+    gap: 18px !important;
+    padding: 32px 24px 40px !important;
+  }
+}
+
+@media (min-width: 761px) and (prefers-reduced-motion: reduce) {
+  html body:not(#_) .home-page .blueprint-book-media {
+    transition: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Header wordmark as text — same typefaces and colours as the
+   logo artwork (/art/rajesh-koul-wordmark.svg): Bodoni serif in
+   navy #071a3c and gold #bd8428; tagline in Arial semibold
+   capitals, navy. Overrides the old ".logo span" text-logo rules.
+   --------------------------------------------------------------- */
+html body:not(#_) .wordmark,
+html body:not(#_) .wordmark span {
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+html body:not(#_) .wordmark {
+  display: inline-grid;
+  justify-items: stretch;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+html body:not(#_) .wordmark .wordmark-name {
+  display: block;
+  font-family: "Bodoni Bk BT", "Bodoni MT", Didot, Georgia, "Times New Roman", serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 1;
+  text-align: center;
+}
+
+html body:not(#_) .wordmark .wordmark-first,
+html body:not(#_) .wordmark .wordmark-last {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+html body:not(#_) .wordmark .wordmark-first {
+  color: #071a3c;
+}
+
+html body:not(#_) .wordmark .wordmark-last {
+  color: #bd8428;
+}
+
+html body:not(#_) .wordmark .wordmark-tag {
+  display: block;
+  margin-top: 5px;
+  color: #071a3c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-align: justify;
+  text-align-last: justify;
+  text-transform: uppercase;
+}
+
+html body:not(#_) header .logo,
+html body:not(#_) .lns-header .lns-logo {
+  align-items: center;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  html body:not(#_) .wordmark .wordmark-name {
+    font-size: 28px;
+  }
+
+  html body:not(#_) .wordmark .wordmark-tag {
+    margin-top: 4px;
+    font-size: 7px;
+    letter-spacing: 0.12em;
+  }
+}
