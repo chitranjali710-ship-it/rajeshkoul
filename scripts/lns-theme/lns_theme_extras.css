@@ -1,0 +1,87 @@
+/* ---- hand-tuned finishing touches for the EHS theme ---- */
+
+/* Hero: a navy wash from the left (EHS hero), the gold glow stays on the right */
+.lns-page[data-theme="ehs"] .lns-hero {
+  background-color: #091b33 !important;
+}
+
+.lns-page[data-theme="ehs"] .lns-hero-shade {
+  background: linear-gradient(90deg, rgba(9, 27, 51, 0.97) 0, rgba(9, 27, 51, 0.88) 32%, rgba(9, 27, 51, 0.55) 56%, rgba(9, 27, 51, 0.15) 80%, rgba(9, 27, 51, 0) 100%) !important;
+}
+
+@media (max-width: 760px) {
+  .lns-page[data-theme="ehs"] .lns-hero-shade {
+    background: linear-gradient(180deg, rgba(9, 27, 51, 0.9) 0, rgba(9, 27, 51, 0.7) 45%, rgba(9, 27, 51, 0.5) 100%) !important;
+  }
+}
+
+/* Headings follow the Home page: Poppins, upright (no italic serif accents) */
+.lns-page[data-theme="ehs"] :is(h1, h2, h3, h4) :is(em, i) {
+  font-style: normal !important;
+}
+
+.lns-page[data-theme="ehs"] .lns-intro h1 {
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+}
+
+/* Primary gold buttons use the EHS gold gradient */
+.lns-page[data-theme="ehs"] .lns-request,
+.lns-page[data-theme="ehs"] .lns-footer-cta a {
+  background: linear-gradient(180deg, #f6d58e, #e2b25a) !important;
+  color: #091b33 !important;
+}
+
+/* Poppins runs wider than Georgia: scale the hero type so it keeps the same layout */
+@media (min-width: 761px) {
+  .lns-page[data-theme="ehs"] .lns-intro h1 {
+    font-size: clamp(48px, 5vw, 76px) !important;
+    line-height: 1.04 !important;
+  }
+
+  .lns-page[data-theme="ehs"] .lns-hero-statement {
+    font-size: clamp(16px, 1.35vw, 20px) !important;
+  }
+
+  .lns-page[data-theme="ehs"] .lns-deck-message h2 {
+    font-size: clamp(17px, 1.3vw, 19px) !important;
+  }
+
+  .lns-page[data-theme="ehs"] .lns-mantra {
+    font-size: clamp(14.5px, 1.1vw, 16.5px) !important;
+  }
+
+  .lns-page[data-theme="ehs"] .lns-action-card h2 {
+    font-size: 15.5px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .lns-page[data-theme="ehs"] .lns-hero .lns-intro > h1 {
+    font-size: clamp(32px, 9.4vw, 40px) !important;
+  }
+}
+
+/* Header and footer in EHS navy rather than near-black */
+.lns-page[data-theme="ehs"] .lns-header {
+  background: linear-gradient(90deg, #071629 0, #091b33 60%, #0d2240 100%) !important;
+  border-bottom-color: rgba(214, 173, 98, 0.55) !important;
+}
+
+.lns-page[data-theme="ehs"] .lns-footer {
+  background: #091b33 !important;
+}
+
+.lns-page[data-theme="ehs"] .lns-footer::before,
+.lns-page[data-theme="ehs"] .lns-footer::after {
+  opacity: 0.35;
+}
+
+.lns-page[data-theme="ehs"] .lns-footer .lns-footer-card {
+  background: #0d2240 !important;
+  border-color: rgba(214, 173, 98, 0.28) !important;
+}
+
+.lns-page[data-theme="ehs"] .lns-footer .lns-footer-image--dark {
+  background: #0b1d37 !important;
+}

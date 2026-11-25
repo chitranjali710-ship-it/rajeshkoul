@@ -1985,3 +1985,211 @@ html body:not(#_) .lns-header .lns-logo {
     letter-spacing: 0.12em;
   }
 }
+
+/* ---------------------------------------------------------------
+   The Lean Nervous System · hero on the Home hero's background:
+   flat warm cream #F6F3EC instead of the dark gold-circuit image.
+   Colours only — layout, sizes and spacing are unchanged. Text and
+   accents switch to the Home palette (ink #152C35, bronze #8A6A3A)
+   so everything stays readable. The stats strip below keeps its
+   dark band.
+   --------------------------------------------------------------- */
+html body:not(#_) .lns-page .lns-hero {
+  background: #f6f3ec !important;
+  color: #152c35 !important;
+}
+
+html body:not(#_) .lns-page .lns-hero-shade {
+  display: none !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-kicker {
+  color: #8a6a3a !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-kicker > span {
+  background: #8a6a3a !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-intro h1 {
+  color: #152c35 !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-intro h1 em {
+  color: #8a6a3a !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-hero-statement {
+  color: #152c35 !important;
+  border-color: #c9984f !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-hero-statement span {
+  color: #8a6a3a !important;
+}
+
+/* rotating messages */
+html body:not(#_) .lns-page .lns-hero .lns-deck {
+  color: #152c35 !important;
+  border-color: #c9984f !important;
+}
+
+html body:not(#_) .lns-page .lns-hero :is(.lns-deck-message, .lns-deck-card) h2 {
+  color: #8a6a3a !important;
+  text-shadow: none !important;
+}
+
+html body:not(#_) .lns-page .lns-hero :is(.lns-deck-message, .lns-deck-card) p {
+  color: #3f5459 !important;
+  text-shadow: none !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-deck-card {
+  border-color: rgba(138, 106, 58, 0.25) !important;
+  background: #fff !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-deck-dots > button {
+  background-color: rgba(138, 106, 58, 0.28);
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-deck-dots > button.active {
+  background-color: #8a6a3a;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-deck-dots > button::before {
+  background: rgba(138, 106, 58, 0.32) !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-deck-dots > button.active::before {
+  background: #8a6a3a !important;
+}
+
+/* the two action cards: white cards on cream, like the Home page */
+html body:not(#_) .lns-page .lns-hero .lns-action-card {
+  border-color: rgba(21, 44, 53, 0.12) !important;
+  background: #fff !important;
+  box-shadow: 0 14px 30px -22px rgba(21, 44, 53, 0.45) !important;
+  color: #152c35 !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-action-card h2 {
+  color: #152c35 !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-action-card p {
+  color: #5a6b6e !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-action-card > a,
+html body:not(#_) .lns-page .lns-hero .lns-action-card > a svg {
+  color: #8a6a3a !important;
+}
+
+/* phones: the rotating-message caption had a dark glow for the old photo */
+@media (max-width: 760px) {
+  html body:not(#_) .lns-page .lns-hero .lns-deck {
+    background: none !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-book-product::before {
+    background: radial-gradient(closest-side, rgba(201, 152, 79, 0.22), rgba(201, 152, 79, 0.06) 55%, rgba(201, 152, 79, 0)) !important;
+  }
+}
+
+html body:not(#_) .lns-page .lns-hero :is(h1, h1 em, .lns-kicker, .lns-hero-statement, .lns-hero-statement span) {
+  text-shadow: none !important;
+}
+
+/* ---------------------------------------------------------------
+   The Lean Nervous System · hero book motion
+   (components/lns-hero-book.tsx). Uses the individual `translate`
+   and `rotate` properties so the existing transform rules and the
+   arrival animation are untouched — no layout change.
+   1. Float: the book rises ~10px and settles every 6s; its floor
+      shadow tightens and fades as it lifts.
+   2. Light sweep: a soft gloss crosses the cover every 7s, masked
+      to the book's own shape.
+   3. Desktop: the book leans gently toward the pointer.
+   --------------------------------------------------------------- */
+html body:not(#_) .lns-page .lns-hero .lns-book-product {
+  --book-tilt-x: 0deg;
+  --book-tilt-y: 0deg;
+  perspective: 1100px;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product > img,
+html body:not(#_) .lns-page .lns-hero .lns-book-product > .lns-book-shine {
+  transform-origin: 50% 60%;
+  animation: lns-book-float 6s ease-in-out 1.1s infinite;
+  rotate: 0 0 1 0deg;
+  will-change: translate, rotate;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product.is-tilting > img,
+html body:not(#_) .lns-page .lns-hero .lns-book-product.is-tilting > .lns-book-shine {
+  rotate: none;
+  transform: perspective(1100px) rotateX(var(--book-tilt-x)) rotateY(var(--book-tilt-y)) !important;
+  transition: transform 0.25s ease-out;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product > img,
+html body:not(#_) .lns-page .lns-hero .lns-book-product > .lns-book-shine {
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product > .lns-book-shine {
+  animation: lns-book-float 6s ease-in-out 1.1s infinite, lns-book-sheen 7s ease-in-out 1.6s infinite;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product::after {
+  animation: lns-book-shadow 6s ease-in-out 1.1s infinite;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 0 40%, rgba(255, 240, 205, 0.14) 46%, rgba(255, 248, 230, 0.3) 50%, rgba(255, 240, 205, 0.14) 54%, transparent 60% 100%) no-repeat;
+  background-size: 260% 100%;
+  background-position: 150% 0;
+  mix-blend-mode: screen;
+  -webkit-mask: url("/art/lns-book-cutout.webp") center / contain no-repeat;
+  mask: url("/art/lns-book-cutout.webp") center / contain no-repeat;
+  animation: lns-book-float 6s ease-in-out 1.1s infinite, lns-book-sheen 7s ease-in-out 1.6s infinite;
+}
+
+@keyframes lns-book-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+@keyframes lns-book-shadow {
+  0%, 100% { scale: 1; opacity: 1; }
+  50% { scale: 0.86 0.8; opacity: 0.7; }
+}
+
+@keyframes lns-book-sheen {
+  0% { background-position: 150% 0; }
+  32%, 100% { background-position: -50% 0; }
+}
+
+@media (max-width: 760px) {
+  @keyframes lns-book-float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -7px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product > img,
+  html body:not(#_) .lns-page .lns-hero .lns-book-product > .lns-book-shine,
+  html body:not(#_) .lns-page .lns-hero .lns-book-product::after {
+    animation: none !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-book-shine {
+    display: none !important;
+  }
+}

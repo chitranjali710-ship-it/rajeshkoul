@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, BarChart3, BookOpen, ChartNoAxesCombined, CheckCircle2, Lightbulb, Network, UsersRound } from "lucide-react";
 import { LnsHeader } from "@/components/lns-header";
 import { LnsHeroDeck } from "@/components/lns-hero-deck";
+import { LnsHeroBook } from "@/components/lns-hero-book";
 // The PDF reader (components/lns-framework-viewer.tsx) is kept for later; the request now goes to the contact form.
 import { LnsArchitectureNavigator } from "@/components/lns-architecture-navigator";
 import { LnsStoryDisclosure } from "@/components/lns-story-disclosure";
@@ -85,9 +86,7 @@ export default async function LeanNervousSystem() {
         <h1 id="lns-title">The Lean<br /><em>Nervous System</em></h1>
         <LnsHeroDeck />
       </section>
-      <div className="lns-book-product" aria-label="The Lean Nervous System book">
-        <img src="/art/lns-book-cutout.webp" alt="The Lean Nervous System by Rajesh Koul" />
-      </div>
+      <LnsHeroBook />
       <section className="lns-action-grid" aria-label="Lean Nervous System pathways">
         {actions.map(({ icon: Icon, title, body, label, href }) => <article className="lns-action-card" key={title}><h2>{title}</h2><p>{body}</p><Link href={href}>{label} <Icon aria-hidden="true" className="lns-action-icon" /><ArrowRight aria-hidden="true" className="lns-action-arrow" /></Link></article>)}
       </section>
