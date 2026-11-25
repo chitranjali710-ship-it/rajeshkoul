@@ -2193,3 +2193,39 @@ html body:not(#_) .lns-page .lns-hero .lns-book-shine {
     display: none !important;
   }
 }
+
+/* ---------------------------------------------------------------
+   LNS hero book · rotating mockups (cross-fade).
+   The first image stays in the flow and keeps the box size exactly
+   as before; the rest sit on top of it, contained in the same box.
+   --------------------------------------------------------------- */
+html body:not(#_) .lns-page .lns-hero .lns-book-product > img.lns-book-slide {
+  opacity: 0;
+  transition: opacity 1.1s ease-in-out, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product > img.lns-book-slide.is-active {
+  opacity: 1;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product > img.lns-book-slide:not(:first-child) {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product.is-tilting > img.lns-book-slide {
+  transition: opacity 1.1s ease-in-out, transform 0.25s ease-out !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product > img.lns-book-slide {
+    transition: none !important;
+  }
+}
