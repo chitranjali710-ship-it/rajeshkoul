@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Cog, FileSearch, FileText, Globe2, Layers3, Leaf, Lightbulb, TrendingUp, Trophy, UsersRound } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({ title: "About Rajesh Koul | Transformation Leader & Author", description: "A transformation practitioner helping leaders turn complexity into connection, capability and sustainable performance.", path: "/about" });
 
 export default function About(){return <><SiteHeader/><main>
   <div className="about-live-hero-stage">

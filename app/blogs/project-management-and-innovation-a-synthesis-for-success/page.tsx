@@ -11,12 +11,17 @@ import {
   Target,
 } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { articleJsonLd, jsonLdGraph, pageMeta } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "Project Management and Innovation: A Synthesis for Success | Rajesh Koul",
   description:
     "How project and programme management translate visionary ideas into purposeful execution, scalable organisational capability and sustainable value.",
-};
+  path: "/blogs/project-management-and-innovation-a-synthesis-for-success",
+  image: "/art/blog-editorial/project-innovation.webp",
+  type: "article",
+});
 
 const sections = [
   ["01", "Innovation Is More Than the Generation of Ideas", "ideas"],
@@ -95,6 +100,7 @@ const frameworkSteps = [
 
 export default function ProjectManagementInnovationArticle() {
   return <><SiteHeader/><main className="article-page pm-article-page">
+    <JsonLd data={jsonLdGraph(articleJsonLd({title:metadata.title as string,description:metadata.description as string,path:"/blogs/project-management-and-innovation-a-synthesis-for-success",image:"/art/blog-editorial/project-innovation.webp"}))}/>
     <div className="article-hero-stage"><section className="article-hero pm-article-hero">
       <Image src="/art/blog-editorial/project-innovation.webp" alt="A roadmap connecting vision, strategy, programmes, projects, execution and value" fill priority sizes="100vw" style={{objectFit:"contain",objectPosition:"center"}}/>
       <div className="article-hero-shade"/>

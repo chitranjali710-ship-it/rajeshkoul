@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, BarChart3, BookOpen, Boxes, Layers3, Lightbulb, Target } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({ title: "Courses & Frameworks | Rajesh Koul", description: "Structured learning experiences and practical frameworks designed to turn complex transformation challenges into clear, actionable progress.", path: "/courses" });
 
 const outcomes = [
   { icon: BookOpen, title: "Practical Frameworks", text: "Clear structures for complex transformation challenges." },

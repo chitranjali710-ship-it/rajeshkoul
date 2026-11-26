@@ -2229,3 +2229,138 @@ html body:not(#_) .lns-page .lns-hero .lns-book-product.is-tilting > img.lns-boo
     transition: none !important;
   }
 }
+
+/* ---------------------------------------------------------------
+   LNS hero · bigger, equal-sized books + a slightly taller section
+   with taller action cards (desktop ≥1101px). The book box gets a
+   fixed size and components/lns-hero-book.tsx scales every mockup so
+   the book itself covers the same area (--book-equal switches it on).
+   --------------------------------------------------------------- */
+html body:not(#_) .lns-page .lns-hero .lns-book-product.has-equal-books > img.lns-book-slide,
+html body:not(#_) .lns-page .lns-hero .lns-book-product.has-equal-books > .lns-book-shine {
+  position: absolute !important;
+  inset: auto !important;
+  left: var(--slot-left) !important;
+  top: var(--slot-top) !important;
+  width: var(--slot-width) !important;
+  height: var(--slot-height) !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: fill !important;
+}
+
+html body:not(#_) .lns-page .lns-hero .lns-book-product.has-equal-books > .lns-book-shine {
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+}
+
+@media (max-width: 760px) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    --book-equal: 1;
+  }
+}
+
+@media (min-width: 1101px) {
+  html body:not(#_) .lns-page .lns-hero {
+    min-height: 850px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    --book-equal: 1;
+    inset: 110px 2.5vw 121px auto !important;
+    width: calc(97.5vw - 820px) !important;
+    height: auto !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card {
+    min-height: 196px !important;
+    padding: 24px 24px 22px !important;
+    justify-content: flex-start !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card > a {
+    margin-top: auto !important;
+    padding-top: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    inset: 100px 2.5vw 121px auto !important;
+    width: min(560px, calc(97.5vw - 880px)) !important;
+    height: auto !important;
+  }
+}
+
+/* the old gold floor glow sat far below the bigger books; each mockup
+   carries its own shadow now */
+@media (min-width: 761px) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product.has-equal-books::after {
+    display: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   LNS hero · book polish
+   1. No shadows on the book photos (the files themselves were also
+      re-cut without their floor shadows).
+   2. No jump on load: where the books are sized by the script, they
+      stay hidden until they have their final size, then fade up
+      gently instead of the old scale "pop".
+   --------------------------------------------------------------- */
+html body:not(#_) .lns-page .lns-hero .lns-book-product,
+html body:not(#_) .lns-page .lns-hero .lns-book-product > img {
+  filter: none !important;
+}
+
+@media (max-width: 760px), (min-width: 1101px) {
+  /* gentle fade-up on load instead of the old scale "pop" */
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    animation: lns-book-reveal 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both !important;
+  }
+}
+
+/* before the script has sized the books, keep every image inside the box
+   so nothing spills over the dark strip below */
+@media (min-width: 1101px) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product:not(.has-equal-books) > img.lns-book-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+}
+
+@keyframes lns-book-reveal {
+  from { opacity: 0; translate: 0 18px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    animation: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   LNS hero · the top line ("Move Beyond Tools…") no longer runs under
+   the "Request for The LNS Framework" button on 901–1319px screens:
+   it sits left, ending before the button.
+   --------------------------------------------------------------- */
+@media (min-width: 901px) and (max-width: 1319px) {
+  html body:not(#_) .lns-page .lns-hero .lns-hero-statement {
+    left: 5vw !important;
+    right: 331px !important;
+    width: auto !important;
+    transform: none !important;
+    text-align: left !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  html body:not(#_) .lns-page .lns-hero .lns-hero-statement {
+    font-size: 17px !important;
+  }
+}

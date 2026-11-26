@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/legal-page";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Terms of Use | Rajesh Koul",
   description: "The terms that apply when you use rajeshkoul.com, including content ownership, book purchases through third-party stores, and acceptable use.",
-};
+  path: "/terms-of-use",
+});
 
 const EMAIL = "author.rajeshkoul@gmail.com";
 const UPDATED = "23 November 2026";

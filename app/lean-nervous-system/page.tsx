@@ -4,6 +4,7 @@ import { ArrowRight, BarChart3, BookOpen, ChartNoAxesCombined, CheckCircle2, Lig
 import { LnsHeader } from "@/components/lns-header";
 import { LnsHeroDeck } from "@/components/lns-hero-deck";
 import { LnsHeroBook } from "@/components/lns-hero-book";
+import { LazyAutoplayVideo } from "@/components/lazy-autoplay-video";
 // The PDF reader (components/lns-framework-viewer.tsx) is kept for later; the request now goes to the contact form.
 import { LnsArchitectureNavigator } from "@/components/lns-architecture-navigator";
 import { LnsStoryDisclosure } from "@/components/lns-story-disclosure";
@@ -11,6 +12,17 @@ import { YouTubeFeed } from "@/components/youtube-feed";
 import { LnsPurchase } from "@/components/lns-purchase";
 import "@/components/lns-book-story-mobile.css";
 import { getYouTubeVideos } from "@/lib/youtube-feed";
+import { BOOK_SHARE_IMAGE, bookJsonLd, jsonLdGraph, pageMeta } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+
+export const metadata = pageMeta({
+  title: "The Lean Nervous System | A Book by Rajesh Koul",
+  description: "A practical guide to optimising enterprise health. Diagnose organisational maturity across 10 domains and build mature, resilient, world-class organisations.",
+  path: "/lean-nervous-system",
+  image: BOOK_SHARE_IMAGE,
+  imageAlt: "The Lean Nervous System by Rajesh Koul",
+  type: "book",
+});
 
 const actions = [
   { icon: BookOpen, title: "Don’t Just Manage. Build an Organisation That Thinks.", body: "A definitive guide to Organisational Maturity & Enterprise Health.", label: "PURCHASE THE BOOK", href: "/contact" },
@@ -76,6 +88,7 @@ export const dynamic = "force-dynamic";
 export default async function LeanNervousSystem() {
   const youtubeVideos = await getYouTubeVideos();
   return <div className="lns-page">
+    <JsonLd data={jsonLdGraph(bookJsonLd)} />
     <LnsHeader />
     <div className="lns-hero-stage"><main className="lns-hero">
       <div className="lns-hero-shade" aria-hidden="true" />
@@ -108,9 +121,7 @@ export default async function LeanNervousSystem() {
       <div className="lns-story-top">
         <div className="lns-story-media-column">
           <figure className="lns-domain-art-crop">
-            <video autoPlay muted loop playsInline controls preload="metadata" aria-label="An introduction to The Lean Nervous System">
-              <source src="/media/lns-story.mp4" type="video/mp4" />
-            </video>
+            <LazyAutoplayVideo src="/media/lns-story-web.mp4" poster="/media/lns-story-poster.webp" label="An introduction to The Lean Nervous System" />
           </figure>
         </div>
 
@@ -128,9 +139,9 @@ export default async function LeanNervousSystem() {
         </div>
       </div>
 
-      <div className="lns-outcome-grid">{outcomes.map(({ icon, title, text }) => <article key={title}><span><img src={icon} alt="" aria-hidden="true" /></span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+      <div className="lns-outcome-grid">{outcomes.map(({ icon, title, text }) => <article key={title}><span><img loading="lazy" decoding="async" src={icon} alt="" aria-hidden="true" /></span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
 
-      <p className="lns-story-bridge"><img src="/art/lns-icons/bridge.png" alt="" aria-hidden="true" /><span>It moves beyond fragmented improvements and presents a <strong>coherent model of enterprise maturity</strong>, built across interconnected domains — <strong>from design and supply chain to operations, people, governance, and sustainability.</strong></span></p>
+      <p className="lns-story-bridge"><img loading="lazy" decoding="async" src="/art/lns-icons/bridge.png" alt="" aria-hidden="true" /><span>It moves beyond fragmented improvements and presents a <strong>coherent model of enterprise maturity</strong>, built across interconnected domains — <strong>from design and supply chain to operations, people, governance, and sustainability.</strong></span></p>
 
       <div className="lns-story-panels">
         <LnsStoryDisclosure icon="/art/lns-icons/theory.png" title="But this is not just a theory." meta="5 real-world signals">
@@ -140,14 +151,14 @@ export default async function LeanNervousSystem() {
           <ul>{discoveries.map(item => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}</ul>
         </LnsStoryDisclosure>
         <LnsStoryDisclosure className="lns-domain-list" icon="/art/lns-icons/domains.png" title="The 10 Domains:" meta="10 connected domains">
-          <div>{domains.map(({ icon, name }) => <p key={name}><img src={icon} alt="" aria-hidden="true" />{name}</p>)}</div>
+          <div>{domains.map(({ icon, name }) => <p key={name}><img loading="lazy" decoding="async" src={icon} alt="" aria-hidden="true" />{name}</p>)}</div>
         </LnsStoryDisclosure>
       </div>
 
       <footer className="lns-story-footer" id="lns-infographic-footer">
-        <p><img src="/art/lns-icons/leaders.png" alt="" aria-hidden="true" /><span>This book is built for leaders who are not looking for more frameworks—but for <strong>clarity, structure, and a way forward.</strong></span></p>
+        <p><img loading="lazy" decoding="async" src="/art/lns-icons/leaders.png" alt="" aria-hidden="true" /><span>This book is built for leaders who are not looking for more frameworks—but for <strong>clarity, structure, and a way forward.</strong></span></p>
         <div><b>THE LEAN NERVOUS SYSTEM</b><span>A Proven Way to Build Organisations That Think, Sense, and Respond as One</span></div>
-        <p><img src="/art/lns-icons/inevitable.png" alt="" aria-hidden="true" /><span>Because in the end:<strong>You don’t need more initiatives.<br />You need a system that makes excellence inevitable.</strong></span></p>
+        <p><img loading="lazy" decoding="async" src="/art/lns-icons/inevitable.png" alt="" aria-hidden="true" /><span>Because in the end:<strong>You don’t need more initiatives.<br />You need a system that makes excellence inevitable.</strong></span></p>
       </footer>
     </section>
     <section className="lns-architecture" aria-labelledby="lns-architecture-title">
@@ -166,7 +177,7 @@ export default async function LeanNervousSystem() {
       </header>
       <div className="lns-curriculum-grid">
         {curriculumLessons.map(({ icon, lead, highlight, tail }, index) => <article key={highlight}>
-          <div className="lns-curriculum-card-top"><span><img src={icon} alt="" aria-hidden="true" /></span><b>{String(index + 1).padStart(2, "0")}</b></div>
+          <div className="lns-curriculum-card-top"><span><img loading="lazy" decoding="async" src={icon} alt="" aria-hidden="true" /></span><b>{String(index + 1).padStart(2, "0")}</b></div>
           <p>{lead} <strong>{highlight}</strong>{tail ? ` ${tail}` : ""}</p>
         </article>)}
       </div>
@@ -180,7 +191,7 @@ export default async function LeanNervousSystem() {
       <div className="lns-author-inner">
         <div className="lns-author-main">
           <div className="lns-author-photo-wrap">
-            <div className="lns-author-photo"><img src="/art/lns-author-portrait.webp" alt="Rajesh Koul" /></div>
+            <div className="lns-author-photo"><img loading="lazy" decoding="async" src="/art/lns-author-portrait.webp" alt="Rajesh Koul" /></div>
           </div>
 
           <div className="lns-author-copy">
@@ -212,7 +223,7 @@ export default async function LeanNervousSystem() {
 
         <div className="lns-footer-resources">
           {footerResources.map((resource) => <Link className="lns-footer-card" href={resource.href} key={resource.title}>
-            <figure className={`lns-footer-image lns-footer-image--${resource.tone}`}><img src={resource.image} alt={resource.title} />{resource.comingSoon && <span className="lns-coming-ribbon">Coming soon</span>}</figure>
+            <figure className={`lns-footer-image lns-footer-image--${resource.tone}`}><img loading="lazy" decoding="async" src={resource.image} alt={resource.title} />{resource.comingSoon && <span className="lns-coming-ribbon">Coming soon</span>}</figure>
             <div><small>{resource.eyebrow}</small><h3>{resource.title}</h3><p>{resource.text}</p><span>{resource.action} <ArrowRight aria-hidden="true" /></span></div>
           </Link>)}
         </div>

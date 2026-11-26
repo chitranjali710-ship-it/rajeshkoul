@@ -2,11 +2,16 @@
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, BrainCircuit, Clock3, Gauge, Network, Sparkles } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { articleJsonLd, jsonLdGraph, pageMeta } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "From Execution Engines to Enterprise Intelligence | Rajesh Koul",
   description: "A leadership narrative on enabling GCC maturity through operational trust, continuous learning, enterprise influence and intelligence density.",
-};
+  path: "/blogs/from-execution-engines-to-enterprise-intelligence",
+  image: "/art/blog-editorial/execution-intelligence.webp",
+  type: "article",
+});
 
 const sections = [
   ["01", "The Moment the GCC Model Began to Change", "change"],
@@ -18,6 +23,7 @@ const sections = [
 
 export default function ExecutionToIntelligenceArticle() {
   return <><SiteHeader/><main className="article-page">
+    <JsonLd data={jsonLdGraph(articleJsonLd({title:metadata.title as string,description:metadata.description as string,path:"/blogs/from-execution-engines-to-enterprise-intelligence",image:"/art/blog-editorial/execution-intelligence.webp"}))}/>
     <div className="article-hero-stage"><section className="article-hero">
       <Image src="/art/blog-editorial/execution-intelligence.webp" alt="A path connecting industrial execution with a digitally intelligent enterprise" fill priority sizes="100vw" style={{objectFit:"contain",objectPosition:"center"}}/>
       <div className="article-hero-shade"/>

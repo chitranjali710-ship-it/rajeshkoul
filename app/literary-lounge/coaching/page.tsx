@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, BarChart3, BookOpen, Compass, Lightbulb, Sparkles, Target } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({ title: "Personal Leadership & Coaching | Rajesh Koul", description: "Practical guidance and proven frameworks. Partnering with individuals and leaders to unlock potential, strengthen mindset, and create meaningful transformation.", path: "/personal-leadership-coaching" });
 
 const outcomes = [
   { icon: BookOpen, title: "Self Awareness", text: "Know yourself deeply to lead yourself well." },

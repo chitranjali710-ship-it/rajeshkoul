@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Clock3 } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { articleJsonLd, jsonLdGraph } from "@/lib/seo";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import newsletterData from "../_data/newsletters.json";
 
@@ -30,6 +32,7 @@ export function NewsletterArticle({ newsletter }: { newsletter: Newsletter }) {
   return <>
     <SiteHeader />
     <main className="article-page source-article-page newsletter-article-page">
+      <JsonLd data={jsonLdGraph(articleJsonLd({ title: newsletter.title, description: newsletter.excerpt, path: `/blogs/${newsletter.slug}`, image: newsletter.image }))} />
       <div className="article-hero-stage">
         <section className="article-hero source-article-hero source-article-hero--editorial newsletter-article-hero">
           <Image src={newsletter.image} alt="" fill priority sizes="100vw" />

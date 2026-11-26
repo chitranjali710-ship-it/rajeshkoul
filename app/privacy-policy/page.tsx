@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPage, type LegalSection } from "@/components/legal-page";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Privacy Policy | Rajesh Koul",
   description: "How rajeshkoul.com collects, uses, protects and deletes personal data, and how to exercise your rights under India's Digital Personal Data Protection Act, 2023.",
-};
+  path: "/privacy-policy",
+});
 
 const EMAIL = "author.rajeshkoul@gmail.com";
 const UPDATED = "23 November 2026";

@@ -8,6 +8,9 @@ import { BlueprintBooks } from "@/components/blueprint-books";
 import { PillarCard } from "@/components/pillar-card";
 import { MobileDisclosure } from "@/components/mobile-disclosure";
 import "@/components/book-promo.css";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({ title: "Rajesh Koul | Lean, Digital & AI-Led Enterprise Transformation", description: "Helping CXOs and enterprise leaders unlock growth, improve margins, and build scalable operations through Lean, Industry 4.0, and AI-led transformation.", path: "/home" });
 
 const pillars = [
   { n: "Pillar 01", icon: "target" as const, outcome: "Purpose → Alignment", title: "Igniting Purposeful Transformations", text: "My first pillar focuses on igniting meaningful transformations by embedding a deep sense of purpose in individuals and organizations. Through tailored strategies and coaching, I unlock latent potential, aligning roles with a greater mission. This approach fosters engagement and a shared commitment to impactful change at every level, creating a ripple effect of positive transformation." },

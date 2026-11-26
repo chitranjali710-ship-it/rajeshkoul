@@ -46,3 +46,6 @@ next-env.d.ts
 /work/
 /artifacts/chrome-headless/
 /artifacts/*.tar.gz
+
+# deploy bundles (each is ~190 MB, over GitHub's 100 MB file limit)
+*.zip

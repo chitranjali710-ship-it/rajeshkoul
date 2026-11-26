@@ -1,1 +1,1 @@
-export { default } from "../../industry-campus-talks/page";
+export { default, metadata } from "../../industry-campus-talks/page";

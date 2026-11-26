@@ -1,1 +1,1 @@
-export { default } from "../literary-lounge/coaching/page";
+export { default, metadata } from "../literary-lounge/coaching/page";

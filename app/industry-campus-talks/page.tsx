@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, BarChart3, BookOpen, MessageCircle, Mic2, Radio, Target, Users } from "lucide-react";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({ title: "Industry & Campus Talks | Rajesh Koul", description: "Conversations that bridge ideas and action. Real-world insights on leadership, strategy, transformation, and the Lean way of thinking.", path: "/industry-campus-talks" });
 
 const outcomes = [
   { icon: BookOpen, title: "Real-World Insights", text: "Practical perspectives from experience and practice." },

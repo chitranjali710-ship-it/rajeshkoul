@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- Vinext production RSC navigation is incompatible with next/link in this deployment. */
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Clock3, Compass, Layers3, Lightbulb, Target } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { articleJsonLd, jsonLdGraph } from "@/lib/seo";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import articleData from "../_data/additional-articles.json";
 
@@ -14,6 +16,7 @@ export function getAdditionalArticle(slug:string){
 export function StandardArticle({article}:{article:Article}){
   const highlights=article.sections.slice(0,4);
   return <><SiteHeader/><main className="article-page source-article-page">
+    <JsonLd data={jsonLdGraph(articleJsonLd({title:article.title,description:article.subtitle,path:`/blogs/${article.slug}`,image:article.image}))}/>
     <div className="article-hero-stage"><section className="article-hero source-article-hero source-article-hero--editorial">
       <Image src={article.image} alt={article.title} fill priority sizes="100vw" style={{objectFit:"cover",objectPosition:"center",transform:"none"}}/>
       <div className="article-image-label"><p>{article.category}</p><strong>{article.title}</strong></div>

@@ -1,2 +1,5 @@
 import { EditorialPage } from "@/components/editorial-page";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata = pageMeta({ title: "Podcast: Ideas in Action | Rajesh Koul", description: "Conversations, insights, and real-world perspectives on Lean, Strategy, Transformation, Leadership, Innovation, and more.", path: "/literary-lounge/podcast" });
 export default function Page(){return <EditorialPage eyebrow="LISTEN · LEARN · APPLY · TRANSFORM" title="Podcast" accent="Ideas in Action" description="Conversations, insights, and real-world perspectives on Lean, Strategy, Transformation, Leadership, Innovation, and more." image="/art/podcast-hero.jpg" imageAlt="Podcast microphone and laptop" button="Explore All Episodes" features={[{title:"Inspiring Conversations",text:"With leaders, practitioners and change-makers."},{title:"Practical Insights",text:"Ideas you can apply at work and in life."},{title:"Diverse Perspectives",text:"Across industries, functions and geographies."},{title:"Real-World Impact",text:"Turning ideas into action for lasting value."}]}/>} 
