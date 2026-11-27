@@ -1,8 +1,8 @@
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Blogs | Rajesh Koul",
-  description: "Ideas and perspectives on lean systems, digital transformation, leadership, and sustainable enterprise growth.",
+  title: "Thought Perspectives on Transformation | Rajesh Koul",
+  description: "Practical ideas, frameworks and real-world insights on leadership, organisational excellence, operational performance and sustainable growth.",
   path: "/blogs",
 });
 

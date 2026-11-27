@@ -13,9 +13,9 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({ title: "Rajesh Koul | Lean, Digital & AI-Led Enterprise Transformation", description: "Helping CXOs and enterprise leaders unlock growth, improve margins, and build scalable operations through Lean, Industry 4.0, and AI-led transformation.", path: "/home" });
 
 const pillars = [
-  { n: "Pillar 01", icon: "target" as const, outcome: "Purpose → Alignment", title: "Igniting Purposeful Transformations", text: "My first pillar focuses on igniting meaningful transformations by embedding a deep sense of purpose in individuals and organizations. Through tailored strategies and coaching, I unlock latent potential, aligning roles with a greater mission. This approach fosters engagement and a shared commitment to impactful change at every level, creating a ripple effect of positive transformation." },
-  { n: "Pillar 02", icon: "users" as const, outcome: "Collaboration → Innovation", title: "Cultivating Collaborative Innovation Mindsets", text: "The second pillar revolves around cultivating collaborative innovation mindsets. I create environments where diverse perspectives converge, nurturing a culture valuing collaboration, creativity, and shared problem-solving. Empowering individuals with tools and methodologies, I ensure they contribute to the organization's collective intelligence, making innovation a natural outcome of purposeful collaboration." },
-  { n: "Pillar 03", icon: "network" as const, outcome: "Digital → Sustainable Impact", title: "Guiding Digital Transformation with Meaningful Leadership", text: "My third pillar centers on guiding digital transformation initiatives with meaningful leadership. Through mentorship, workshops, and resources, I equip individuals with the skills and mindset for effective digital transformation. Technology is embraced as an enabler, with each digital initiative driven by a clear sense of mission, aligning with the broader vision of transformative success." },
+  { n: "Pillar 01", icon: "target" as const, outcome: "Purpose → Alignment", title: "Igniting Purposeful Transformations", text: "My first pillar focuses on driving meaningful transformation by embedding a deep sense of purpose in individuals and organisations. Through aligned strategies and guidance, I help unlock latent potential and connect individual roles with a greater mission. This approach fosters engagement and a shared commitment to meaningful change at every level, creating a ripple effect of positive transformation." },
+  { n: "Pillar 02", icon: "users" as const, outcome: "Collaboration → Innovation", title: "Cultivating Collaborative Innovation Mindsets", text: "The second pillar focuses on cultivating collaborative innovation mindsets. I encourage environments where diverse perspectives converge, nurturing a culture that values collaboration, creativity and shared problem-solving. By enabling individuals with the right tools and methodologies, I help strengthen collective intelligence and make innovation a natural outcome of purposeful collaboration." },
+  { n: "Pillar 03", icon: "network" as const, outcome: "Digital → Sustainable Impact", title: "Guiding Digital Transformation with Meaningful Leadership", text: "My third pillar centres on guiding digital transformation through meaningful leadership. Through knowledge sharing, mentorship and practical guidance, I help individuals develop the skills and mindset needed for effective digital transformation. Technology is embraced as an enabler, with every digital initiative guided by a clear sense of purpose and aligned with the broader vision of sustainable success." },
 ];
 
 export default function Home() {
@@ -24,11 +24,11 @@ export default function Home() {
     <main className="home-page">
       <div className="home-hero-stage"><section className="hero home-hero">
         <div className="hero-copy">
-          <h1><b>Scaling <span>Enterprises</span> Through</b>{" "}<b><span>Lean, Digital</span> &amp; AI-Led</b><b>Transformation</b></h1>
-          <p className="lead">Helping CXOs and enterprise leaders unlock growth,<br className="desktop"/> improve margins, and build scalable operations<br className="desktop"/> through Lean, Industry 4.0, and AI-led transformation.</p>
-          <div className="actions"><a className="button" href="https://ehs.rajeshkoul.com/" target="_blank" rel="noopener noreferrer">Enterprise Health Lab <ArrowRight/></a><Link className="button outline" href="#featured-book">Explore My Books <ArrowRight/></Link></div>
-          <p className="italic">Bridging strategy and execution through 30 years of transformation leadership across global enterprises.</p>
-          <p className="trust"><span>TRUSTED BY LEADERS ACROSS</span><b>MANUFACTURING · CONSULTING · GLOBAL ENTERPRISES</b></p>
+          <h1><b>Scaling <span>Enterprises</span> with</b>{" "}<b>Lean, Digital &amp; AI-Led</b><b>Transformation</b></h1>
+          <p className="lead">Helping leaders drive growth, improve margins and<br className="desktop"/> build scalable operations through Lean and Industry 4.0.</p>
+          <div className="actions"><a className="button" href="https://ehl.rajeshkoul.com/" target="_blank" rel="noopener noreferrer">Enterprise Health Lab <ArrowRight/></a><Link className="button outline" href="#featured-book">Explore My Books <ArrowRight/></Link></div>
+          <p className="italic">Three decades of transformation leadership across global enterprises.</p>
+          <p className="trust"><b>INDUSTRIAL MANUFACTURING · CONSULTING · GLOBAL ENTERPRISES</b></p>
         </div>
         <div className="hero-art"><Image className="home-hero-portrait-editorial" src="/art/home-hero-author-teal-clean.webp" alt="Rajesh Koul" fill priority sizes="(max-width: 800px) 100vw, 55vw" /></div>
       </section></div>
@@ -44,7 +44,7 @@ export default function Home() {
           <div className="experience-card"><strong>30+</strong><b>YEARS OF EXPERIENCE</b><small>TRANSFORM · LEAD · SUSTAIN</small></div>
           <div><p className="eyebrow blue">ABOUT THE AUTHOR</p><h2>RAJESH KOUL</h2><p className="tagline">GLOBAL TRANSFORMATION LEADER <i/> ENTERPRISE SYSTEMS THINKER <i/> BUILDER OF SCALABLE EXCELLENCE</p>
             <MobileDisclosure label="Read full biography">
-              <p><b>Rajesh Koul</b> is a global transformation leader with over three decades of experience in leading large-scale enterprise transformations, leadership development, and operational excellence. He has driven impact across industrial manufacturing, financial services, healthcare, GCCs, and government sectors.</p>
+              <p><b>Rajesh Koul</b> is a global transformation leader with nearly three decades of experience in leading large-scale enterprise transformations, leadership development, and operational excellence. He has driven impact across industrial manufacturing, financial services, healthcare, GCCs, and government sectors.</p>
               <p>Having led cross-border programs for Fortune 500 organisations, he builds transformation functions from the ground up—helping leaders translate strategy into execution, scale with resilience, and create lasting value.</p>
               <p>Rajesh blends Lean, digital, and change leadership to design connected, adaptive, and future-ready operating systems.<br/>He partners with CXOs, Boards, and public sector leaders to shape organisations that run better, compete stronger, and improve continuously.</p>
             </MobileDisclosure>
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
 
       <section className="section split-section book-section" id="featured-book">
-        <div><p className="eyebrow">FEATURED BOOK</p><h2 className="display">Digi-e-Lean <em>(Manual)</em></h2><h3>How Industry 4.0 and Lean Thinking<br/>can Revolutionize Organizations</h3>
+        <div><p className="eyebrow">RESEARCH &amp; INTELLECTUAL WORK</p><h2 className="display">Digi-e-Lean <em>(Manual)</em></h2><h3>How Industry 4.0 and Lean Thinking<br/>can Revolutionize Organizations</h3>
           <p className="lead">In today’s swiftly evolving business landscape, the melding of lean methodology with digital transformation becomes crucial for competitiveness. “Digi-e-Lean” is not just a book but a culmination of three decades of transformational expertise, presenting an avant-garde approach to organizational agility and innovation. It offers a groundbreaking fusion of Lean and Industry 4.0 principles to help organizations achieve higher performance, greater efficiency, and sustainable growth.</p>
           <div className="book-benefits"><b><Cog/><span>Real-World<br/>Frameworks</span></b><b><BarChart3/><span>Practical<br/>Case Examples</span></b><b><Lightbulb/><span>Actionable<br/>Implementation</span></b></div>
           <button className="button">Request for Frameworks & Models <ArrowRight/></button>
@@ -77,7 +77,7 @@ export default function Home() {
       </section>
 
       <section className="section split-section book-section lmm-book-section" id="lmm-simplified">
-        <div className="lmm-copy"><p className="eyebrow">FEATURED BOOK</p><h2 className="display">LMM Simplified <em>(Manual)</em></h2><h3>Unlocking the Secrets to Superior Performance</h3>
+        <div className="lmm-copy"><p className="eyebrow">RESEARCH &amp; INTELLECTUAL WORK</p><h2 className="display">LMM Simplified <em>(Manual)</em></h2><h3>Unlocking the Secrets to Superior Performance</h3>
           <p className="lead">Amidst the turbulence of today&apos;s VUCA landscape, “LMM Simplified” shines as a crucial guide for organizations striving for operational excellence through lean methodologies. Distilled from three decades of lean expertise, the book shares insights gathered from industry giants and academic stalwarts. Beyond just outlining lean tenets, it provides actionable strategies for embedding lean principles into organizational culture.</p>
           <button className="button">Request for Frameworks &amp; Models <ArrowRight/></button>
         </div>
@@ -106,18 +106,18 @@ export default function Home() {
 
       <section className="section mission-section" id="mission">
         <div className="mission-shell">
-          <div className="mission-heading"><div><p className="eyebrow">MISSION STATEMENT</p><h2><span className="mission-first">EMPOWERING</span>{" "}<span className="mission-gradient">PURPOSE-LED,</span>{" "}<span className="mission-final">LEAN &amp; DIGITAL TRANSFORMATION</span></h2><p>People <i/> Processes <i/> Innovation <i/> Sustainable Impact</p></div><div className="mission-intro"><p>As a Transformation Specialist, I empower individuals and organizations to embark on <b>purpose-driven journeys of growth and evolution.</b> Through dedication, I instill profound purpose, foster engagement, and promote collaborative innovation, guiding lean and digital transformation initiatives to navigate change, inspire innovation, and lead transformative paths to sustained success in today&apos;s evolving landscape.</p></div></div>
+          <div className="mission-heading"><div><p className="eyebrow">MISSION STATEMENT</p><h2><span className="mission-first">EMPOWERING</span>{" "}<span className="mission-gradient">PURPOSE-LED,</span>{" "}<span className="mission-final">LEAN &amp; DIGITAL TRANSFORMATION</span></h2><p>People <i/> Processes <i/> Innovation <i/> Sustainable Impact</p></div><div className="mission-intro"><p>As a transformation specialist, I empower individuals and organisations to embark on <b>purpose-led journeys of growth and evolution.</b> Through this commitment, I help build a deeper sense of purpose, foster engagement and encourage collaborative innovation, guiding Lean and digital transformation initiatives that navigate change, inspire innovation and create sustainable success in today&apos;s evolving landscape.</p></div></div>
           <div className="pillar-journey">
             <header className="pillar-journey-intro"><p>THREE CONNECTED PILLARS</p><h3>From individual purpose to enterprise-wide impact.</h3></header>
             <div className="pillar-grid">{pillars.map((p, index)=><PillarCard key={p.n} step={String(index+1).padStart(2,"0")} icon={p.icon} label={p.n} outcome={p.outcome} title={p.title} text={p.text}/>)}</div>
           </div>
           <div className="mission-conclusion" id="pillar-summary">
-            <p>Through these pillars, my mission is to catalyze <strong>individual and organizational growth</strong>, fostering <strong>purpose, engagement, and innovation</strong> as the cornerstones of transformative journeys in today&apos;s dynamic world.</p>
+            <p>Through these pillars, my mission is to catalyse <strong>individual and organisational growth</strong>, fostering <strong>purpose, engagement and innovation</strong> as the cornerstones of meaningful transformation in today&apos;s dynamic world.</p>
           </div>
         </div>
       </section>
 
-      <section className="section core-section" id="core-expertise"><p className="eyebrow centered-label">CORE EXPERTISE</p><h2>End-to-end Growth, Transformation & <span>Value Creation</span></h2><p className="subtitle">Ideas. Capabilities. Execution. Measurable Impact.</p>
+      <section className="section core-section" id="core-expertise"><p className="eyebrow centered-label">INDUSTRY PERSPECTIVE</p><h2>Three Decades in Growth, Transformation &amp; <span>Value Creation</span></h2><p className="subtitle">Shaping strategy, strengthening operations, building global delivery platforms and driving enterprise excellence.</p>
         <CoreExpertiseTabs />
       </section>
 
@@ -136,16 +136,16 @@ export default function Home() {
           <p className="leadership-kicker">EXPERTISE <b/> EXPERIENCE <b/> EXCELLENCE</p>
           <i className="leadership-accent" aria-hidden="true" />
           <h2>Global Transformation Leader<br/>for <span>Lean, Digital &amp; Sustainable Growth</span></h2>
-          <p>I help organizations simplify complexity, build lean and digital operations, and achieve<br className="desktop"/> sustainable performance through proven frameworks and deep expertise. My 30+ years<br className="desktop"/> of experience at enterprise and MSME levels is dedicated to building the ‘Lean Nervous System’.</p>
+          <p>Over three decades, my work across large enterprises and MSMEs has centred on simplifying complexity, strengthening Lean and digital ways of working, and supporting sustainable organisational performance. The ideas and insights gained along this journey continue to shape my thinking and my work on <i>The Lean Nervous System</i>.</p>
         </header>
         <div className="leadership-actions">
-          <Link className="leadership-button leadership-button--primary" href="/lean-nervous-system">BUILD AN INTELLIGENT ORGANIZATION <ArrowRight/></Link>
-          <Link className="leadership-button leadership-button--outline" href="#connect">CONNECT FOR INSIGHTS <ArrowRight/></Link>
+          <Link className="leadership-button leadership-button--primary" href="/lean-nervous-system">EXPLORE THE LEAN NERVOUS SYSTEM <ArrowRight/></Link>
+          <Link className="leadership-button leadership-button--outline" href="/exchanging-ideas-perspectives/">EXCHANGE IDEAS &amp; PERSPECTIVES <ArrowRight/></Link>
         </div>
-        <div className="leadership-benefits" aria-label="Transformation benefits">
-          <div><span><Users/></span><p>Work across<br/>enterprises and MSMEs</p></div>
-          <div><span><BarChart3/></span><p>Drive measurable<br/>business impact</p></div>
-          <div><span><Leaf/></span><p>Enable resilient,<br/>future-ready organizations</p></div>
+        <div className="leadership-benefits" aria-label="Areas of work">
+          <div><span><Users/></span><p>Working across large<br/>enterprises and MSMEs</p></div>
+          <div><span><BarChart3/></span><p>Turning ideas into<br/>meaningful improvements</p></div>
+          <div><span><Leaf/></span><p>Contributing to resilient,<br/>future-ready organisations</p></div>
         </div>
       </section>
     </main>

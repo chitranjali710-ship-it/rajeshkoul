@@ -231,6 +231,14 @@
   margin-top: -20px;
 }
 
+.lh-col-4 {
+  margin-top: 20px;
+}
+
+.lh-col-4 .lh-track {
+  animation-duration: 66s;
+}
+
 .lh-wall:hover .lh-track {
   animation-play-state: paused;
 }
@@ -307,7 +315,8 @@
     gap: 14px;
   }
 
-  .lh-col-3 {
+  .lh-col-3,
+  .lh-col-4 {
     display: none;
   }
 

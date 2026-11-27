@@ -7,8 +7,8 @@ import { ArrowRight, BookOpen, ChevronDown, Menu, MessageCircle, X } from "lucid
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-const nav = [["Home","/home"],["About","/about"],["The Lean Nervous System","/lean-nervous-system"],["Blogs","/blogs"],["Literary Lounge",""],["Contact Me","/contact"]];
-const literaryNav = [["Book Review","/book-review"],["Personal Leadership & Coaching","/personal-leadership-coaching"],["Courses & Frameworks","/courses"],["Industry & Campus Talks","/industry-campus-talks"]];
+const nav = [["Home","/home"],["About","/about"],["The Lean Nervous System","/lean-nervous-system"],["Blogs","/blogs"],["Literary Lounge",""],["Let's Connect","/contact"]];
+const literaryNav = [["Book Review","/book-review"],["Leadership, Learning & Growth","/leadership-learning-growth"],["Exchanging Ideas & Perspectives","/exchanging-ideas-perspectives"],["Industry & Campus Dialogues","/industry-campus-dialogues"]];
 export function SiteHeader(){
   const [open,setOpen]=useState(false);
   const [literaryOpen,setLiteraryOpen]=useState(false);
@@ -30,7 +30,7 @@ export function SiteHeader(){
 }
 
 export function SiteFooter(){
-  const explore=[["Home","/home"],["About","/about"],["The Lean Nervous System","/lean-nervous-system"],["Blogs","/blogs"],["Contact Me","/contact"]];
+  const explore=[["Home","/home"],["About","/about"],["The Lean Nervous System","/lean-nervous-system"],["Blogs","/blogs"],["Let's Connect","/contact"]];
   const currentYear=new Date().getFullYear();
   const socialLinks:[SocialBrand,string,string][]=[
     ["facebook","Facebook","https://www.facebook.com/share/1J1BFq8xid/"],
@@ -40,8 +40,8 @@ export function SiteFooter(){
     ["youtube","YouTube","https://www.youtube.com/@author.rajeshkoul"],
     ["email","Email","mailto:author.rajeshkoul@gmail.com"],
   ];
-  return <><MobileActionDock/><footer id="site-footer" className="site-footer"><div className="intent-row"><div className="signature"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420}/></div><div className="intent"><b>MY INTENT</b><h2>Move Beyond Tools. Diagnose Maturity. <br className="intent-break"/><span>Design Organisations That Run, Learn, <br className="intent-break"/>And Improve — By Themselves.</span></h2><p>Helping organisations evolve from fragmented improvements to connected, adaptive, and future-ready systems.</p></div><div className="connect social-connect" id="connect"><b>LET’S CONNECT</b><p>Insights on transformation, leadership,<br/>{" "}and the Lean way of thinking.</p><nav className="social-links" aria-label="Social media">{socialLinks.map(([brand,label,href])=><a className={`social-link social-link-${brand}`} href={href} {...(href.startsWith("http")?{target:"_blank",rel:"noopener noreferrer"}:{})} aria-label={brand==="email"?"Email author.rajeshkoul@gmail.com":brand==="phone"?"Call +91 98732 98421":`Visit ${label}`} title={brand==="email"?"author.rajeshkoul@gmail.com":brand==="phone"?"+91 98732 98421":label} key={brand} onPointerUp={event=>event.currentTarget.blur()}><SocialIcon brand={brand}/></a>)}</nav></div></div>
-    <div className="footer-dark"><div className="footer-columns"><FooterList title="EXPLORE" links={explore}/><FooterList title="FOCUS AREAS" links={[["Enterprise Transformation","/"],["Industry 4.0","/"],["Lean Systems","/lean-nervous-system"],["Leadership Advisory","/personal-leadership-coaching"],["Organisational Maturity","/"]]}/><FooterList title="KNOWLEDGE & INSIGHTS" links={[["Books I Recommend","/book-review"],["Podcast","/literary-lounge/podcast"],["Ideas & Perspectives","/blogs"],["Tools & Frameworks","/courses"],["Case Examples","/"]]}/><FooterAbout/></div>
+  return <><MobileActionDock/><footer id="site-footer" className="site-footer"><div className="intent-row"><div className="signature"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420}/></div><div className="intent"><b>MY PHILOSOPHY</b><h2>Move Beyond Tools. <span>Diagnose Maturity.</span> <br className="intent-break"/>Design Organisations That Run, Learn, <br className="intent-break"/>And Improve — By Themselves.</h2><p>Helping organisations evolve from fragmented improvements to connected, adaptive, and future-ready systems.</p></div><div className="connect social-connect" id="connect"><b>LET’S CONNECT</b><p>Follow, engage and be part of the conversation.</p><nav className="social-links" aria-label="Social media">{socialLinks.map(([brand,label,href])=><a className={`social-link social-link-${brand}`} href={href} {...(href.startsWith("http")?{target:"_blank",rel:"noopener noreferrer"}:{})} aria-label={brand==="email"?"Email author.rajeshkoul@gmail.com":brand==="phone"?"Call +91 98732 98421":`Visit ${label}`} title={brand==="email"?"author.rajeshkoul@gmail.com":brand==="phone"?"+91 98732 98421":label} key={brand} onPointerUp={event=>event.currentTarget.blur()}><SocialIcon brand={brand}/></a>)}</nav></div></div>
+    <div className="footer-dark"><div className="footer-columns"><FooterList title="EXPLORE" links={explore}/><FooterList title="FOCUS AREAS" links={[["Enterprise Transformation","/"],["Industry 4.0","/"],["Lean Systems","/lean-nervous-system"],["Leadership Advisory","/leadership-learning-growth"],["Organisational Maturity","/"]]}/><FooterList title="KNOWLEDGE & INSIGHTS" links={[["Books I Recommend","/book-review"],["Podcast","/literary-lounge/podcast"],["Ideas & Perspectives","/blogs"],["Tools & Frameworks","/exchanging-ideas-perspectives"],["Case Examples","/"]]}/><FooterAbout/></div>
       <div className="copyright"><span>© {currentYear} Rajesh Koul. All rights reserved.</span><span><a href="/privacy-policy">Privacy Policy</a>　 |　 <a href="/terms-of-use">Terms of Use</a></span><em>Keep Learning. Keep Improving.</em></div>
     </div></footer></>
 }
@@ -91,7 +91,7 @@ function FooterAbout(){
     return()=>desktop.removeEventListener("change",syncOpenState);
   },[]);
 
-  return <details className="about-footer footer-about-fold" open={open} onToggle={event=>setOpen(event.currentTarget.open)}><summary><h3>ABOUT RAJESH KOUL</h3><ChevronDown aria-hidden="true"/></summary><p>Rajesh Koul is a global transformation leader with over three decades of experience in leading large-scale enterprise transformations, leadership development, and operational excellence.</p><p>His mission is to help mid-sized organisations — the backbone of the Indian economy — grow with confidence, compete globally, and evolve into resilient, world-class enterprises.</p></details>
+  return <details className="about-footer footer-about-fold" open={open} onToggle={event=>setOpen(event.currentTarget.open)}><summary><h3>ABOUT THE AUTHOR</h3><ChevronDown aria-hidden="true"/></summary><p>RAJESH KOUL is a global transformation leader with nearly three decades of experience in enterprise transformation, leadership development, and operational excellence.</p><p>His mission is to help mid-sized organizations—the backbone of the Indian economy—grow with confidence, compete globally, and evolve into resilient world-class enterprises through disciplined, human-centred transformation.</p></details>
 }
 
 function FooterList({title,links}:{title:string,links:string[][]}){

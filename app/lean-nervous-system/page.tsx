@@ -26,7 +26,7 @@ export const metadata = pageMeta({
 
 const actions = [
   { icon: BookOpen, title: "Don’t Just Manage. Build an Organisation That Thinks.", body: "A definitive guide to Organisational Maturity & Enterprise Health.", label: "PURCHASE THE BOOK", href: "/contact" },
-  { icon: ChartNoAxesCombined, title: "Diagnose Your Organisation Like a System — Not a Guess", body: "Measure maturity across 10 domains. Identify hidden drag. Build a roadmap.", label: "ENTERPRISE HEALTH SCAN", href: "https://ehs.rajeshkoul.com/survey/test-survey-pulse" },
+  { icon: ChartNoAxesCombined, title: "Diagnose Your Organisation Like a System — Not a Guess", body: "Measure maturity across 10 domains. Identify hidden drag. Build a roadmap.", label: "ENTERPRISE HEALTH SCAN", href: "https://ehl.rajeshkoul.com/survey/test-survey-pulse" },
 ];
 
 const measures = [
@@ -198,7 +198,7 @@ export default async function LeanNervousSystem() {
             <p className="lns-author-kicker">ABOUT THE AUTHOR</p>
             <h2 id="lns-author-title">RAJESH <span>KOUL</span></h2>
             <p className="lns-author-role">GLOBAL TRANSFORMATION LEADER <i /> ENTERPRISE SYSTEMS THINKER <i /> BUILDER OF SCALABLE EXCELLENCE</p>
-            <p><strong>Rajesh Koul</strong> is a global transformation leader with over three decades of experience in leading large-scale enterprise transformations, leadership development, and operational excellence across industries. His work focuses on helping organizations move beyond fragmented initiatives to build integrated, high-performing systems that sustain excellence over time.</p>
+            <p><strong>Rajesh Koul</strong> is a global transformation leader with nearly three decades of experience in leading large-scale enterprise transformations, leadership development, and operational excellence across industries. His work focuses on helping organizations move beyond fragmented initiatives to build integrated, high-performing systems that sustain excellence over time.</p>
             <p>Over the years, Rajesh has worked closely with leadership teams to navigate complexity, scale operations, and unlock performance by aligning strategy, processes, people, and culture into a single, coherent system. His approach combines the principles of Lean with modern digital thinking to create organizations that are not just efficient—but adaptive, intelligent, and future-ready.</p>
             <p>In The Lean Nervous System, he brings together decades of practical experience to introduce the Lean Maturity Model (LMM)—a structured and original framework that enables leaders to diagnose organizational health, eliminate systemic disconnects, and design enterprises that continuously learn, improve, and respond as one.</p>
           </div>

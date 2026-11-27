@@ -183,9 +183,10 @@ const inTheNews = [
 export default function BlogsPage() {
   return <><SiteHeader/><main className="blogs-page">
     <div className="blogs-hero-stage"><section className="blogs-hero">
-      <p className="blogs-kicker">IDEAS · PERSPECTIVES · PRACTICE</p>
-      <h1>Blogs</h1>
-      <p>Practical thinking for leaders building connected, adaptive, and future-ready organisations.</p>
+      <p className="blogs-kicker">IDEAS <i aria-hidden="true">|</i> PERSPECTIVES <i aria-hidden="true">|</i> PRACTICE</p>
+      <h1>Thought Perspectives on Transformation</h1>
+      <p>Practical ideas, frameworks and real-world insights on leadership, organisational excellence, operational performance and sustainable growth.</p>
+      <a className="blogs-hero-cta" href="#latest">Explore Latest Insights <ArrowRight aria-hidden="true"/></a>
       <BlogHeroSearch/>
     </section></div>
 

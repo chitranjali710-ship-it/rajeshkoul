@@ -40,13 +40,13 @@ export default function About(){return <><SiteHeader/><main>
         <h2 id="about-bio-title">RAJESH <span>KOUL</span></h2>
         <p className="about-bio-tagline">AUTHOR <i/> GLOBAL TRANSFORMATION LEADER <i/> STRATEGIC ADVISOR</p>
         <div className="about-bio-rule"/>
-        <p><b>Rajesh Koul</b> is a global transformation leader known for shaping large-scale enterprise change through a systems-driven approach to business performance. Over the past three decades, he has worked across industries and geographies, contributing to complex transformation journeys that integrate strategy, operations, and technology into cohesive, scalable systems.</p>
+        <p><b>Rajesh Koul</b> is a global transformation leader known for shaping large-scale enterprise change through a systems-driven approach to business performance. Over nearly three decades, he has worked across industries and geographies, contributing to complex transformation journeys that integrate strategy, operations, and technology into cohesive, scalable systems.</p>
         <p>His work has been particularly impactful in building transformation capabilities from the ground up—enabling organisations to move beyond fragmented initiatives toward structured, sustainable excellence.</p>
         <p>Rajesh’s career reflects a deep engagement with the evolving challenges of modern enterprises. Across industrial, service, and public-sector environments, he has focused on addressing transformation holistically—bringing together people, process, technology, and structure to create aligned and resilient operating models.</p>
       </div>
     </div>
     <div className="about-credentials">
-      <CredentialCard tone="blue" icon={<Cog/>} title="STRATEGIC FOUNDATION" items={[<><b>Mechanical Engineering:</b> NIT, India.</>,<><b>MBA:</b> FMS, Delhi University.</>,<><b>Academic Core:</b> Business Management &amp; Engineering.</>]}/>
+      <CredentialCard tone="blue" icon={<Cog/>} title="STRATEGIC FOUNDATION" items={[<><b>Mechanical Engineering:</b> NIT Silchar, India.</>,<><b>MBA:</b> FMS, Delhi University.</>,<><b>Academic Core:</b> Business Management &amp; Engineering.</>]}/>
       <CredentialCard tone="violet" icon={<Globe2/>} title="GLOBAL PERSPECTIVE" items={[<><b>Executive Leadership Alumnus:</b> Wharton School of Business, INSEAD, Human Edge, and ISB.</>,<><b>Experience:</b> Cross-border programs for Fortune 500 organisations.</>,<>Worked across industries and geographies.</>]}/>
       <CredentialCard tone="pink" icon={<Trophy/>} title="VALIDATED RECOGNITION" items={[<><b>Certified Expert:</b> Lean Six Sigma Master Black Belt | Design Thinking Practitioner.</>,<><b>Major Awards:</b> Mint TechCircle Transformation Leader (2021 &amp; 2022).</>,<><b>National Quality Champion:</b> QCI, 2020.</>]}/>
     </div>

@@ -18,7 +18,7 @@ function CoverImage({ book, eager }: { book: Cover; eager?: boolean }) {
  * links each book. Motion stops for visitors who prefer reduced motion.
  */
 export function LibraryHero({ books }: { books: Cover[] }) {
-  const columns = [0, 1, 2, 3].map(c => books.filter((_, i) => i % 4 === c));
+  const columns = [0, 1, 2, 3, 4].map(c => books.filter((_, i) => i % 5 === c));
   const half = Math.ceil(books.length / 2);
   const rows = [books.slice(0, half), books.slice(half)];
 
@@ -42,7 +42,7 @@ export function LibraryHero({ books }: { books: Cover[] }) {
         <div className="lh-wall-tilt">
           {columns.map((column, c) => <div className={`lh-col lh-col-${c}`} key={c}>
             <div className="lh-track">
-              {[...column, ...column].map((book, i) => <CoverImage book={book} eager={i < 4} key={`${book.cover}-${i}`} />)}
+              {[...column, ...column].map((book, i) => <CoverImage book={book} eager={i < 3} key={`${book.cover}-${i}`} />)}
             </div>
           </div>)}
         </div>

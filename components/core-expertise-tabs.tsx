@@ -4,75 +4,72 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
-  BrainCircuit,
   Building2,
   ClipboardCheck,
   Coins,
+  Cog,
+  Cpu,
   Factory,
-  FileCheck2,
   Gauge,
   Globe2,
   Handshake,
-  HeartHandshake,
   Layers3,
-  Megaphone,
-  Network,
+  Leaf,
   PanelsTopLeft,
-  RefreshCcw,
-  Route,
+  Settings2,
+  TrendingUp,
   Users,
-  Workflow,
 } from "lucide-react";
 
 const expertise = [
   {
-    title: "Growth & Strategy",
-    description: "Designing growth blueprints that align markets and offerings.",
+    title: "Strategy & Growth",
+    description: "Shaping growth agendas, go-to-market approaches and business expansion.",
     cards: [
-      { icon: BarChart3, title: "Sales Growth Strategy", text: "Predictable revenue acceleration and performance rhythms." },
-      { icon: Globe2, title: "Market Expansion", text: "Structured entry plans for new geographies and white spaces." },
-      { icon: Handshake, title: "Strategic Alliances", text: "Governing partnerships that unlock ecosystem capabilities." },
-      { icon: Layers3, title: "M&A Integration", text: "Aligning culture and operating models for synergy." },
+      { icon: BarChart3, title: "Growth Strategy", text: "Driving revenue growth and stronger business performance." },
+      { icon: Globe2, title: "Market Expansion", text: "Entering new markets and scaling operations." },
+      { icon: Handshake, title: "Strategic Partnerships", text: "Building and managing high-impact ecosystem collaborations." },
+      { icon: Layers3, title: "M&A and Integration", text: "Supporting mergers, acquisitions and seamless integration." },
     ],
   },
   {
-    title: "Shared Services & GCC",
-    description: "Building high-performing Global Capability Centres.",
+    title: "Shared Services & GCCs",
+    description: "Setting up, scaling and transforming global capability centres and shared services.",
     cards: [
-      { icon: Building2, title: "GCC Set-up", text: "Defining mandates and strategic competitive advantage." },
-      { icon: ClipboardCheck, title: "Service Design", text: "Industrialised catalogues with clear SLAs." },
-      { icon: Gauge, title: "Performance Frameworks", text: "Keeping global operations aligned and accountable." },
-      { icon: Users, title: "Talent Strategy", text: "Future-ready skill roadmaps for global talent pools." },
+      { icon: Building2, title: "GCC Set-up & Scale", text: "Establishing mandates, operating models and governance for impact." },
+      { icon: ClipboardCheck, title: "Service Design & Transition", text: "Designing service catalogues, SLAs and transition roadmaps." },
+      { icon: Gauge, title: "Performance Management", text: "Driving operational efficiency, quality and business outcomes." },
+      { icon: Users, title: "Talent & Capability", text: "Building future-ready skills and high-performing global teams." },
     ],
   },
   {
-    title: "Tech Transformation",
-    description: "Using Digital, AI, and Industry 4.0 to redesign workflows.",
+    title: "Digital & Technology Transformation",
+    description: "Leveraging digital, analytics and Industry 4.0 to reimagine and scale business operations.",
     cards: [
-      { icon: Workflow, title: "Process Digitisation", text: "Simplifying flows with RPA and low-code platforms." },
-      { icon: BrainCircuit, title: "AI Integration", text: "Embedding AI for insight-driven decision making." },
-      { icon: Factory, title: "Industry 4.0", text: "IIoT and digital twins with clear ROI impact." },
-      { icon: PanelsTopLeft, title: "CX Platforms", text: "Orchestrating CRM for consistent customer journeys." },
+      { icon: Cog, title: "Process Transformation", text: "Re-engineering and digitising end-to-end business processes." },
+      { icon: Cpu, title: "Data, Analytics & AI", text: "Turning data into insights for faster and better decisions." },
+      { icon: Factory, title: "Industry 4.0", text: "Driving smart, connected and high-performance operations." },
+      { icon: PanelsTopLeft, title: "Customer & Experience Platforms", text: "Enabling integrated, data-driven customer journeys." },
     ],
   },
   {
-    title: "ESG & Value Creation",
-    description: "Integrating sustainability into core business strategy.",
+    title: "ESG & Sustainable Value",
+    description: "Embedding sustainability to drive business resilience and long-term value.",
     cards: [
-      { icon: Route, title: "ESG Roadmaps", text: "Aligning long-term ambition with business strategy." },
-      { icon: FileCheck2, title: "Compliance", text: "Data models meeting regulatory disclosure standards." },
-      { icon: HeartHandshake, title: "Purpose-led Value", text: "Measurable initiatives for customers and people." },
-      { icon: Megaphone, title: "Engagement", text: "Feedback loops with investors and communities." },
+      { icon: Leaf, title: "ESG Roadmap & Integration", text: "Aligning sustainability goals with business strategy and operations." },
+      { icon: Layers3, title: "Value Engineering", text: "Unlocking cost, resource and operational value through sustainable solutions." },
+      { icon: Users, title: "Purpose-led Value", text: "Creating measurable value for customers, people and communities." },
+      { icon: TrendingUp, title: "Impact & Engagement", text: "Tracking progress and driving stakeholder engagement for lasting impact." },
     ],
   },
   {
     title: "Operational Excellence",
-    description: "Lean, standardised and resilient operations at scale.",
+    description: "Building lean, high-performing and resilient operations at scale.",
     cards: [
-      { icon: RefreshCcw, title: "Lean Transformation", text: "Daily improvement culture and operational stability." },
-      { icon: Network, title: "Re-engineering", text: "Improving quality, throughput and consistency." },
-      { icon: Layers3, title: "Operating Model", text: "Blueprints across people, process and technology." },
-      { icon: Coins, title: "Cost Optimisation", text: "Protecting risk while releasing structural levers." },
+      { icon: TrendingUp, title: "Lean & Process Excellence", text: "Driving a culture of continuous improvement and operational stability." },
+      { icon: Settings2, title: "Operating Model & Efficiency", text: "Designing and optimising people, process and technology for scale." },
+      { icon: Layers3, title: "Quality & Performance", text: "Strengthening quality, service levels and end-to-end performance." },
+      { icon: Coins, title: "Cost & Value Optimisation", text: "Enhancing productivity, reducing waste and unlocking sustainable value." },
     ],
   },
 ];
@@ -112,7 +109,7 @@ export function CoreExpertiseTabs() {
 
   return (
     <div className="core-panel">
-      <div className="core-tabs" ref={tabList} role="tablist" aria-label="Core expertise categories">
+      <div className="core-tabs" ref={tabList} role="tablist" aria-label="Industry perspective areas">
         {expertise.map((item, index) => (
           <button
             ref={(element) => { tabs.current[index] = element; }}
