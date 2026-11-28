@@ -1,0 +1,121 @@
+/* Visitor-statistics consent notice: a quiet bar at the bottom of the screen, not a blocking pop-up */
+
+.consent-notice {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9000;
+  padding: 0 16px 16px;
+  pointer-events: none;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+.consent-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 22px 26px;
+  border: 1px solid rgba(226, 189, 120, 0.35);
+  border-radius: 14px;
+  background: #10282f;
+  box-shadow: 0 18px 48px rgba(6, 20, 24, 0.35);
+  color: #e9e5db;
+  pointer-events: auto;
+}
+
+.consent-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.consent-notice h2 {
+  margin: 0 0 6px;
+  color: #f6f3ec;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 400;
+  outline: none;
+}
+
+.consent-notice p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.consent-notice strong {
+  color: #f6f3ec;
+  font-weight: 600;
+}
+
+.consent-notice .consent-small {
+  margin-top: 6px;
+  color: #b9c3c2;
+  font-size: 12.5px;
+}
+
+.consent-notice a {
+  color: #e2bd78;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.consent-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+/* Both choices look the same, so neither is nudged */
+.consent-actions button {
+  min-width: 128px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid #e2bd78;
+  border-radius: 999px;
+  background: transparent;
+  color: #f6f3ec;
+  font: 600 14px/1 Poppins, Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.consent-actions button:hover {
+  background: #e2bd78;
+  color: #10282f;
+}
+
+.consent-actions button:focus-visible,
+.consent-notice a:focus-visible {
+  outline: 2px solid #f6f3ec;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .consent-notice {
+    padding: 0 10px 10px;
+  }
+
+  .consent-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .consent-actions button {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consent-actions button { transition: none; }
+}
+
+@media print {
+  .consent-notice { display: none; }
+}

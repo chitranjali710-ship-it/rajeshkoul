@@ -156,6 +156,7 @@ export function StoreDialog({ open, selected, onChoose, onClose }: StoreDialogPr
         </div>
       </div>
     </div>,
-    document.body,
+    // inside the "Get your copy" pop-up, open on top of it rather than behind it
+    (document.querySelector("dialog[open]") as HTMLElement | null) ?? document.body,
   );
 }

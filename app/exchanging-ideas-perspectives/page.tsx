@@ -37,7 +37,7 @@ export default function Page(){return <><SiteHeader/><main className="courses-pa
   </section>
   <section className="courses-coming-soon-v2" id="courses-coming-soon" aria-labelledby="courses-coming-title">
     <div className="courses-coming-mark-v2"><GraduationCap aria-hidden="true"/></div>
-    <div><p>THE LEARNING STUDIO</p><h2 id="courses-coming-title">Explore learning notes, frameworks, and case studies.</h2></div>
-    <span>Learn. Reflect. Apply.</span>
+    <div><p>THE LEARNING STUDIO</p><h2 id="courses-coming-title">Explore learning notes, frameworks, and case studies.</h2><span className="coming-signoff-v2">Learn. Reflect. Apply.</span></div>
+    <span className="coming-pill-v2">COMING SOON</span>
   </section>
 </main><SiteFooter/></>}

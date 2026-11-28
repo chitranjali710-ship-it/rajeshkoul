@@ -30,7 +30,7 @@ export function ReviewReader({title,author,slug,pages}:ReviewReaderProps){
     </header>
     <section className="protected-reader-pages" aria-label={`${title} review pages`}>
       {Array.from({length:pages},(_,index)=><figure className="protected-reader-page" key={index}>
-        <Image src={`/reviews/${slug}/page-${index+1}.jpg`} width={1920} height={1080} alt={`${title} review, page ${index+1} of ${pages}`} draggable={false} priority={index===0} sizes="(max-width: 1000px) 100vw, 1400px"/>
+        <Image src={`/reviews/${slug}/page-${index+1}.webp`} width={1920} height={1080} alt={`${title} review, page ${index+1} of ${pages}`} draggable={false} priority={index===0} sizes="(max-width: 1000px) 100vw, 1400px"/>
         <figcaption>Page {index+1} of {pages}</figcaption>
       </figure>)}
     </section>

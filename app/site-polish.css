@@ -2742,3 +2742,196 @@ html body:not(#_) .leadership-header > p {
     padding-right: 10px !important;
   }
 }
+
+/* "Privacy choices" footer link (reopens the visitor-statistics notice) — looks like the links beside it */
+html body:not(#_) .footer-privacy-choices {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+html body:not(#_) .footer-privacy-choices:hover,
+html body:not(#_) .footer-privacy-choices:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Contact form: hidden spam trap, sending state and error message */
+html body:not(#_) .contact-botcheck {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+html body:not(#_) .contact-submit:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+html body:not(#_) .contact-success,
+html body:not(#_) .contact-error {
+  position: static;
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+html body:not(#_) .contact-success {
+  color: #2f5a43;
+}
+
+html body:not(#_) .contact-error {
+  color: #9a3412;
+}
+
+html body:not(#_) .contact-error a {
+  color: inherit;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* ---- Accessibility: text contrast (WCAG AA, 4.5:1 for normal text) ---- */
+/* Mobile home: "Read full pillar" on the dark middle card was dark-on-dark */
+html body:not(#_) .home-page .mission-section .pillar-card[data-step="02"] .pillar-card-toggle { color: #fffaf0; }
+/* Section numbers on Privacy Policy / Terms of Use */
+html body:not(#_) .legal-section h2 > span { color: #7f6033; }
+/* Hero sub-notes on Leadership, Exchanging Ideas and Industry & Campus pages */
+html body:not(#_) .coaching-note,
+html body:not(#_) .courses-note,
+html body:not(#_) .talks-note { color: #5a6769; }
+/* Contact page topic cards */
+html body:not(#_) .contact-reasons article p { color: #55666a; }
+/* Blog article summary cards */
+html body:not(#_) .article-summary span { color: #586a66; }
+/* Book review reader: author and page count line */
+html body:not(#_) .protected-reader-header span { color: #56688e; }
+/* Blogs list: "Page 1 of 2" */
+html body:not(#_) .book-library-page-note { color: #5f6e88; }
+/* Lean Nervous System story: gold emphasis on the dark footer and on the sage panel */
+html body:not(#_) .lns-story-footer strong { color: #e2bd78; }
+html body:not(#_) .lns-story-narrative strong { color: #6f5226; }
+
+/* Skip link: off-screen until focused with the keyboard */
+html body:not(#_) .skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10000;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #10282f;
+  color: #f6f3ec;
+  font: 600 14px/1 Poppins, Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+html body:not(#_) .skip-link:focus {
+  transform: none;
+  outline: 2px solid #e2bd78;
+  outline-offset: 2px;
+}
+
+html body:not(#_) main:focus { outline: none; }
+
+/* ---------------------------------------------------------------
+   LNS hero · tighter (desktop ≥1101px): section 850 → 810px tall,
+   action cards 196 → 180px, smaller gap between the rotating text
+   and the cards, books start a little higher so they keep their size,
+   and (≥1280px) the books sit 50px further left.
+   --------------------------------------------------------------- */
+@media (min-width: 1101px) {
+  html body:not(#_) .lns-page .lns-hero {
+    min-height: 810px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-action-card {
+    min-height: 180px !important;
+    padding: 22px 24px 20px !important;
+  }
+
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    top: 86px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    right: calc(2.5vw + 50px) !important;
+  }
+}
+
+/* Footer column headings (Explore, Focus Areas, Knowledge & Insights, About the Author)
+   "My Philosophy" and "Let's Connect" in the lighter gold of "Diagnose Maturity", so they read clearly on the dark footer */
+html body:not(#_) .site-footer .intent b,
+html body:not(#_) .site-footer .connect > b,
+html body:not(#_) .site-footer details.footer-list > summary > span,
+html body:not(#_) .site-footer .footer-about-fold > summary h3 {
+  color: #e2bd78 !important;
+}
+
+/* Footer link columns (desktop/tablet): links closer together,
+   a little more room between each column title and its links */
+@media (min-width: 761px) {
+  html body:not(#_) .site-footer details.footer-list > summary + * {
+    margin-top: 14px !important;
+  }
+
+  html body:not(#_) .site-footer details.footer-list a {
+    min-height: 34px !important;
+    height: auto !important;
+  }
+}
+
+/* Home: "Research & Intellectual Work" labels above the two books in bold */
+html body:not(#_) .book-section .eyebrow {
+  font-weight: 700 !important;
+}
+
+/* Exchanging Ideas / Industry & Campus closing strip: "COMING SOON" pill back on
+   the right; the sign-off line sits under the heading, a little smaller */
+html body:not(#_) .courses-coming-soon-v2 > span.coming-pill-v2,
+html body:not(#_) .talks-coming-soon-v2 > span.coming-pill-v2 {
+  display: inline-block;
+  padding: 13px 18px !important;
+  border: 1px solid #a88653 !important;
+  border-radius: 999px !important;
+  color: #825b2a !important;
+  font-family: Poppins, Arial, Helvetica, sans-serif !important;
+  font-size: 10px !important;
+  font-style: normal;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  white-space: nowrap;
+}
+
+html body:not(#_) .courses-coming-soon-v2 > span.coming-pill-v2::before,
+html body:not(#_) .talks-coming-soon-v2 > span.coming-pill-v2::before {
+  content: none;
+}
+
+html body:not(#_) .coming-signoff-v2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+  color: #152c35;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(15px, 1.15vw, 17px);
+  font-style: italic;
+}
+
+html body:not(#_) .coming-signoff-v2::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 44px;
+  height: 1px;
+  background: #c9984f;
+}

@@ -8,7 +8,7 @@ export const metadata = pageMeta({
 });
 
 const EMAIL = "author.rajeshkoul@gmail.com";
-const UPDATED = "23 November 2026";
+const UPDATED = "27 November 2026";
 
 const sections: LegalSection[] = [
   {
@@ -46,6 +46,11 @@ const sections: LegalSection[] = [
             <td>Technical data recorded automatically by the website’s hosting provider, such as IP address, browser and device type, the pages requested and the date and time</td>
             <td>To deliver the website, keep it secure, and detect and prevent misuse</td>
           </tr>
+          <tr>
+            <td>You visit a page <strong>after choosing “Allow”</strong> in the visitor statistics notice</td>
+            <td>The page visited, the website that linked to it, browser and device type, country, and page-loading times. No cookies are set and no name, email or account is linked to it.</td>
+            <td>To count visits and understand which pages are useful, so the website can be improved</td>
+          </tr>
         </tbody>
       </table>
       <p>I do not ask for, and ask you not to send, sensitive information such as financial account details, government ID numbers, passwords or health information through the website.</p>
@@ -57,6 +62,9 @@ const sections: LegalSection[] = [
     body: <>
       <h3>With your consent</h3>
       <p>When you submit the contact form, I process your data on the basis of the consent you give by ticking the consent box, for the specific purpose of responding to your enquiry. This includes enquiries about the book, the Enterprise Health Lab, talks, coaching, campus sessions or anything else you ask about.</p>
+      <h3 id="visitor-statistics">Visitor statistics, only if you allow them</h3>
+      <p>When you first visit, a notice asks whether you allow visitor statistics. They are collected with <strong>Cloudflare Web Analytics</strong> only if you choose “Allow”, and only for counting visits and improving the website. If you choose “Don’t allow” or ignore the notice, nothing is counted, and the whole website works the same either way.</p>
+      <p>You can change or withdraw this choice at any time, as easily as you gave it, from <strong>“Privacy choices”</strong> at the bottom of every page. Your choice and the date you made it are saved in your own browser so that the notice isn’t shown on every page.</p>
       <h3>For certain legitimate uses</h3>
       <p>As permitted by Section 7 of the DPDP Act, I may process limited data without separate consent where it is necessary to comply with a law, a court order or a lawful request from a government authority, or to respond to a medical emergency or threat to safety.</p>
       <h3>What I do not do</h3>
@@ -84,7 +92,9 @@ const sections: LegalSection[] = [
       <p>Your data is seen by me and, only where needed, by service providers who help run the website. These providers act as <strong>Data Processors</strong> on my behalf and may use the data only to provide their service to me. They are:</p>
       <ul>
         <li><strong>Website hosting</strong>, which stores the website and records the technical data described above;</li>
-        <li><strong>Email</strong>, which delivers your enquiry to me and my replies to you.</li>
+        <li><strong>Web3Forms</strong>, which receives what you type into the contact form and forwards it to my email inbox;</li>
+        <li><strong>Email</strong> (Google Gmail), which delivers your enquiry to me and my replies to you;</li>
+        <li><strong>Cloudflare Web Analytics</strong>, which counts visits for me, only if you have allowed visitor statistics. Cloudflare states that it does not use this data to track individuals or for advertising.</li>
       </ul>
       <p>I may also disclose data where the law requires it, for example to comply with a court order or a lawful request from a government authority.</p>
     </>,
@@ -162,7 +172,9 @@ const sections: LegalSection[] = [
     title: "Cookies, storage and embedded content",
     body: <>
       <ul>
-        <li><strong>No advertising or analytics cookies.</strong> The website does not use advertising cookies or tracking pixels.</li>
+        <li><strong>No cookies for advertising or tracking.</strong> The website does not use advertising cookies or tracking pixels.</li>
+        <li><strong>Visitor statistics.</strong> Cloudflare Web Analytics sets no cookies and runs only after you choose “Allow”. You can change your choice from “Privacy choices” at the bottom of every page.</li>
+        <li><strong>Your privacy choice.</strong> Your answer to the visitor statistics notice, and the date you gave it, are saved in your own browser (local storage) so the notice isn’t repeated on every page. It never leaves your device.</li>
         <li><strong>Display preferences.</strong> If you switch the Blogs or Book Review list between grid and list view, that choice is saved in your own browser (local storage) so it is remembered next time. It contains no personal data and never leaves your device. You can clear it at any time through your browser settings.</li>
         <li><strong>YouTube videos.</strong> Videos are embedded using YouTube’s privacy-enhanced mode and load only when you press play. Once a video plays, YouTube (Google) may collect data under its own privacy policy.</li>
       </ul>
@@ -210,6 +222,7 @@ export default function PrivacyPolicyPage() {
         <>You can browse the whole website without sharing any personal data.</>,
         <>If you use the contact form, I use your details only to reply to you, with your consent.</>,
         <>I don’t sell your data, run advertising trackers or add you to mailing lists.</>,
+        <>Visitor statistics are collected only if you allow them, without cookies, and you can change your mind at any time from “Privacy choices” at the bottom of every page.</>,
         <>You can access, correct or erase your data, or withdraw consent, by emailing <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</>,
         <>Grievances are resolved within 90 days.</>,
       ],

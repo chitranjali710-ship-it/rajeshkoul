@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight, ShieldCheck, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const placeholderPages = [
-  "/reviews/reinventing-strategy/page-1.jpg",
-  "/reviews/reinventing-strategy/page-2.jpg",
-  "/reviews/reinventing-strategy/page-3.jpg",
+  "/reviews/reinventing-strategy/page-1.webp",
+  "/reviews/reinventing-strategy/page-2.webp",
+  "/reviews/reinventing-strategy/page-3.webp",
 ];
 
 export function LnsFrameworkViewer() {

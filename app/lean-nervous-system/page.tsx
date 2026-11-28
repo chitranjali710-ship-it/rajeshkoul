@@ -10,6 +10,8 @@ import { LnsArchitectureNavigator } from "@/components/lns-architecture-navigato
 import { LnsStoryDisclosure } from "@/components/lns-story-disclosure";
 import { YouTubeFeed } from "@/components/youtube-feed";
 import { LnsPurchase } from "@/components/lns-purchase";
+import { LnsBuyDialog } from "@/components/lns-buy-dialog";
+import { PrivacyChoicesButton } from "@/components/privacy-choices-button";
 import "@/components/lns-book-story-mobile.css";
 import { getYouTubeVideos } from "@/lib/youtube-feed";
 import { BOOK_SHARE_IMAGE, bookJsonLd, jsonLdGraph, pageMeta } from "@/lib/seo";
@@ -25,8 +27,8 @@ export const metadata = pageMeta({
 });
 
 const actions = [
-  { icon: BookOpen, title: "Don’t Just Manage. Build an Organisation That Thinks.", body: "A definitive guide to Organisational Maturity & Enterprise Health.", label: "PURCHASE THE BOOK", href: "/contact" },
-  { icon: ChartNoAxesCombined, title: "Diagnose Your Organisation Like a System — Not a Guess", body: "Measure maturity across 10 domains. Identify hidden drag. Build a roadmap.", label: "ENTERPRISE HEALTH SCAN", href: "https://ehl.rajeshkoul.com/survey/test-survey-pulse" },
+  { icon: BookOpen, title: "Don’t Just Manage. Build an Organisation That Thinks.", body: "A definitive guide to Organisational Maturity & Enterprise Health.", label: "PURCHASE THE BOOK", href: "#get-your-copy" },
+  { icon: ChartNoAxesCombined, title: "Diagnose Your Organisation Like a System — Not a Guess", body: "Measure maturity across 10 domains. Identify hidden drag. Build a roadmap.", label: "ENTERPRISE HEALTH SCAN", href: "https://ehl.rajeshkoul.com/p/lns" },
 ];
 
 const measures = [
@@ -78,7 +80,7 @@ const discoveries = ["Why most transformation programs fail—even with the righ
 
 const footerResources = [
   { eyebrow: "READ", title: "The Lean Nervous System", text: "The definitive guide to connected, adaptive and resilient enterprises.", action: "READ THE BOOK", image: "/art/lns-footer-book.webp", href: "#purchase-options", tone: "dark" },
-  { eyebrow: "DIAGNOSE", title: "Enterprise Health Scan", text: "See organisational maturity clearly and identify what must evolve next.", action: "ASSESS YOUR ORGANISATION", image: "/art/lns-footer-health-scan.webp", href: "/contact", tone: "light" },
+  { eyebrow: "DIAGNOSE", title: "Enterprise Health Scan", text: "See organisational maturity clearly and identify what must evolve next.", action: "ASSESS YOUR ORGANISATION", image: "/art/lns-footer-health-scan.webp", href: "https://ehl.rajeshkoul.com/p/lns", tone: "light" },
   { eyebrow: "APPLY", title: "Frameworks & Models", text: "Turn the Lean Nervous System into disciplined, repeatable execution.", action: "APPLY THE FRAMEWORK", image: "/art/lns-footer-playbook.webp", href: "/contact", tone: "dark", comingSoon: true },
   { eyebrow: "EXPLORE", title: "Insights & Resources", text: "Practical tools for diagnosis, alignment, innovation and maturity.", action: "ACCESS THE RESOURCES", image: "/art/lns-footer-resources.webp", href: "/blogs", tone: "light" },
 ];
@@ -112,6 +114,7 @@ export default async function LeanNervousSystem() {
       </section>
     </main></div>
     <LnsPurchase tone="light" id="purchase-options" />
+    <LnsBuyDialog />
     <section className="lns-book-story" aria-labelledby="lns-book-story-title">
       <header className="lns-story-heading">
         <h2 id="lns-book-story-title">Let Me Tell You More About <span>This Book…</span></h2>
@@ -236,7 +239,7 @@ export default async function LeanNervousSystem() {
         <div className="lns-footer-bottom">
           <div className="lns-footer-brand"><Image src="/art/rajesh-koul-wordmark.svg" alt="Rajesh Koul — Building Human-Centered Systems" width={1200} height={420} /></div>
           <nav aria-label="Lean Nervous System footer navigation"><Link href="/home">Home</Link><Link href="/about">About</Link><Link href="/lean-nervous-system">The Lean Nervous System</Link><Link href="/blogs">Insights</Link><Link href="/contact">Contact</Link><a href="https://www.youtube.com/@author.rajeshkoul" target="_blank" rel="noopener noreferrer">YouTube</a></nav>
-          <p>© {new Date().getFullYear()} Rajesh Koul <i /> <a href="/privacy-policy">Privacy Policy</a> <i /> <a href="/terms-of-use">Terms of Use</a></p>
+          <p>© {new Date().getFullYear()} Rajesh Koul <i /> <a href="/privacy-policy">Privacy Policy</a> <i /> <a href="/terms-of-use">Terms of Use</a> <i /> <PrivacyChoicesButton /></p>
         </div>
       </div>
     </footer>

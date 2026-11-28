@@ -38,7 +38,7 @@ export default function Page(){return <><SiteHeader/><main className="talks-page
   </section>
   <section className="talks-coming-soon-v2" id="talks-coming-soon" aria-labelledby="talks-coming-title">
     <div className="talks-coming-mark-v2"><CalendarDays aria-hidden="true"/></div>
-    <div><p>THE CONVERSATION CALENDAR</p><h2 id="talks-coming-title">Upcoming industry and campus dialogues</h2></div>
-    <span>Stay Informed. Join the Conversation.</span>
+    <div><p>THE CONVERSATION CALENDAR</p><h2 id="talks-coming-title">Upcoming industry and campus dialogues</h2><span className="coming-signoff-v2">Stay Informed. Join the Conversation.</span></div>
+    <span className="coming-pill-v2">COMING SOON</span>
   </section>
 </main><SiteFooter/></>}

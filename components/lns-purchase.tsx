@@ -30,6 +30,7 @@ type Option = {
   href: string;
   external: boolean;
   primary?: boolean;
+  comingSoon?: boolean;
   label: string;
 };
 
@@ -37,7 +38,7 @@ function optionsFor(store: Store): Option[] {
   if (store.code === "IN") {
     return [
       { key: "amazon", mark: "amazon", name: "Amazon.in", detail: "Paperback", href: AMAZON_INDIA_URL, external: true, primary: true, label: "Buy the paperback on Amazon.in" },
-      { key: "flipkart", mark: "flipkart", name: "Flipkart", detail: "Paperback", href: FLIPKART_URL, external: false, label: "Buy the paperback on Flipkart" },
+      { key: "flipkart", mark: "flipkart", name: "Flipkart", detail: "Paperback", href: FLIPKART_URL, external: false, comingSoon: true, label: "Flipkart paperback: coming soon" },
       { key: "kindle", mark: "kindle", name: "Kindle", detail: "eBook", href: KINDLE_INDIA_URL, external: true, label: "Get the Kindle eBook on Amazon.in" },
     ];
   }
@@ -153,7 +154,14 @@ export function LnsPurchase({ tone = "light", id }: { tone?: "light" | "dark"; i
 
           <ul className={`lnsbuy-options lnsbuy-options--${options.length}`} aria-live="polite">
             {options.map(option => <li key={option.key}>
-              <a
+              {option.comingSoon ? <div className="lnsbuy-option is-soon" role="group" aria-label={option.label}>
+                <RetailerMark mark={option.mark} />
+                <span className="lnsbuy-option-text">
+                  <strong>{option.name}</strong>
+                  <small>{option.detail}</small>
+                </span>
+                <span className="lnsbuy-soon" aria-hidden="true">Coming soon</span>
+              </div> : <a
                 className={`lnsbuy-option${option.primary ? " is-primary" : ""}`}
                 href={option.href}
                 aria-label={option.label}
@@ -165,7 +173,7 @@ export function LnsPurchase({ tone = "light", id }: { tone?: "light" | "dark"; i
                   <small>{option.detail}</small>
                 </span>
                 <ArrowUpRight aria-hidden="true" className="lnsbuy-option-arrow" />
-              </a>
+              </a>}
             </li>)}
           </ul>
 
