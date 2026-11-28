@@ -2935,3 +2935,18 @@ html body:not(#_) .coming-signoff-v2::before {
   height: 1px;
   background: #c9984f;
 }
+
+/* LNS hero books: on wide screens, centre them in the space to the right of the
+   cards (instead of hugging the right edge); never closer to the edge than before */
+@media (min-width: 1280px) {
+  html body:not(#_) .lns-page .lns-hero .lns-book-product {
+    right: max(calc(2.5vw + 50px), calc((100vw - 890px - min(560px, calc(97.5vw - 880px))) / 2)) !important;
+  }
+}
+
+/* LNS hero action cards: narrower (360px → 320px each), same font sizes */
+@media (min-width: 761px) {
+  html body:not(#_) .lns-page .lns-hero .lns-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 320px)) !important;
+  }
+}
